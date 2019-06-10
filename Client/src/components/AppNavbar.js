@@ -43,7 +43,7 @@ class AppNavbar extends Component {
                     <NavLink href="/" color='primary'>Screens</NavLink>    
                 </NavItem>
                 <NavItem>
-                    <NavLink href="/" color='primary'>Getting Here</NavLink>    
+                    <NavLink href="/getting-here" color='primary'>Getting Here</NavLink>    
                 </NavItem>
                 <NavItem>
                     <NavLink href="/" color='primary'>My Account</NavLink>    
