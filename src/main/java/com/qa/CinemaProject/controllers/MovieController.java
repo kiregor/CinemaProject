@@ -2,6 +2,10 @@ package com.qa.CinemaProject.controllers;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.qa.CinemaProject.email.Email;
+import com.qa.CinemaProject.email.EmailApplication;
 import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.service.MovieService;
 
@@ -20,6 +26,15 @@ import com.qa.CinemaProject.service.MovieService;
 public class MovieController {
 	
 	private MovieService movieService;
+	
+	@Autowired
+	EmailApplication email;
+	
+	@PostMapping("/sendemail")
+	public Email sendEmail(@RequestBody Email body) throws AddressException, MessagingException {
+		email.sendMail(body);
+		return body;
+	}
 	
 	public MovieController(MovieService movieService) {
 		this.movieService = movieService;
