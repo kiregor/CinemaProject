@@ -18,7 +18,7 @@ public class PriceListService {
 		PriceList temp = new PriceList();
 		
 		try { 
-			File fXmlFile = new File("C:\\Users\\Admin\\git\\CinemaProject\\src\\main\\resources\\resources.xml");
+			File fXmlFile = new File("src\\main\\resources\\resources.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(fXmlFile);
