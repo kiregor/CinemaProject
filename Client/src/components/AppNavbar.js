@@ -47,9 +47,7 @@ class AppNavbar extends Component {
                 <NavItem>
                     <NavLink href="/" color='primary'>My Account</NavLink>    
                 </NavItem> 
-                <NavItem>
-                    <NavLink href="/" color='primary'>Payment</NavLink>    
-                </NavItem>         
+                
                 <NavItem>
                     <NavLink href="https://github.com/rameezjhaveri/CRUD_TODO_APP" color='primary'>Contact us</NavLink>    
                 </NavItem>  

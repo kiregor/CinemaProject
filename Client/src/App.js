@@ -2,22 +2,25 @@ import React from 'react';
 import './App.css';
 import AppNavbar from './components/AppNavbar';
 import Carousel from './components/AppCarousel';
-import { link } from 'fs';
+import {Elements, StripeProvider} from 'react-stripe-elements';
+import CheckoutForm from './payment/paymentPage'
 
 function App() {
   return ( 
     <div className = "App" >
       <AppNavbar/>
       <Carousel/>
-      <button onClick='goPaymentPage()'>fdfj</button>
+      <StripeProvider apiKey="pk_test_ApZj9rpgzM8kHv4LZLeWzY8c00CRakUyGN">
+        <div className="example">
+          <h1>React Stripe Elements Example</h1>
+          <Elements>
+            <CheckoutForm/>
+          </Elements>
+        </div>
+      </StripeProvider>
     </div>
   );
 }
 
-function goPaymentPage(){
-  return(
-    <link to="/payment/paymentPage"></link>
-  )
-}
 
 export default App;

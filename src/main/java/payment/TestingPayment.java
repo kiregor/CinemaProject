@@ -11,15 +11,15 @@ import com.stripe.model.checkout.Session;
 
 public class TestingPayment {
 	
-	public static void main(String[] args) throws StripeException {
-		new TestingPayment();
-	}
+//	public static void main(String[] args) throws StripeException {
+//		new TestingPayment();
+//	}
 
 	
 	public TestingPayment() throws StripeException {
 		// Set your secret key: remember to change this to your live secret key in production
 		// See your keys here: https://dashboard.stripe.com/account/apikeys
-		Stripe.apiKey = "sk_test_4eC39HqLyjWDarjtT1zdp7dc";
+		Stripe.apiKey = "sk_test_CFjdpvxKll1RAw8MUpz7wRMo00cvMNuhfB";
 
 		Map<String, Object> params = new HashMap<String, Object>();
 

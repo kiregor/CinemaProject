@@ -49,4 +49,9 @@ public class MovieController {
 	public void deleteMovie(@PathVariable Long id) {
 		this.movieService.deleteMovie(id);
 	}
+	
+	@PostMapping("/payment")
+	public void payment(@RequestBody Long id) {
+		System.out.println(id.toString());
+	}
 }
