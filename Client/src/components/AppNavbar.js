@@ -36,7 +36,7 @@ class AppNavbar extends Component {
                     <NavLink href="/" color='primary'>Listings</NavLink>    
                 </NavItem>
                 <NavItem>
-                    <NavLink href="/" color='primary'>Future Releases</NavLink>    
+                    <NavLink href="/Future-Listings" color='primary'>Future Releases</NavLink>    
                 </NavItem>
                 <NavItem>
                     <NavLink href="/" color='primary'>Screens</NavLink>    
