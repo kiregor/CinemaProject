@@ -5,17 +5,21 @@ import EmailService from '../services/EmailService';
 
 class ContactUsEmailForm extends Component {
     MESSAGE_CHAR_MINIMUM = 20;
+    
     constructor(props) {
         super(props);
         this.state = {
             validForm: true,
             emailWarning: false,
             messageWarning: false,
-            errorsVisible: false
+            errorsVisible: false,
+            successMessage: false,
+            errorMessage: false,
+            errorLog: ''
         }
         this.onSubmit = this.onSubmit.bind(this);
-        this.dismissMessageWarning = this.dismissMessageWarning.bind(this);
         this.showMessageWarning = this.showMessageWarning.bind(this);
+        this.showSuccessMessage = this.showSuccessMessage.bind(this);
         this.onChange = this.onChange.bind(this);
     }
     onSubmit(e){
@@ -24,37 +28,49 @@ class ContactUsEmailForm extends Component {
         let elements = document.getElementsByTagName('form')[0].elements;
         let sender = elements[0].value;
         let message = elements[1].value;
+        let submitButton = document.getElementById('submit-button');
         let validForm = true;
         if(message.length < this.MESSAGE_CHAR_MINIMUM) {
             validForm = false;
-            this.showMessageWarning();
+            this.showMessageWarning(true);
         }
         if(!validForm){
             this.state.errorsVisible = true;
         } else {
-            EmailService.sendEmail(sender, message)
-            .then(response => console.log(response))
-            .catch(error => console.log(error));
+            // disable submission button
+            submitButton.setAttribute('disabled', '');
             // send email
+            EmailService.sendEmail(sender, message)
+            // show success message
+            .then(response => {
+                this.showSuccessMessage(true);
+            })
+            .catch(error => {
+                this.showErrorMessage(true);
+                console.log(error.response.data.message, error.response.status);
+                let { status, message } = error.response.data;
+                let errorLog = `Error status ${status}. ${message}`;
+                this.setState({ errorLog });
+            });
         }
     }
-    dismissMessageWarning() {
-        this.setState({messageWarning: false });
+    showMessageWarning(boolean) {
+        this.setState({messageWarning: boolean });
     }
-    showMessageWarning() {
-        this.setState({messageWarning: true });
+    showEmailWarning(boolean) {
+        this.setState({emailWarning: boolean });
     }
-    dismissEmailWarning() {
-        this.setState({emailWarning: false });
+    showSuccessMessage(boolean) {
+        this.setState({successMessage: boolean });
     }
-    showEmailWarning() {
-        this.setState({emailWarning: true });
+    showErrorMessage(boolean) {
+        this.setState({errorMessage: boolean});
     }
     onChange() {
         if(this.state.errorsVisible){
             this.state.errorsVisible = false;
-            this.dismissEmailWarning();
-            this.dismissMessageWarning();
+            this.showEmailWarning(false);
+            this.showMessageWarning(false);
         }
     }
     render() {
@@ -79,12 +95,18 @@ class ContactUsEmailForm extends Component {
                                     </Col>
                                     <Col sm={12}>
                                         <Input type='textarea' required name='message' id='message' placeholder='Your Message'/>
-                                        <Alert color='danger' isOpen={this.state.messageWarning} toggle={this.dismissMessageWarning}>
+                                        <Alert color='danger' isOpen={this.state.messageWarning} toggle={() => this.showMessageWarning(false)}>
                                             Your message must be more than { this.MESSAGE_CHAR_MINIMUM } characters long.
+                                        </Alert>
+                                        <Alert color='success' isOpen={this.state.successMessage} toggle={() => this.showSuccessMessage(false)}>
+                                            Your message was sent successfully.
+                                        </Alert>
+                                        <Alert color='danger' isOpen={this.state.errorMessage} toggle={() => this.showErrorMessage(false)}>
+                                            Error: { this.state.errorLog }
                                         </Alert>
                                     </Col>
                                 </FormGroup>
-                                <Button onClick={this.onSubmit} className='submit-button'>Submit</Button>
+                                <Button id='submit-button' onClick={this.onSubmit} className='submit-button'>Submit</Button>
                             </Form>
                         </div>
                     </div>

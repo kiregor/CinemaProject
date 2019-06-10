@@ -47,7 +47,7 @@ public class EmailApplication {
 		
 		msg.setRecipient(Message.RecipientType.TO, thisAddress);
 		// Cc QACinema and the sender
-		msg.setRecipients(Message.RecipientType.CC, new InternetAddress[]{ thisAddress, new InternetAddress(email.getSender()) });
+		msg.setRecipient(Message.RecipientType.CC, new InternetAddress(email.getSender()));
 		msg.setSubject("QA Cinema Contact Us: query" + email.getQueryNo());
 		msg.setContent(email.getMessage(), "text/html");
 		msg.setSentDate(new Date());

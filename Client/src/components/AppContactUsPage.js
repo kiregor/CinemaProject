@@ -9,7 +9,7 @@ class AppContactUsPage extends Component {
         return (
             <div className='AppContactUsPage'>
                 <ContactUsEmailForm/>
-                <AppFindUsMap/>
+                {/* <AppFindUsMap/> */}
             </div>
         )
     }
