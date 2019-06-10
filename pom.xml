@@ -13,6 +13,12 @@
 	<artifactId>CinemaProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CinemaProject</name>
+	<repositories>
+	  <repository>
+	      <id>jitpack.io</id>
+	      <url>https://jitpack.io</url>
+	  </repository>
+	</repositories>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -24,6 +30,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
@@ -32,14 +39,17 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
@@ -50,10 +60,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.github.seatsio</groupId>
+			<artifactId>seatsio-java</artifactId>
+			<version>44</version>
 		</dependency>
 	</dependencies>
 
