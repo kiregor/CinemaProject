@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.CinemaProject.entities.Movie;
+import com.qa.CinemaProject.entities.PriceList;
 import com.qa.CinemaProject.service.MovieService;
+import com.qa.CinemaProject.service.PriceListService;
 
 @RequestMapping
 @RestController
@@ -20,9 +22,11 @@ import com.qa.CinemaProject.service.MovieService;
 public class MovieController {
 	
 	private MovieService movieService;
+	private PriceList priceList;
 	
 	public MovieController(MovieService movieService) {
 		this.movieService = movieService;
+		priceList = PriceListService.load();
 	}
 	
 	@PostMapping("/createMovie")
@@ -48,5 +52,10 @@ public class MovieController {
 	@DeleteMapping("/deleteMovie/{id}")
 	public void deleteMovie(@PathVariable Long id) {
 		this.movieService.deleteMovie(id);
+	}
+	
+	@GetMapping("/priceList")
+	public PriceList getPriceList() {
+		return priceList;
 	}
 }
