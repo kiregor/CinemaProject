@@ -10,7 +10,14 @@
 #message {
     margin-top: 1em;
     height: 180px;
-    margin-bottom: 3em;
+}
+
+#email-form {
+    margin-bottom: 2em;
+}
+
+#email-form .submit-button {
+    float: right;
 }
 
 .heading {
