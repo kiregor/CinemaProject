@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
+import AppHomePage from './components/AppHomePage';
 import AppNavbar from './components/AppNavbar';
-import Carousel from './components/AppCarousel';
+import AppPages from './components/AppPages';
 //import AppLogin from './components/AppLogin';
 //import Breadcrumbs from './components/AppBreadcrumbs';
 
 function App() {
   return ( 
-    <div className = "App" >
-      <AppNavbar/>
-      <Carousel/>
-    </div>
+    <>
+      <AppPages/>
+    </>
   );
 }
 export default App;
