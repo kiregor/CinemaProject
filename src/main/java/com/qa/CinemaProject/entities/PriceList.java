@@ -5,6 +5,12 @@ public class PriceList {
 	private int adultPrice;
 	private int childPrice;
 	private int concessionsPrice;
+	
+	public PriceList(String adultPriceStr, String childPriceStr, String concessionsPriceStr) {
+		adultPrice = Integer.parseInt(adultPriceStr);
+		childPrice = Integer.parseInt(childPriceStr);
+		concessionsPrice = Integer.parseInt(concessionsPriceStr);
+	}
 
 	public int getAdultPrice() {
 		return adultPrice;
