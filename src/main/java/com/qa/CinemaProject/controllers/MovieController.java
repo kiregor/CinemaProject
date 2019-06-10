@@ -22,24 +22,16 @@ import com.qa.CinemaProject.service.MovieService;
 public class MovieController {
 	
 	private MovieService movieService;
-	private PriceList priceList;
-	
 	
 	@Value("${adult.price}")
 	private String adultPrice;
-	
-	public String getAdultPrice() {
-		return adultPrice;
-	}
-
-
-	public void setAdultPrice(String adultPrice) {
-		this.adultPrice = adultPrice;
-	}
+	@Value("${child.price}")
+	private String childPrice;
+	@Value("${concessions.price}")
+	private String concessionsPrice;
 
 	public MovieController(MovieService movieService) {
 		this.movieService = movieService;
-		System.out.println("**************************************************************" + adultPrice);
 	}
 	
 	@PostMapping("/createMovie")
@@ -69,6 +61,6 @@ public class MovieController {
 	
 	@GetMapping("/priceList")
 	public PriceList getPriceList() {
-		return priceList;
+		return new PriceList(adultPrice, childPrice, concessionsPrice);
 	} 
 }
