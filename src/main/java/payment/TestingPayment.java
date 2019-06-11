@@ -19,7 +19,7 @@ public class TestingPayment {
 	public TestingPayment() throws StripeException {
 		// Set your secret key: remember to change this to your live secret key in production
 		// See your keys here: https://dashboard.stripe.com/account/apikeys
-		Stripe.apiKey = "sk_test_CFjdpvxKll1RAw8MUpz7wRMo00cvMNuhfB";
+		Stripe.apiKey = "";
 
 		Map<String, Object> params = new HashMap<String, Object>();
 
