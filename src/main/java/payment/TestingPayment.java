@@ -26,6 +26,7 @@ public class TestingPayment {
 
 		Map<String, Object> params = new HashMap<String, Object>();
 
+		
 		ArrayList<String> paymentMethodTypes = new ArrayList<>();
 		paymentMethodTypes.add("card");
 		params.put("payment_method_types", paymentMethodTypes);
