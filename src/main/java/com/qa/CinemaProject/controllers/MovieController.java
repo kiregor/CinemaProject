@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.service.MovieService;
+import com.stripe.exception.StripeException;
 
 @RequestMapping
 @RestController
@@ -48,6 +49,13 @@ public class MovieController {
 	@DeleteMapping("/deleteMovie/{id}")
 	public void deleteMovie(@PathVariable Long id) {
 		this.movieService.deleteMovie(id);
+	}
+	
+	@PostMapping("/payment")
+	public void payment(@RequestBody String id) throws StripeException {
+		System.out.println(id);
+		this.movieService.makePayment(id);
+		
 	}
 
 }
