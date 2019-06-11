@@ -1,9 +1,12 @@
 import axios from 'axios';
 
-class PricingService {
+class BookingService {
     getPricingInformation() {
-        return axios.get('http://192.168.1.102:8080/priceList');
+        return axios.get('http://localhost:8080/priceList');
+    }
+    sendSeatingInformation(bookedSeats) {
+        return axios.post('http://localhost:8080/someEndPoint', bookedSeats);
     }
 }
 
-export default new PricingService();
+export default new BookingService();
