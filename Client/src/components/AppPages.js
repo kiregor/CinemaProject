@@ -6,6 +6,9 @@ import AppContactUsPage from './contactus/AppContactUsPage';
 import AppGettingHerePage from './findus/AppGettingHerePage';
 import AppSeatingPage from './seating/AppSeatingPage';
 import PaymentPage from './payment/PaymentPage';
+import FutureReleases from './Future Listings/FutureReleases';
+import CurrentReleases from './Current Listings/CurrentReleases';
+
 
 class AppPages extends Component {
     render() {
@@ -20,6 +23,8 @@ class AppPages extends Component {
                         <Route path='/getting-here' component={AppGettingHerePage}/>
                         <Route path='/seatbooking' component={AppSeatingPage}/>
                         <Route path='/PaymentPage' component={PaymentPage}/>
+                        <Route path='/Future-Listings' component={FutureReleases}/>
+                        <Route path='/Listings' component={CurrentReleases}/>
                     </Switch>
                 </Router>
             </div>
