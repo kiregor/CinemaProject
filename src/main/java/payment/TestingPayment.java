@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
@@ -14,12 +16,13 @@ public class TestingPayment {
 //	public static void main(String[] args) throws StripeException {
 //		new TestingPayment();
 //	}
-
 	
-	public TestingPayment() throws StripeException {
+	
+	
+	public TestingPayment(@Value("$(stripeKey)") final String key) throws StripeException {
 		// Set your secret key: remember to change this to your live secret key in production
 		// See your keys here: https://dashboard.stripe.com/account/apikeys
-		Stripe.apiKey = "";
+		Stripe.apiKey = key;
 
 		Map<String, Object> params = new HashMap<String, Object>();
 
