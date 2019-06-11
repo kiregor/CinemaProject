@@ -1,7 +1,7 @@
 import React from 'react';
 import './poster.css'
 
-const Movie = (props, props2) => {
+const Movie = (props) => {
     return (
         <div className="col l3">
                 <div className="card">

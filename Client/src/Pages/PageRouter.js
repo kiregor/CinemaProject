@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AppNavbar from '../components/AppNavbar';
 import AppHomePage from './Homepage/Homepage';
-//import FutureReleases from './Listings/FutureReleases';
-import ApiFetchPoster from './Listings/ApiFetchPoster';
+import FutureReleases from './Future Listings/FutureReleases';
+import CurrentReleases from './Current Listings/CurrentReleases';
+
 
 
 class PageRouter extends Component {
@@ -15,7 +16,8 @@ class PageRouter extends Component {
                     <Switch>
                         { /* Need the 'exact' property, as '/' matches all pages */}
                         <Route path='/' exact component={AppHomePage}/>
-                        <Route path='/Future-Listings' component={ApiFetchPoster}/>
+                        <Route path='/Future-Listings' component={FutureReleases}/>
+                        <Route path='/Listings' component={CurrentReleases}/>
                     </Switch>
                 </Router>
             </div>

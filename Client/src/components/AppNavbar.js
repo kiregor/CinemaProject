@@ -33,7 +33,7 @@ class AppNavbar extends Component {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className='mr-auto' navbar>
               <NavItem>
-                    <NavLink href="/" color='primary'>Listings</NavLink>    
+                    <NavLink href="/Listings" color='primary'>Listings</NavLink>    
                 </NavItem>
                 <NavItem>
                     <NavLink href="/Future-Listings" color='primary'>Future Releases</NavLink>    
