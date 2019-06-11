@@ -27,7 +27,7 @@ class AppNavbar extends Component {
   render() {
     return (
       <div>
-        <Navbar color='dark' dark expand='lg' className='mb-5'>
+        <Navbar color='dark' dark expand='lg'>
           <Container>
             <NavbarBrand href='/' className='navbar-nav ml-auto'>QA CINEMA LOGO</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />

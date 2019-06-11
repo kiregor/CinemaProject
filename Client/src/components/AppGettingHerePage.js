@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { BreadcrumbItem, Breadcrumb} from 'reactstrap'
 
 import AppFindUsMap from './AppFindUsMap';
 import './AppContactUsPage.css';
 
 class AppGettingHerePage extends Component {
+
+
+
+   
+
     render() {
         return (
             <div>
@@ -12,7 +18,7 @@ class AppGettingHerePage extends Component {
                         <div className='row'>
                             <div className="col-12 heading">
                                 <h1>Location</h1>
-                                <address class="building-address">
+                                <address className="building-address">
                                     1 St. Katharine's Way<br />London E1W 1UN
                                 </address>
                                 <h2> Nearby transit</h2>

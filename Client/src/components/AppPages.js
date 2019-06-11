@@ -5,6 +5,7 @@ import AppHomePage from './AppHomePage';
 import AppContactUsPage from './AppContactUsPage';
 import AppGettingHerePage from './AppGettingHerePage';
 import AppSeatingPage from './AppSeatingPage';
+import AppBreadCrumbs from './AppBreadcrumbs'
 
 class AppPages extends Component {
     render() {
@@ -12,6 +13,7 @@ class AppPages extends Component {
             <div className='AppPages'>
                 <Router>
                     <AppNavbar/>
+                    <AppBreadCrumbs/>
                     <Switch>
                         { /* Need the 'exact' property, as '/' matches all pages */}
                         <Route path='/' exact component={AppHomePage}/>
