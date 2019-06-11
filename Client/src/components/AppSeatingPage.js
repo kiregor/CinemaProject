@@ -61,7 +61,7 @@ class AppSeatingPage extends Component {
             <div className='AppSeatingPage'>
                 <div className='container'>
                     <div className='row'>
-                        <div className='col-xs'>
+                        <div className='col-12'>
                             <h3>Specify the number of seats: </h3>
                         </div>
                     </div>

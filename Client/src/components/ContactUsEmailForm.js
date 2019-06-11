@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Row, FormGroup, Label, Col, Input, Button, Alert} from 'reactstrap';
+import { Form, Row, FormGroup, Container, Label, Col, Input, Button, Alert, Jumbotron } from 'reactstrap';
 import EmailService from '../services/EmailService';
 
 class ContactUsEmailForm extends Component {
@@ -43,6 +43,7 @@ class ContactUsEmailForm extends Component {
             EmailService.sendEmail(sender, message)
             // show success message
             .then(response => {
+                EmailService.emailSent();
                 this.showSuccessMessage(true);
             })
             .catch(error => {
@@ -81,6 +82,8 @@ class ContactUsEmailForm extends Component {
                             <h1>Contact Us</h1>
                         </div>
                     </div>
+                    {!this.state.successMessage && 
+                    <div>
                     <div className='row'>
                         <div className='col-12 instructions'>
                             <p>If there are any suggestions you'd like to offer to QA Cinema, please contact us using our email form:</p>
@@ -110,6 +113,18 @@ class ContactUsEmailForm extends Component {
                             </Form>
                         </div>
                     </div>
+                    </div>}
+                    {
+                        this.state.successMessage && 
+                        <div>
+                            <Jumbotron fluid>
+                                <Container fluid>
+                                    <h1 className='display-3'>Success</h1>
+                                    <p className='lead'>Your email has successfully been sent.</p>
+                                </Container>
+                            </Jumbotron>
+                        </div>
+                    }
                 </div>
         );
     }
