@@ -7,16 +7,18 @@ public class Movie {
 	@Id
 	private long id;
 	private String movieName;
+	private String imdbId;
 	
 	public Movie(){	}
 	
-	public Movie(String movieName) {
+	public Movie(String movieName, String imdbId) {
 		this.movieName = movieName;
+		this.imdbId = imdbId;
 	}
 	
 	@Override
 	public String toString() {
-		return String.format("Movie[id=%s, movieName='%s']", id, movieName);
+		return String.format("Movie[id=%s, movieName='%s', imdbId='%s']", id, movieName, imdbId);
 	}
 	
 	public long getId() {
@@ -26,4 +28,9 @@ public class Movie {
 	public String getMovieName() {
 		return movieName;
 	}
+	
+	public String getimdbId() {
+		return imdbId;
+	}
+	
 }

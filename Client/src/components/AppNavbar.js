@@ -11,6 +11,7 @@ import {
 } from 'reactstrap';
 import AppCreateAccount from './AppLogout';
 import AppLogin from './AppLogin';
+import { Link } from 'react-router-dom'
 
 class AppNavbar extends Component {
   state = {
@@ -26,7 +27,7 @@ class AppNavbar extends Component {
   render() {
     return (
       <div>
-        <Navbar color='dark' dark expand='sm' className='mb-5'>
+        <Navbar color='dark' dark expand='lg' className='mb-5'>
           <Container>
             <NavbarBrand href='/' className='navbar-nav ml-auto'>QA CINEMA LOGO</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
@@ -42,14 +43,13 @@ class AppNavbar extends Component {
                     <NavLink href="/" color='primary'>Screens</NavLink>    
                 </NavItem>
                 <NavItem>
-                    <NavLink href="/" color='primary'>Getting Here</NavLink>    
+                    <NavLink href="/getting-here" color='primary'>Getting Here</NavLink>    
                 </NavItem>
                 <NavItem>
                     <NavLink href="/" color='primary'>My Account</NavLink>    
-                </NavItem> 
-                
+                </NavItem>          
                 <NavItem>
-                    <NavLink href="https://github.com/rameezjhaveri/CRUD_TODO_APP" color='primary'>Contact us</NavLink>    
+                    <NavLink href='/contact-us' color='primary'>Contact Us</NavLink>    
                 </NavItem>  
                 </Nav>
                 <Nav className='ml-auto' navbar>
