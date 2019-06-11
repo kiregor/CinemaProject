@@ -1,26 +1,6 @@
 import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 
-// You can customize your Elements to give it the look and feel of your site.
-const createOptions = () => {
-    return {
-      style: {
-        base: {
-          fontSize: '16px',
-          color: '#424770',
-          fontFamily: 'Open Sans, sans-serif',
-          letterSpacing: '0.025em',
-          '::placeholder': {
-            color: '#aab7c4',
-          },
-        },
-        invalid: {
-          color: '#c23d4b',
-        },
-      }
-    }
-  };
-
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -46,7 +26,6 @@ class CheckoutForm extends Component {
     if (this.state.complete) return <h1>Purchase Complete</h1>;
     return (
       <div className="checkout">
-        <p>Would you like to complete the purchase?</p>
         <CardElement />
         <button onClick={this.submit}>Send</button>
       </div>

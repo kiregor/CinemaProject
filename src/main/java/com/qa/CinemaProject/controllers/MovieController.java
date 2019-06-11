@@ -53,7 +53,6 @@ public class MovieController {
 	
 	@PostMapping("/payment")
 	public void payment(@RequestBody String id) throws StripeException {
-		System.out.println(id);
 		this.movieService.makePayment(id);
 		
 	}
