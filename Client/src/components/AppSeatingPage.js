@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
-import BookingService from '../services/PricingService';
+import BookingService from '../services/BookingService';
 
 class AppSeatingPage extends Component {
     chart;
@@ -43,7 +43,8 @@ class AppSeatingPage extends Component {
                 // Make sure the list of pricing objects is exported once the list 
                 // is exhausted
                 if (listOfObjects.indexOf(object) === listOfObjects.length - 1) {
-                    console.log(this.bookedSeats);
+                   BookingService.storeSeatingInformation(this.bookedSeats);
+                   // Go to the payment page
                 }
             })
         });
