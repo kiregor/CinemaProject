@@ -3,7 +3,9 @@ import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 const AppBreadcrumbs = (props) => {
 
-  let breadcrumbs = window.location.pathname.split("/").filter(str => str.length > 0);
+  let breadcrumbs = window.location.pathname.split("/")
+  .map(uri => decodeURI(uri))
+  .filter(str => str.length > 0);
   let jsxbreadcrumbs = [];
   if (breadcrumbs.length === 0) return <> </>;
   let active = "a"
