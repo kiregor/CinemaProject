@@ -1,6 +1,6 @@
 import React from 'react';
 //import Movie from './Movie';
-import Movie from './AppMoviePoster/AppMoviePoster1';
+import Movie from './Movie';
 
 const MoviePoster = (props) => {
     return(

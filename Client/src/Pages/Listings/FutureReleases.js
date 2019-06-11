@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import AppMovieListings from './AppMovieListings';
+import ApiFetchPoster from './ApiFetchPoster';
 
 
 class FutureReleases extends Component {
   render() {
       return (
         <div>
-            <AppMovieListings/>
+            <ApiFetchPoster/>
         </div>
       );
     }

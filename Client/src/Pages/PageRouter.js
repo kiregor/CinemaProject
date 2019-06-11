@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AppNavbar from '../components/AppNavbar';
 import AppHomePage from './Homepage/Homepage';
 //import FutureReleases from './Listings/FutureReleases';
-import ApiFetchPoster from './Listings/ApiFetchPoster2';
+import ApiFetchPoster from './Listings/ApiFetchPoster';
 
 
 class PageRouter extends Component {
