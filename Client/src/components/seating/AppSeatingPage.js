@@ -23,7 +23,7 @@ class AppSeatingPage extends Component {
     componentDidMount() {
         BookingService.getPricingInformation()
             .then(response => {
-                this.setState({ pricing: response.data })
+                this.setState({ pricing: response.data });
                 this.setState({ pageLoaded: true});
             })
             .catch(error => {

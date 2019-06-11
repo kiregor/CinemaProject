@@ -34,9 +34,9 @@ public class MovieController {
 	private MovieService movieService;
 
 	@Autowired
-	EmailApplication email;
+	private EmailApplication email;
   
-  @Value("${adult.price}")
+	@Value("${adult.price}")
 	private String adultPrice;
 	@Value("${child.price}")
 	private String childPrice;
