@@ -1,13 +1,14 @@
+
 import React from 'react';
 import './App.css';
-import PageRouter from './Pages/PageRouter';
-
+import AppPages from './components/AppPages';
 
 function App() {
   return ( 
     <>
-      <PageRouter/>
+      <AppPages/>
     </>
   );
 }
+
 export default App;

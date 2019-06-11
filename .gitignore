@@ -1,5 +1,6 @@
-HELP.md
 /target/
+
+/node_modules/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -10,6 +11,7 @@ HELP.md
 .settings
 .springBeans
 .sts4-cache
+.properties
 
 ### IntelliJ IDEA ###
 .idea
