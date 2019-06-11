@@ -9,7 +9,7 @@ class BookingService {
      * ticketType (child, adult etc.) and price
      */
     storeSeatingInformation(bookedSeats) {
-        window.sessionStorage('bookedSeats', bookedSeats);
+        window.sessionStorage.setItem('bookedSeats', bookedSeats);
     }
 
     getPricingInformation() {

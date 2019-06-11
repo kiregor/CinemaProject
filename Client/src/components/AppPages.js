@@ -17,7 +17,7 @@ class AppPages extends Component {
                         <Route path='/' exact component={AppHomePage}/>
                         <Route path='/contact-us' component={AppContactUsPage}/>
                         <Route path='/getting-here' component={AppGettingHerePage}/>
-                        <Route path='/seatsio-stub' component={AppSeatingPage}/>
+                        <Route path='/seatbooking' component={AppSeatingPage}/>
                     </Switch>
                 </Router>
             </div>

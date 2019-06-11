@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'reactstrap';
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
 import BookingService from '../services/BookingService';
 
@@ -11,24 +12,30 @@ class AppSeatingPage extends Component {
             pricing: {
                 adultPrice: '',
                 childPrice: '',
-                concessionsPrice: ''
-            }
+                concessionsPrice: '',
+            },
+            pageLoaded: false
         }
 
-        this.print = this.print.bind(this);
+        this.bookSeats = this.bookSeats.bind(this);
     }
 
     componentDidMount() {
         BookingService.getPricingInformation()
             .then(response => {
                 this.setState({ pricing: response.data })
+                this.setState({ pageLoaded: true});
             })
             .catch(error => {
                 console.log(error);
             })
     }
 
-    print() {
+    /**
+     * Book the specified seats by storing them in the sessionStorage and move to the payments
+     * page.
+     */
+    bookSeats() {
         let sc = document.getElementById('seating-chart');
         //console.log(this.chart.selectedObjects[0]);
         this.chart.listSelectedObjects((listOfObjects) => {
@@ -53,6 +60,11 @@ class AppSeatingPage extends Component {
         return (
             <div className='AppSeatingPage'>
                 <div className='container'>
+                    <div className='row'>
+                        <div className='col-xs'>
+                            <h3>Specify the number of seats: </h3>
+                        </div>
+                    </div>
                     <div className='row'>
                         <div className='col-12'>
                             <SeatsioSeatingChart
@@ -83,7 +95,21 @@ class AppSeatingPage extends Component {
                                 selectedObjectsInputName={'selectedSeats'}
                             />
                         </div>
-                        <button onClick={this.print}>Print</button>
+                    </div>
+                    {this.state.pageLoaded && <div className='row'>
+                        <div id='book-now' className='col-12'>
+                            <Button onClick={this.bookSeats} color='success' size='lg' block>Book Now</Button>
+                        </div>
+                    </div>}
+                    <div id='seats-info' className='row'>
+                        <div className='col-12'>
+                            <h1>QA Cinema 2D<span className='inner-symbol'> &copy;</span> Screen</h1>
+                        </div>
+                    </div>
+                    <div className='row'>
+                        <div className='col-12'>
+                            <p>This theatre consists of 50 seats, the front row is allocated for disabled customers only.</p>
+                        </div>
                     </div>
                 </div>
             </div>
