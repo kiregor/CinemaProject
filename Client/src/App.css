@@ -27,6 +27,11 @@
   margin-top: 2em;
 }
 
+#bcrumb ol{
+  background-color: transparent; 
+  padding: .75rem 0;
+}
+
 #seats-info {
   margin-top: 2em;
 }

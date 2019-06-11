@@ -31,5 +31,4 @@ class AppGettingHerePage extends Component {
         )
     };
 }
-
 export default AppGettingHerePage;
