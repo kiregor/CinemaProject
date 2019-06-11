@@ -12,15 +12,11 @@ class ApiFetchPoster extends Component{
     }
 
     render() {
-
         var { isLoaded, items } = this.state;
-
         if (!isLoaded) {
             return <div>Loading...</div>
         }
-
         else {
-                
             return(
                 <div className="ApiFetchPoster">
                     <ul>
@@ -38,12 +34,12 @@ class ApiFetchPoster extends Component{
 
     componentDidMount() {
         fetch('./demo')
-            .then(json => {
-                this.setState({
-                    isLoaded: true,
-                    items: json,
-                })
-            });
+        .then(json => {
+            this.setState({
+                isLoaded: true,
+                items: json,
+            })
+        });
     }
 
 }

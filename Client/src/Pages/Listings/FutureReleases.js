@@ -3,7 +3,7 @@ import AppMovieListings from './AppMovieListings';
 
 
 class FutureReleases extends Component {
-    render() {
+  render() {
       return (
         <div>
             <AppMovieListings/>
