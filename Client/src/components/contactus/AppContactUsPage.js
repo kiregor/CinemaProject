@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import AppFindUsMap from './AppFindUsMap';
+import AppFindUsMap from '../findus/AppFindUsMap';
 import ContactUsEmailForm from './ContactUsEmailForm';
 import './AppContactUsPage.css';
 

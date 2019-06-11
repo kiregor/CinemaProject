@@ -1,7 +1,7 @@
 import React from 'react';
-import '../App.css';
+import '../../App.css';
 import {Elements, StripeProvider} from 'react-stripe-elements';
-import CheckoutForm from '../payment/CheckoutForm'
+import CheckoutForm from './AppCheckoutForm'
 
 function PaymentPage() {
   return ( 

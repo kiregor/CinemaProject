@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AppNavbar from './AppNavbar';
-import AppHomePage from './AppHomePage';
-import AppContactUsPage from './AppContactUsPage';
-import AppGettingHerePage from './AppGettingHerePage';
-import AppSeatingPage from './AppSeatingPage';
-import PaymentPage from './PaymentPage';
+import AppHomePage from './homepage/AppHomePage';
+import AppContactUsPage from './contactus/AppContactUsPage';
+import AppGettingHerePage from './findus/AppGettingHerePage';
+import AppSeatingPage from './seating/AppSeatingPage';
+import PaymentPage from './payment/PaymentPage';
 
 class AppPages extends Component {
     render() {

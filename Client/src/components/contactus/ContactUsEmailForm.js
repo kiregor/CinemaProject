@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Row, FormGroup, Container, Label, Col, Input, Button, Alert, Jumbotron } from 'reactstrap';
-import EmailService from '../services/EmailService';
+import EmailService from '../../services/EmailService';
 
 class ContactUsEmailForm extends Component {
     MESSAGE_CHAR_MINIMUM = 20;
