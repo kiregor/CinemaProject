@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
 
-
 class AppFindUsMap extends Component {
-
-    constructor(props) {
-        super(props)
-        
-    }
     render() {
         return (
             <>
-            {  }
                 <div className='container'>
                     <div className='row'>
                         <div className='col-12 heading'>

@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AppNavbar from './AppNavbar';
-import AppHomePage from './AppHomePage';
-import AppContactUsPage from './AppContactUsPage';
-import AppGettingHerePage from './AppGettingHerePage';
-import AppSeatingPage from './AppSeatingPage';
+import AppHomePage from './homepage/AppHomePage';
+import AppContactUsPage from './contactus/AppContactUsPage';
+import AppGettingHerePage from './findus/AppGettingHerePage';
+import AppSeatingPage from './seating/AppSeatingPage';
 import AppBreadCrumbs from './AppBreadcrumbs'
+import PaymentPage from './payment/PaymentPage';
+import FutureReleases from './Future Listings/FutureReleases';
+import CurrentReleases from './Current Listings/CurrentReleases';
+import MoviePage from './MoviePage/MoviePage'
 
 class AppPages extends Component {
     render() {
@@ -20,6 +24,10 @@ class AppPages extends Component {
                         <Route path='/contact-us' component={AppContactUsPage}/>
                         <Route path='/getting-here' component={AppGettingHerePage}/>
                         <Route path='/seatbooking' component={AppSeatingPage}/>
+                        <Route path='/PaymentPage' component={PaymentPage}/>
+                        <Route path='/Future-Listings' component={FutureReleases}/>
+                        <Route path='/Listings/:movietitle' component={MoviePage}/>
+                        <Route path='/Listings' component={CurrentReleases}/>
                     </Switch>
                 </Router>
             </div>

@@ -24,6 +24,7 @@ import com.qa.CinemaProject.email.EmailApplication;
 import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.entities.PriceList;
 import com.qa.CinemaProject.service.MovieService;
+import com.stripe.exception.StripeException;
 
 @RequestMapping
 @RestController
@@ -33,9 +34,9 @@ public class MovieController {
 	private MovieService movieService;
 
 	@Autowired
-	EmailApplication email;
+	private EmailApplication email;
   
-  @Value("${adult.price}")
+	@Value("${adult.price}")
 	private String adultPrice;
 	@Value("${child.price}")
 	private String childPrice;
@@ -80,5 +81,11 @@ public class MovieController {
 	public Email sendEmail(@RequestBody Email body) throws AddressException, MessagingException {
 		email.sendMail(body);
 		return body;
+	}
+  
+	@PostMapping("/payment")
+	public void payment(@RequestBody String id) throws StripeException {
+		this.movieService.makePayment(id);
+		
 	}
 }
