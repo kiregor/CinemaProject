@@ -23,6 +23,21 @@
   color: #61dafb;
 }
 
+#book-now {
+  margin-top: 2em;
+}
+
+#seats-info {
+  margin-top: 2em;
+}
+
+.inner-symbol {
+  font-size: 18px;
+  display: inline-block;
+  position: relative;
+  top: -18px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

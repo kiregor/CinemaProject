@@ -4,6 +4,7 @@ import AppNavbar from './AppNavbar';
 import AppHomePage from './AppHomePage';
 import AppContactUsPage from './AppContactUsPage';
 import AppGettingHerePage from './AppGettingHerePage';
+import AppSeatingPage from './AppSeatingPage';
 
 class AppPages extends Component {
     render() {
@@ -16,6 +17,7 @@ class AppPages extends Component {
                         <Route path='/' exact component={AppHomePage}/>
                         <Route path='/contact-us' component={AppContactUsPage}/>
                         <Route path='/getting-here' component={AppGettingHerePage}/>
+                        <Route path='/seatbooking' component={AppSeatingPage}/>
                     </Switch>
                 </Router>
             </div>
