@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 
 public class Booking {
 
-	@Id
+	@Id 
 	private long id;
 	private List<Ticket> tickets;
 	private int totalPrice;

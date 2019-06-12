@@ -6,6 +6,7 @@ import java.util.List;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -22,8 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.qa.CinemaProject.email.Email;
 import com.qa.CinemaProject.email.EmailApplication;
 import com.qa.CinemaProject.entities.Booking;
+import com.qa.CinemaProject.entities.BookingPayment;
 import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.entities.PriceList;
+import com.qa.CinemaProject.entities.Ticket;
 import com.qa.CinemaProject.service.BookingService;
 import com.qa.CinemaProject.service.MovieService;
 import com.qa.CinemaProject.service.PaymentService;
@@ -89,15 +92,12 @@ public class MovieController {
 		email.sendMail(body);
 		return body;
 	}
-  
-	@PostMapping("/payment")
-	public void payment(@RequestBody String id) throws StripeException {
-		this.paymentService.makePayment(id);
-	}
 	
 	@PostMapping("/booking")
-	public void booking(@RequestBody String id, @RequestBody Booking booking) throws StripeException {
-		this.paymentService.makePayment(id);
-		this.bookingService.saveBooking(booking);
+	public void booking(@RequestBody BookingPayment booking ) throws StripeException {
+		int cost = booking.getBooking().getTickets().stream().mapToInt(t -> t.getPrice()).sum();
+		this.paymentService.makePayment(booking.getToken(),cost);
+		System.out.println(booking.getToken());
+		this.bookingService.saveBooking(booking.getBooking());
 	}
 }

@@ -1,25 +1,40 @@
 import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
-
+import stripeService from '../../services/stripeService';
+import axios from 'axios';
 
 class CheckoutForm extends Component {
+  seatInfo;
   constructor(props) {
     super(props);
     this.state = {complete: false};
     this.submit = this.submit.bind(this);
+    //this.seatInfo = window.sessionStorage.getItem('bookedSeats');
+    
   }
 
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: "Name"});
+    stripeService.sendStripe(
+      {
+        "booking": {
+            "tickets": [
+                {
+                    "location": "B-3",
+                    "ticketType": "Adult",
+                    "price": 15
+                }
+            ]
+        },
+        "token": token.id
+     }
+    ).then(
+      response => {
+        console.log('works')
+      })
     
-    let response = await fetch("http://localhost:8080/payment", {
-        method: "POST",
-        headers: {"Content-Type": "text/plain"},
-        body: token.id
-    });
-    
-    if (response.ok) this.setState({complete: true})
-    console.log(response)
+    // if (response.ok) this.setState({complete: true})
+    // console.log(response)
   }
 
   render() {
