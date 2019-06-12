@@ -28,7 +28,7 @@ class AppGettingHerePage extends Component {
                     <AppFindUsMap/>
                 </div>
             </div>
-        )
-    };
+        );
+    }
 }
 export default AppGettingHerePage;
