@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieDisplay from './ApiMovieDisplay';
+//import MovieDisplay from './test1';
 
 const MovieFetch = (props) => {
     return(
