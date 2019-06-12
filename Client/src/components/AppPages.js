@@ -14,7 +14,7 @@ import BookingService from '../services/BookingService';
 import SessionStorageService from '../services/SessionStorageService'
 
 class AppPages extends Component {
-
+    pricing = {}
     componentWillMount() {
         BookingService.getPricingInformation()
         .then( response => { 
