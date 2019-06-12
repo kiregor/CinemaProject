@@ -38,7 +38,7 @@ class ApiFetchPoster extends Component{
         .then(data => {
             console.log(data);
             this.setState({ 
-                movies: [...data.results],
+                movies: [data.results[0]],
                 isLoaded: true
             })
 
