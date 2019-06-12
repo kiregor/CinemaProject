@@ -32,7 +32,7 @@ class ApiFetchPoster extends Component{
 
     /* HIDE API KEY + RETREIVE SEARCH QUERY FROM URL*/
     componentDidMount = (e) => {
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=3e9a89831a2e61d47f06983917822671&language=en-US&query=dark%20phoenix&page=1&include_adult=false`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=3e9a89831a2e61d47f06983917822671&language=en-US&query=${this.props.match.params.movietitle}&page=1&include_adult=false`)
         .then(data => data.json())
         .then(data => {
             console.log(data);
