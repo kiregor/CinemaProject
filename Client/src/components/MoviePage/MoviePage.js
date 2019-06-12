@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Spinner } from 'reactstrap';
-import MovieId from './ApiMovieID';
+import MovieFetch from './ApiMovieFetch';
 import ApiKey from '../../config.config';
 
 //{this.props.match.params.movietitle}
@@ -24,7 +24,7 @@ class ApiFetchPoster extends Component{
         else {
             return(
                 <div className="ApiFetchPoster">
-                    <MovieId movies={this.state.movies}/>
+                    <MovieFetch movies={this.state.movies}/>
                 </div>
             );
         }
