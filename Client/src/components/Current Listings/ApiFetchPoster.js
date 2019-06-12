@@ -12,9 +12,9 @@ class ApiFetchPoster extends Component{
     constructor(props){
         super(props);
 
-    {/*}    var today = today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate();
+    /* var today = today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate();
         console.log(today); 
-    */}
+    */
         this.state= {
             timestamp: new Date().getTime(),
             movies: [],

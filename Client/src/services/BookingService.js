@@ -1,23 +1,15 @@
 import axios from 'axios';
-
-
+import { LOCAL_BACKEND_SERVER, PRICE_LIST } from '../../src/Constants'
 
 class BookingService {
-    /**
-     * Takes the seat booking information for this transaction.
-     * @param {array} bookedSeats A list of JSON objects consisting of location (seat number),
-     * ticketType (child, adult etc.) and price
-     */
-    storeSeatingInformation(bookedSeats) {
-        window.sessionStorage.setItem('bookedSeats', bookedSeats);
+    url;
+    constructor(url) {
+        this.url = url;
     }
 
     getPricingInformation() {
-        return axios.get('http://localhost:8080/priceList');
-    }
-    sendSeatingInformation(bookedSeats) {
-        return axios.post('http://localhost:8080/someEndPoint', bookedSeats);
+        return axios.get(`${this.url}/${PRICE_LIST}`);
     }
 }
 
-export default new BookingService();
+export default new BookingService(LOCAL_BACKEND_SERVER);

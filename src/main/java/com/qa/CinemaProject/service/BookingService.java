@@ -1,9 +1,12 @@
 package com.qa.CinemaProject.service;
 
+import org.springframework.stereotype.Service;
+
 import com.qa.CinemaProject.entities.Booking;
 import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.repo.BookingRepo;
 
+@Service
 public class BookingService {
 
 	private BookingRepo bookingRepo;
