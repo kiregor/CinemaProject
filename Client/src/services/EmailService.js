@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { LOCAL_BACKEND_SERVER, SEND_MAIL } from '../../src/Constants'
 
 class EmailService {
 
@@ -6,9 +7,15 @@ class EmailService {
         window.sessionStorage.setItem('emailSent', true);
     }
 
-    sendEmail(sender, message){
+    hasEmailBeenSent() {
+        return window.sessionStorage.getItem('emailSent') === 'true';
+    }
+
+    sendEmail(sender, message) {
         let queryNo = "#" + (Math.floor(Math.random() * 1000000));
-        return axios.post(`http://localhost:8080/sendemail`, { sender, message, queryNo });
+        return axios.post(
+            `${LOCAL_BACKEND_SERVER}/${SEND_MAIL}`,
+            { sender, message, queryNo });
     }
 }
 
