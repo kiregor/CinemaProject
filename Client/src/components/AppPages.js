@@ -14,6 +14,7 @@ import './AppPages.css';
 import MoviePage from './MoviePage/MoviePage'
 import BookingService from '../services/BookingService';
 import SessionStorageService from '../services/SessionStorageService'
+import FutureMoviePage from './FutureMoviePage/FutureMoviePage'
 
 class AppPages extends Component {
     pricing = {}
@@ -43,6 +44,7 @@ class AppPages extends Component {
                             <Route path='/seatbooking' component={AppSeatingPage}/>
                             <Route path='/PaymentPage' component={PaymentPage}/>
                             <Route path='/Future-Listings' component={FutureReleases}/>
+                             <Route path='/FutureListings/:movietitle' component={FutureMoviePage}/>
                             <Route path='/Listings/:movietitle' component={MoviePage}/>
                             <Route path='/Listings' component={CurrentReleases}/>
                         </Switch>
