@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Row, FormGroup, Container, Label, Col, Input, Button, Alert, Jumbotron } from 'reactstrap';
+import { Form, FormGroup, Container, Col, Input, Button, Alert, Jumbotron } from 'reactstrap';
 import EmailService from '../../services/EmailService';
 
 class ContactUsEmailForm extends Component {
     MESSAGE_CHAR_MINIMUM = 20;
-    
+    emailSent;
     constructor(props) {
         super(props);
         this.state = {
@@ -21,9 +21,9 @@ class ContactUsEmailForm extends Component {
         this.showMessageWarning = this.showMessageWarning.bind(this);
         this.showSuccessMessage = this.showSuccessMessage.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.emailSent = EmailService.hasEmailBeenSent();
     }
     onSubmit(e){
-        
         e.preventDefault();
         let elements = document.getElementsByTagName('form')[0].elements;
         let sender = elements[0].value;
@@ -35,7 +35,7 @@ class ContactUsEmailForm extends Component {
             this.showMessageWarning(true);
         }
         if(!validForm){
-            this.state.errorsVisible = true;
+            this.setState({ errorsVisible : true });
         } else {
             // disable submission button
             submitButton.setAttribute('disabled', '');
@@ -48,11 +48,14 @@ class ContactUsEmailForm extends Component {
             })
             .catch(error => {
                 this.showErrorMessage(true);
-                console.log(error.response.data.message, error.response.status);
-                let { status, message } = error.response.data;
+                let status = '000', message = 'No information available';
+                if(error.response && error.response.data){
+                    status = error.response.data.status;
+                    message = error.response.data.message;
+                }
                 let errorLog = `Error status ${status}. ${message}`;
                 this.setState({ errorLog });
-            });
+            })
         }
     }
     showMessageWarning(boolean) {
@@ -69,7 +72,7 @@ class ContactUsEmailForm extends Component {
     }
     onChange() {
         if(this.state.errorsVisible){
-            this.state.errorsVisible = false;
+            this.setState({ errorsVisible : false });
             this.showEmailWarning(false);
             this.showMessageWarning(false);
         }
@@ -82,7 +85,7 @@ class ContactUsEmailForm extends Component {
                             <h1>Contact Us</h1>
                         </div>
                     </div>
-                    {!this.state.successMessage && 
+                    {!(this.state.successMessage || this.emailSent) && 
                     <div>
                     <div className='row'>
                         <div className='col-12 instructions'>
@@ -114,8 +117,7 @@ class ContactUsEmailForm extends Component {
                         </div>
                     </div>
                     </div>}
-                    {
-                        this.state.successMessage && 
+                    {(this.state.successMessage || this.emailSent) && 
                         <div>
                             <Jumbotron fluid>
                                 <Container fluid>

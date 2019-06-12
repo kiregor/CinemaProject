@@ -11,7 +11,6 @@ import {
 } from 'reactstrap';
 import AppCreateAccount from './AppLogout';
 import AppLogin from './AppLogin';
-import { Link } from 'react-router-dom'
 
 class AppNavbar extends Component {
   state = {
