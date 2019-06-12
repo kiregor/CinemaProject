@@ -27,4 +27,7 @@ public class Booking {
 		this.totalPrice = totalPrice;
 	}
 
+	public String toString() {
+		return String.format("Booking[id=%s, totalPrice='%s', numTickets='%s']", id, totalPrice, tickets.size());
+	}
 }

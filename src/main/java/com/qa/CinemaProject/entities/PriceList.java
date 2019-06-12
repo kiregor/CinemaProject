@@ -35,5 +35,9 @@ public class PriceList {
 	public void setConcessionsPrice(int concessionsPrice) {
 		this.concessionsPrice = concessionsPrice;
 	}
+	
+	public String toString() {
+		return String.format("PriceList[adultPrice=%s, childPrice='%s', concessionsPrice='%s']", adultPrice, childPrice, concessionsPrice);
+	}
 
 }

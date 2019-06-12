@@ -34,4 +34,7 @@ public class Ticket {
 		this.price = price;
 	}
 
+	public String toString() {
+		return String.format("Ticket[id=%s, location='%s', ticketType='%s', price=%s]", id, location, ticketType, price);
+	}
 }
