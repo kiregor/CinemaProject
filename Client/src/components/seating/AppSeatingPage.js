@@ -19,13 +19,14 @@ class AppSeatingPage extends Component {
             pageLoaded: false
         }
         // Get pricing data from the session
-        this.data = SessionStorageService.getObject('Price');
+        this.data = SessionStorageService.getObject('pricing');
         // Convert data from string to number
         for(let prop in this.data) this.data[prop] = +this.data[prop]
-        this.bookSeats = this.bookSeats.bind(this);
-    }
 
-    
+        SessionStorageService.clearObject();
+        this.bookSeats = this.bookSeats.bind(this);
+        this.clearTickets = this.clearTickets.bind(this);
+    }
 
     componentDidMount() {
        
@@ -47,12 +48,17 @@ class AppSeatingPage extends Component {
                 // Make sure the list of pricing objects is exported once the list 
                 // is exhausted
                 if (listOfObjects.indexOf(object) === listOfObjects.length - 1) {
-                   BookingService.storeSeatingInformation(this.bookedSeats);
+                   SessionStorageService.setObject('bookingDetails', this.bookedSeats);
+                   console.log(SessionStorageService.getObject('bookingDetails'));
                    // Go to the payment page
                 }
             })
         });
-    }//
+    }
+    clearTickets(e) {
+        SessionStorageService.clearObject('bookingDetails');
+
+    }
     render() {
         return (
             <div className='AppSeatingPage'>
@@ -90,6 +96,7 @@ class AppSeatingPage extends Component {
                                 maxSelectedObjects={5}
                                 showRowLabels={true}
                                 selectedObjectsInputName={'selectedSeats'}
+                                onHoldTokenExpired={this.clearTickets}
                             />
                         </div>
                     </div>

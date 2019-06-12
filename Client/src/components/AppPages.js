@@ -19,7 +19,7 @@ class AppPages extends Component {
         BookingService.getPricingInformation()
         .then( response => { 
             if(response && response.data){ 
-                SessionStorageService.setObject(response.data);
+                SessionStorageService.setObject('pricing', response.data);
             }
         })
         .catch(error => {
