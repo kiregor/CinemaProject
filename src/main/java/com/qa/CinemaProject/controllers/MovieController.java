@@ -21,9 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.CinemaProject.email.Email;
 import com.qa.CinemaProject.email.EmailApplication;
+import com.qa.CinemaProject.entities.Booking;
 import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.entities.PriceList;
+import com.qa.CinemaProject.service.BookingService;
 import com.qa.CinemaProject.service.MovieService;
+import com.qa.CinemaProject.service.PaymentService;
+import com.stripe.exception.StripeException;
 
 @RequestMapping
 @RestController
@@ -31,19 +35,23 @@ import com.qa.CinemaProject.service.MovieService;
 public class MovieController {
 	
 	private MovieService movieService;
+	private PaymentService paymentService;
+	private BookingService bookingService;
 
 	@Autowired
-	EmailApplication email;
+	private EmailApplication email;
   
-  @Value("${adult.price}")
+	@Value("${adult.price}")
 	private String adultPrice;
 	@Value("${child.price}")
 	private String childPrice;
 	@Value("${concessions.price}")
 	private String concessionsPrice;
 	
-	public MovieController(MovieService movieService) {
+	public MovieController(MovieService movieService, PaymentService paymentService, BookingService bookingService) {
 		this.movieService = movieService;
+		this.paymentService = paymentService;
+		this.bookingService = bookingService;
 	}
 	
 	@PostMapping("/createMovie")
@@ -76,9 +84,20 @@ public class MovieController {
 		return new PriceList(adultPrice, childPrice, concessionsPrice);
 	} 
   
-  @PostMapping("/sendemail")
+    @PostMapping("/sendemail")
 	public Email sendEmail(@RequestBody Email body) throws AddressException, MessagingException {
 		email.sendMail(body);
 		return body;
+	}
+  
+	@PostMapping("/payment")
+	public void payment(@RequestBody String id) throws StripeException {
+		this.paymentService.makePayment(id);
+	}
+	
+	@PostMapping("/booking")
+	public void booking(@RequestBody String id, @RequestBody Booking booking) throws StripeException {
+		this.paymentService.makePayment(id);
+		this.bookingService.saveBooking(booking);
 	}
 }

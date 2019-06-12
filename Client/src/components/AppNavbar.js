@@ -27,17 +27,17 @@ class AppNavbar extends Component {
   render() {
     return (
       <div>
-        <Navbar color='dark' dark expand='sm' className='mb-5'>
+        <Navbar color='dark' dark expand='lg'>
           <Container>
             <NavbarBrand href='/' className='navbar-nav ml-auto'>QA CINEMA LOGO</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className='mr-auto' navbar>
               <NavItem>
-                    <NavLink href="/" color='primary'>Listings</NavLink>    
+                    <NavLink href="/Listings" color='primary'>Listings</NavLink>    
                 </NavItem>
                 <NavItem>
-                    <NavLink href="/" color='primary'>Future Releases</NavLink>    
+                    <NavLink href="/Future-Listings" color='primary'>Future Releases</NavLink>    
                 </NavItem>
                 <NavItem>
                     <NavLink href="/" color='primary'>Screens</NavLink>    
