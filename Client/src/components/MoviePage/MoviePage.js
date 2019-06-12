@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Spinner } from 'reactstrap';
 import MovieFetch from './ApiMovieFetch';
-import ApiKey from '../../config.config';
+import {API_KEY} from '../../Constants';
 
 //{this.props.match.params.movietitle}
 //PATH FOR MOVE POSTER: http://tmdb.org/t/p/<SIZE>/<POSTER_PATH>;
@@ -14,7 +14,8 @@ class ApiFetchPoster extends Component{
             movies: [],
             isLoaded: false,
         }
-    this.Api=ApiKey
+    this.Api=API_KEY
+    console.log(this.Api)
     }
     render() {
         var { isLoaded} = this.state;
@@ -32,7 +33,7 @@ class ApiFetchPoster extends Component{
 
     /* HIDE API KEY + RETREIVE SEARCH QUERY FROM URL*/
     componentDidMount = (e) => {
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=3e9a89831a2e61d47f06983917822671&language=en-US&query=${this.props.match.params.movietitle}&page=1&include_adult=false`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${this.Api}&language=en-US&query=${this.props.match.params.movietitle}&page=1&include_adult=false`)
         .then(data => data.json())
         .then(data => {
             console.log(data);

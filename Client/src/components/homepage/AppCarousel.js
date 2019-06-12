@@ -67,7 +67,7 @@ class Example extends Component {
     const slides = items.map((item) => {
       return (
         <CarouselItem
-          className='mt-5'
+          className='mt-5 mb-5'
           onExiting={this.onExiting}
           onExited={this.onExited}
           key={item.src}
