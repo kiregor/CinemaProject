@@ -10,8 +10,30 @@ import PaymentPage from './payment/PaymentPage';
 import FutureReleases from './Future Listings/FutureReleases';
 import CurrentReleases from './Current Listings/CurrentReleases';
 import MoviePage from './MoviePage/MoviePage'
+import BookingService from '../services/BookingService';
+import SessionStorageService from '../services/SessionStorageService'
 
 class AppPages extends Component {
+
+    constructor(props){
+        super(props);
+        
+    }
+
+    componentWillMount() {
+        BookingService.getPricingInformation()
+        .then( response => { 
+            if(response && response.data){ 
+                // this.setState({ pageLoaded: true});
+                console.log(response.data)
+                SessionStorageService.setObject(response.data);
+                console.log(window.sessionStorage.getItem('adultPrice'))
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
     render() {
         return (
             <div className='AppPages'>

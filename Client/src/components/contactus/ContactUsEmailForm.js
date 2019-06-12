@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Row, FormGroup, Container, Label, Col, Input, Button, Alert, Jumbotron } from 'reactstrap';
+import { Form, FormGroup, Container, Col, Input, Button, Alert, Jumbotron } from 'reactstrap';
 import EmailService from '../../services/EmailService';
 
 class ContactUsEmailForm extends Component {
@@ -23,7 +23,6 @@ class ContactUsEmailForm extends Component {
         this.onChange = this.onChange.bind(this);
     }
     onSubmit(e){
-        
         e.preventDefault();
         let elements = document.getElementsByTagName('form')[0].elements;
         let sender = elements[0].value;
@@ -35,7 +34,7 @@ class ContactUsEmailForm extends Component {
             this.showMessageWarning(true);
         }
         if(!validForm){
-            this.state.errorsVisible = true;
+            this.setState({ errorsVisible : true });
         } else {
             // disable submission button
             submitButton.setAttribute('disabled', '');
@@ -69,7 +68,7 @@ class ContactUsEmailForm extends Component {
     }
     onChange() {
         if(this.state.errorsVisible){
-            this.state.errorsVisible = false;
+            this.setState({ errorsVisible : false });
             this.showEmailWarning(false);
             this.showMessageWarning(false);
         }
