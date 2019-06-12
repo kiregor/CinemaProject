@@ -1,5 +1,4 @@
 import axios from 'axios';
-import StorageSessionService from '../services/SessionStorageService'
 import { LOCAL_BACKEND_SERVER, PRICE_LIST } from '../../src/Constants'
 
 class BookingService {
