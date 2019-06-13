@@ -25,6 +25,12 @@ const MoviePoster = (props) => {
                     <div> 
                         <p>PG Rating: {props.movies[0][0].adult} </p>    
                     </div>
+                     <div> 
+                        <p>Actors </p>    
+                    </div>
+                     <div> 
+                        <p>Director </p>    
+                    </div>
 
                 </div>
 
