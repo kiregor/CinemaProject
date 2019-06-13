@@ -13,6 +13,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+
+//aboutUsLinkVisibleOnHomepage()
+//abouttUsLinkWorking() 
+//aboutUsLinkPage()
+//aboutUsLinkFunction()
+
 public class TestFindUs {
 
 	static WebDriver driver;
@@ -25,40 +31,46 @@ public class TestFindUs {
 				"C:\\Users\\Admin\\Downloads\\chromedriver_win32\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get(url);
+		
 	}
 	
 	@Before
 	public void init() {
-		
-	}
-	
-	@Test
-	@Ignore
-	public void contactUsLinkVisibleOnHomepage() {
+		driver.get(url);
 		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/nav/div/div/ul[1]/li[4]/a"));
-		assertEquals("Getting Here", we.getText());
-		we.sendKeys(Keys.ENTER);
-		we = driver.findElement(By.xpath("//*[@id=\"bcrumb\"]/ol/span"));
-		assertEquals("getting here", we.getText());	
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div[2]/div/div/h1"));
-		assertEquals("Find Us", we.getText());	
-		
-		//*[@id="mapDiv"]/div/div/div[9]/div/div/div/div[2]/div[1]/a/div[2]		
 	}
 	
 	@Test
-	@Ignore
+	public void contactUsLinkVisibleOnHomepage() {	
+		
+		assertEquals("Getting Here", we.getText());		
+	}
+	
+	@Test
 	public void contactUsLinkWorking() {
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/nav/div/div/ul[1]/li[4]/a"));
-		assertEquals("Getting Here", we.getText());
-		we.sendKeys(Keys.ENTER);
-		we = driver.findElement(By.xpath("//*[@id=\"bcrumb\"]/ol/span"));
-		assertEquals("getting here", we.getText());	
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div[2]/div/div/h1"));
-		assertEquals("Find Us", we.getText());	
 		
-		//*[@id="mapDiv"]/div/div/div[9]/div/div/div/div[2]/div[1]/a/div[2]		
+		we.sendKeys(Keys.ENTER);
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div[2]/div/div/h1"));
+		assertEquals("Find Us", we.getText());			
+	}
+	
+	@Test
+	@Ignore
+	public void contactUsLinkPageContent() {
+		we.sendKeys(Keys.ENTER);
+		we = driver.findElement(By.xpath("//*[@id=\"mapDiv\"]/div/div/div[9]/div/div/div/div[2]/div[1]/a/div[2]"));
+		assertEquals("Directions", we.getText());		
+	}
+	
+	@Test
+	@Ignore
+	public void contactUsLinkPageFunction() {
+		we.sendKeys(Keys.ENTER);
+		we = driver.findElement(By.xpath("//*[@id=\"mapDiv\"]/div/div/div[9]/div/div/div/div[2]/div[1]/a/div[2]"));
+		we.sendKeys(Keys.ENTER);
+		we = driver.findElement(By.xpath("//*[@id=\"sb_ifc51\"]/input"));
+		assertEquals("International House, 1 St Katharine's Way, St Katharine's & Wapping, London E1W 1YL, UK", we.getText());	
+			
 	}
 	
 	@After

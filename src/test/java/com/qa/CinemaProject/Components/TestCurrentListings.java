@@ -14,12 +14,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
-//aboutUsLinkVisibleOnHomepage()
-//abouttUsLinkWorking() 
-//aboutUsLinkPage()
-//aboutUsLinkFunction()
-
 public class TestCurrentListings {
 
 	static WebDriver driver;
