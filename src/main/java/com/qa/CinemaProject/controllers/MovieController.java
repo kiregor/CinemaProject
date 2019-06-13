@@ -26,11 +26,15 @@ import static com.qa.CinemaProject.constants.MappingConstants.PRICE_LIST;
 import static com.qa.CinemaProject.constants.MappingConstants.SEND_EMAIL;
 import static com.qa.CinemaProject.constants.MappingConstants.PAYMENT;
 import static com.qa.CinemaProject.constants.MappingConstants.BOOKING;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_ALL_BOOKINGS;
+import static com.qa.CinemaProject.constants.MappingConstants.CREATE_SINGLE_BOOKING;
 import com.qa.CinemaProject.email.Email;
 import com.qa.CinemaProject.email.EmailApplication;
 import com.qa.CinemaProject.entities.Booking;
+import com.qa.CinemaProject.entities.BookingPayment;
 import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.entities.PriceList;
+import com.qa.CinemaProject.entities.Ticket;
 import com.qa.CinemaProject.service.BookingService;
 import com.qa.CinemaProject.service.MovieService;
 import com.qa.CinemaProject.service.PaymentService;
@@ -95,17 +99,22 @@ public class MovieController {
 		email.sendMail(body);
 		return body;
 	}
-  
-	@PostMapping(PAYMENT)
-	public void payment(@RequestBody String id) throws StripeException {
-		this.paymentService.makePayment(id);
+	
+	@PostMapping("/booking")
+	public void booking(@RequestBody BookingPayment booking ) throws StripeException {
+		int cost = booking.getBooking().getTickets().stream().mapToInt(t -> t.getPrice()).sum();
+		this.paymentService.makePayment(booking.getToken(),cost);
+		this.bookingService.saveBooking(booking.getBooking());
 	}
 	
-	@PostMapping(BOOKING)
-	public void booking(@RequestBody String id, @RequestBody Booking booking) throws StripeException {
-		this.paymentService.makePayment(id);
+	@PostMapping(CREATE_SINGLE_BOOKING)
+	public void testBooking(@RequestBody Booking booking) {
 		this.bookingService.saveBooking(booking);
 	}
 	
+	@GetMapping(GET_ALL_BOOKINGS)
+	public List<Booking> getAllBookings(){
+		return this.bookingService.getAllBookings();
+	}
 
 }

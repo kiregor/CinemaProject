@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import AppFindUsMap from './AppFindUsMap';
-import '../ContactUs1/AppContactUsPage.css';
+import '../ContactUs/AppContactUsPage.css';
 
 class AppGettingHerePage extends Component {
     render() {
