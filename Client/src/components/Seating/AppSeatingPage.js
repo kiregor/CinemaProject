@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
 import SessionStorageService from '../../services/SessionStorageService';
+import BookingService from '../../services/BookingService';
 
 class AppSeatingPage extends Component {
     chart;
@@ -37,6 +38,10 @@ class AppSeatingPage extends Component {
      */
     bookSeats() {
         this.chart.listSelectedObjects((listOfObjects) => {
+            if(listOfObjects.length === 0) {
+                 window.confirm('Please select 1 or more seats'); 
+                 return;  
+            }
             listOfObjects.forEach((object) => {
                 let location = object.label;
                 let ticketType = object.selectedTicketType;
@@ -46,18 +51,22 @@ class AppSeatingPage extends Component {
                 this.bookedSeats.push({ location, ticketType, price });
                 // Make sure the list of pricing objects is exported once the list 
                 // is exhausted
-                if (listOfObjects.indexOf(object) === listOfObjects.length - 1) {
-                   SessionStorageService.setObject('bookedSeats', {"booking":{"tickets":this.bookedSeats},"token":null});
-                   console.log(SessionStorageService.getObject('bookedSeats'));
-                   // Go to the payment page
-                   window.location.assign("/paymentpage");
-                }
-            })
+            });
+            SessionStorageService.setObject('bookedSeats', {
+                "booking": {
+                    "tickets": this.bookedSeats
+                },"token": null
+            });
+            console.log(SessionStorageService.getObject('bookedSeats'));
+            // Go to the payment page
+            window.location.assign("/paymentpage");
         });
     }
     clearTickets(e) {
         SessionStorageService.clearObject('bookedSeats');
-
+    }
+    chartAdded(newChart) {
+        this.chart = newChart;
     }
     render() {
         return (
@@ -74,7 +83,7 @@ class AppSeatingPage extends Component {
                                 publicKey='d2967a3f-f10b-48e3-8b3c-424d2169759d'
                                 event='33cdea62-50da-4fa7-a835-c09009a9a99b'
                                 id='seating-chart'
-                                onRenderStarted={createdChart => this.chart = createdChart}
+                                onRenderStarted={createdChart => {this.chartAdded(createdChart)}}
                                 pricing={[{
                                     'category': 1, 'ticketTypes': [
                                         { 'ticketType': 'adult', 'price': this.data.adultPrice },
