@@ -10,13 +10,13 @@ const MovieDisplay = (props) => {
     return (
         <Container>
             <Row>
-                <Col xs='9'>
+                <Col xs='7'>
                 <img src={`http://image.tmdb.org/t/p/w500${props.image}`} alt="Movie Poster" style={{width:"100%", height: 600}}/>
                 </Col>
                 <Col>
-                    <div style={{fontSize: 40}}>{props.title}</div>
+                    <div style={{fontSize: 60}}>{props.title}</div>
                     <br/>
-                    <div style={{fontSize: 17}}>{props.overview}</div>
+                    <div style={{fontSize: 22}}>{props.overview}</div>
                 </Col>
             </Row>
             <Row>
