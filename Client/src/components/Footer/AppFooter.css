@@ -26,14 +26,19 @@
 .site-footer li
 {
   display:inline-block;
+  align-items: center
 }
 .footer-links
 {
-  padding-left: 0
+  padding-left: 0;
+}
+.footer-links li
+{
+  padding-left: 15px;
 }
 .site-footer .social-icons
 {
-  text-align:center;
+  text-align:left;
 }
 .site-footer .social-icons a
 {
@@ -60,6 +65,10 @@
 .social-icons a.facebook:hover
 {
   background-color:#3b5998
+}
+.social-icons a.instagram:hover
+{
+  background-color:#E1306C
 }
 .social-icons a.twitter:hover
 {

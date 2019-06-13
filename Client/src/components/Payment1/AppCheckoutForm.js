@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import stripeService from '../../services/stripeService';
-import axios from 'axios';
 import { Button } from 'reactstrap';
-import SessionStorageService from '../../services/SessionStorageService';
 
 class CheckoutForm extends Component {
   seatInfo = this.props.seatInfo;
