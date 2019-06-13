@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Detail from './Detail';
-import { Button } from 'reactstrap';
+import { Button, Table } from 'reactstrap';
 
 class Summary extends Component {
 
@@ -11,7 +11,7 @@ class Summary extends Component {
                 <div className='container'>
                     <h1>Booking Details</h1><br/>
                     <h3>Tickets</h3>
-                    <table class="table">
+                    <Table dark>
                         <thead>
                             <tr>
                                 <th>Location</th>
@@ -19,9 +19,9 @@ class Summary extends Component {
                                 <th>Price</th>
                             </tr>
                         </thead>
-                    </table>
+                    </Table>
                     {details.booking.tickets.map((detail,index) => <Detail key={index} detail={detail}/>)}
-                    <br/><br/><Button >Confirm</Button>
+                    <br/><br/><Button color="primary" size="lg" block color="danger">Confirm</Button>
                 </div>
                 
             </div>

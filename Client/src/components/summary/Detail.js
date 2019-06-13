@@ -8,7 +8,7 @@ class Detail extends Component {
         return (
             <div className='Detail'>
                  <div className='container'>
-                    <Table>
+                    <Table hover>
                         <tbody>
                         <tr>
                             <td>{detail.location}</td>
