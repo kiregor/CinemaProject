@@ -35,6 +35,7 @@ import com.qa.CinemaProject.entities.BookingPayment;
 import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.entities.Popular;
 import com.qa.CinemaProject.entities.PriceList;
+import com.qa.CinemaProject.seatsio.SeatsIoApi;
 import com.qa.CinemaProject.service.BookingService;
 import com.qa.CinemaProject.service.MovieService;
 import com.qa.CinemaProject.service.PaymentService;
@@ -49,6 +50,7 @@ public class MovieController {
 	private PaymentService paymentService;
 	private BookingService bookingService;
 	private EmailApplication email;
+	private SeatsIoApi seatsIo;
   
 	@Value("${adult.price}")
 	private String adultPrice;
@@ -64,11 +66,12 @@ public class MovieController {
 	@Value("${movie.three}")
 	private String movieThree;
 	
-	public MovieController(MovieService movieService, PaymentService paymentService, BookingService bookingService, EmailApplication email) {
+	public MovieController(MovieService movieService, PaymentService paymentService, BookingService bookingService, EmailApplication email, SeatsIoApi seatsIo) {
 		this.movieService = movieService;
 		this.paymentService = paymentService;
 		this.bookingService = bookingService;
 		this.email = email;
+		this.seatsIo = seatsIo;
 	}
 	
 	@PostMapping(CREATE_MOVIE)
@@ -127,6 +130,11 @@ public class MovieController {
 	@GetMapping(GET_POPULAR)
 	public Popular getPopular() {
 		return movieService.getPopular(movieOne, movieTwo, movieThree);
+	}
+	
+	@PostMapping("/testSeats")
+	public void testSeats(@RequestBody Booking booking) {
+		this.seatsIo.bookTickets(booking.getTickets(), "33cdea62-50da-4fa7-a835-c09009a9a99b");
 	}
 
 }
