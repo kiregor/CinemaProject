@@ -7,6 +7,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -14,7 +15,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class TestCurrentListings {
+
+public class TestFutureReleases {
 
 	static WebDriver driver;
 	static String url= "localhost:3000";
@@ -32,33 +34,28 @@ public class TestCurrentListings {
 	@Before
 	public void init() {
 		driver.get(url);
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/nav/div/div/ul[1]/li[1]/a"));
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/nav/div/div/ul[1]/li[2]/a"));
 	}
 	
 	@Test
-	public void currentListingLinkVisibleOnHomepage() {
+	public void futureListingLinkVisibleOnHomepage() {
 		
-		assertEquals("Listings", we.getText());
+		assertEquals("Future Releases", we.getText());
 	}
 	
 	@Test
-	public void currentListingLinkWorking() {	
+	public void contactUsLinkWorking() {	
 		we.sendKeys(Keys.ENTER);
 		we = driver.findElement(By.xpath("//*[@id=\"bcrumb\"]/ol/span"));
-		assertEquals("Listings", we.getText());		
+		assertEquals("Future-Listings", we.getText());		
 		
 	}
 	
 	@Test
-	public void currentListingLinkPageContent() {		;
+	public void futureListingLinkPageContent() {		;
 		we.sendKeys(Keys.ENTER);		
 		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div"));
-		assertTrue((we.isDisplayed() && we.isEnabled()));
-		//web elements can't be accessed "NoSuchElementException"
-		//in the big div we should count how many times images/booking are inserted must be at least 4
-		
-		//we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div/div/div/div[1]/div/div[1]/img"));
-	
+		assertTrue((we.isDisplayed() && we.isEnabled()));	
 	}
 	
 	
@@ -74,3 +71,4 @@ public class TestCurrentListings {
 		driver.quit();
 	}
 }
+
