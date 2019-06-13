@@ -1,6 +1,6 @@
 import React from 'react';
-import Movie from './ApiMovie';
 import {Container, Row, Col} from 'reactstrap';
+import DateTabs from '../MoviePage/AppDateTabs';
 
 const MoviePoster = (props) => {
    
@@ -9,36 +9,33 @@ const MoviePoster = (props) => {
         <Container>
             <Row>
                 <Col>
-                <div className="col s12">
-                    <i className="col s12 right"></i>
-                    <img src={`http://image.tmdb.org/t/p/w500${props.movies[0][0].poster_path}`}/>
-                </div>
+                    <img src={`http://image.tmdb.org/t/p/w1280${props.movies[0][0].backdrop_path}`} style={{width:"100%", height:"100%"}}/>
                 </Col> 
+            </Row>
+            <Row>
                 <Col>
-                    <div>
-                    {props.movies[0][0].title}
-                    </div>
-                    <div>
-                     <p>{props.movies[0][0].overview} </p> 
-                    </div>
-                    <div> 
-                        <p><h4>Release Date: {props.movies[0][0].release_date}</h4> </p>    
-                    </div>
-
-                    <div> 
-                        <p>Rating: {props.movies[0][0].vote_average} </p>    
-                    </div>
-                    <div> 
-                        <p>PG Rating: {props.movies[0][0].adult} </p>    
-                    </div>
-                     <div> 
-                        <p>Actors </p>    
-                    </div>
-                     <div> 
-                        <p>Director </p>    
-                    </div>
+                    <div style={{fontSize: 35}}>{props.movies[0][0].title}</div>
                 </Col>
-             </Row>
+            </Row>
+            <Row>                 
+                <Col>
+                    <div style={{fontSize: 22}}>Release Date: {props.movies[0][0].release_date}</div>
+                    <br/>
+                    <div style={{fontSize: 18}}>{props.movies[0][0].vote_average}/10</div>
+                    <br/>
+                    <div style={{fontSize: 18}}>{props.movies[0][0].overview}</div>
+                </Col>
+            </Row>
+            <Row>
+                <Col sm={{ size: 7, order: 2, offset: 5 }}>
+                    Add line break here
+                </Col>
+            </Row>
+            <Row>
+                <Col sm={{ size: 7, order: 2, offset: 2 }}>
+                    <DateTabs/>
+                </Col>
+            </Row>
         </Container>
     )
 }

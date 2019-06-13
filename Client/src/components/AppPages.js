@@ -44,7 +44,7 @@ class AppPages extends Component {
                             <Route path='/seatbooking' component={AppSeatingPage}/>
                             <Route path='/PaymentPage' component={PaymentPage}/>
                             <Route path='/Future-Listings' component={FutureReleases}/>
-                             <Route path='/FutureListings/:movietitle' component={FutureMoviePage}/>
+                            <Route path='/FutureListings/:movietitle' component={FutureMoviePage}/>
                             <Route path='/Listings/:movietitle' component={MoviePage}/>
                             <Route path='/Listings' component={CurrentReleases}/>
                         </Switch>
