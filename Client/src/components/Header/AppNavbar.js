@@ -46,10 +46,7 @@ class AppNavbar extends Component {
                 </NavItem>
                 <NavItem>
                     <NavLink href="/" color='primary'>My Account</NavLink>    
-                </NavItem>          
-                <NavItem>
-                    <NavLink href='/contact-us' color='primary'>Contact Us</NavLink>    
-                </NavItem>  
+                </NavItem> 
                 </Nav>
                 <Nav className='ml-auto' navbar>
                 <NavItem>
