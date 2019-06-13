@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Detail from './Detail';
-import { Button, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 
 class Summary extends Component {
 
@@ -9,7 +9,7 @@ class Summary extends Component {
         return (
             <div className='SummaryPage'>
                 <div className='container'>
-                    <h1>Booking Details</h1><br/>
+                    <h1>Summary</h1><br/>
                     <h3>Tickets</h3>
                     <Table dark>
                         <thead>
@@ -21,7 +21,6 @@ class Summary extends Component {
                         </thead>
                     </Table>
                     {details.booking.tickets.map((detail,index) => <Detail key={index} detail={detail}/>)}
-                    <br/><br/><Button color="primary" size="lg" block color="danger">Confirm</Button>
                 </div>
                 
             </div>

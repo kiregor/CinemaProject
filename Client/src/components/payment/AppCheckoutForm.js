@@ -2,40 +2,27 @@ import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import stripeService from '../../services/stripeService';
 import axios from 'axios';
+import { Button } from 'reactstrap';
+import SessionStorageService from '../../services/SessionStorageService';
 
 class CheckoutForm extends Component {
-  seatInfo;
+  seatInfo = this.props.seatInfo;
   constructor(props) {
     super(props);
     this.state = {complete: false};
     this.submit = this.submit.bind(this);
-    //this.seatInfo = window.sessionStorage.getItem('bookedSeats');
     
   }
 
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: "Name"});
+    this.seatInfo.token = token.id;
+    console.log(this.seatInfo);
     stripeService.sendStripe(
-      {
-        "booking": {
-            "tickets": [
-                {
-                    "location": "B-3",
-                    "ticketType": "Adult",
-                    "price": 15
-                },
-                {
-                  "location": "B-4",
-                  "ticketType": "Child",
-                  "price": 10
-              }
-            ]
-        },
-        "token": token.id
-     }
+     this.seatInfo
     ).then(
       response => {
-        console.log('works')
+        console.log('works');
       })
     
     // if (response.ok) this.setState({complete: true})
@@ -47,7 +34,8 @@ class CheckoutForm extends Component {
     return (
       <div className="checkout">
         <CardElement />
-        <button onClick={this.submit}>Send</button>
+        <br/><br/>
+        <Button color="primary" size="lg" block onClick={this.submit}>Send</Button>
       </div>
     );
   }
