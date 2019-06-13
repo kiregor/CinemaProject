@@ -116,6 +116,11 @@ class ContactUsEmailForm extends Component {
                             </Form>
                         </div>
                     </div>
+                    <div className='row'>
+                        <div className='col-12'>
+                            <p>Alternatively, send us an email to us directly at QACinema12345@gmail.com</p>
+                        </div>
+                    </div>
                     </div>}
                     {(this.state.successMessage || this.emailSent) && 
                         <div>
