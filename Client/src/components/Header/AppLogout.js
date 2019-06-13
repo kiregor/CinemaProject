@@ -21,7 +21,7 @@ class AppCreateAccount extends React.Component {
   render() {
     return (
       <div>
-        <Button color="dark" onClick={this.toggle}>Create Account</Button>
+        <Button style={{backgroundColor:'#2A3132'}} onClick={this.toggle}>Create Account</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Create Account</ModalHeader>
           <ModalBody>
