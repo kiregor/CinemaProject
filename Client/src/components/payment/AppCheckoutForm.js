@@ -23,7 +23,12 @@ class CheckoutForm extends Component {
                     "location": "B-3",
                     "ticketType": "Adult",
                     "price": 15
-                }
+                },
+                {
+                  "location": "B-4",
+                  "ticketType": "Child",
+                  "price": 10
+              }
             ]
         },
         "token": token.id
