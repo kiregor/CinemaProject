@@ -26,6 +26,8 @@ import static com.qa.CinemaProject.constants.MappingConstants.PRICE_LIST;
 import static com.qa.CinemaProject.constants.MappingConstants.SEND_EMAIL;
 import static com.qa.CinemaProject.constants.MappingConstants.PAYMENT;
 import static com.qa.CinemaProject.constants.MappingConstants.BOOKING;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_ALL_BOOKINGS;
+import static com.qa.CinemaProject.constants.MappingConstants.CREATE_SINGLE_BOOKING;
 import com.qa.CinemaProject.email.Email;
 import com.qa.CinemaProject.email.EmailApplication;
 import com.qa.CinemaProject.entities.Booking;
@@ -107,5 +109,14 @@ public class MovieController {
 		this.bookingService.saveBooking(booking);
 	}
 	
+	@PostMapping(CREATE_SINGLE_BOOKING)
+	public void testBooking(@RequestBody Booking booking) {
+		this.bookingService.saveBooking(booking);
+	}
+	
+	@GetMapping(GET_ALL_BOOKINGS)
+	public List<Booking> getAllBookings(){
+		return this.bookingService.getAllBookings();
+	}
 
 }

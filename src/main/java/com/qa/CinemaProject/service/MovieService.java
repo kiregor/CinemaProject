@@ -6,17 +6,21 @@ import org.springframework.stereotype.Service;
 
 import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.repo.MovieRepo;
+import com.qa.CinemaProject.repo.SequenceRepo;
 
 @Service
 public class MovieService {
 
 	private MovieRepo movieRepo;
+	private SequenceRepo sequenceRepo;
 
-	public MovieService(MovieRepo movieRepo) {
+	public MovieService(MovieRepo movieRepo, SequenceRepo sequenceRepo) {
 		this.movieRepo = movieRepo;
+		this.sequenceRepo = sequenceRepo;
 	}
 
 	public void createMovie(Movie movie) {
+		movie.setId(sequenceRepo.getNextSequenceId("movie"));
 		this.movieRepo.save(movie);
 	}
 
