@@ -10,14 +10,12 @@ class ApiFetchPoster extends Component{
     constructor(props){
         super(props);
         this.state= {
-            timestamp: new Date().getTime(),
             movies: [],
             isLoaded: false,
         }
     }
 
     render() {
-        
         var { isLoaded} = this.state;
         if (!isLoaded) {
             return <div><Spinner/></div>
@@ -26,9 +24,7 @@ class ApiFetchPoster extends Component{
             return(
                 <div className="ApiFetchPoster">
                     <MoviePoster movies={this.state.movies}/>
-                    
                 </div>
-                
             );
         }
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import {TabContent, TabPane, Nav, NavItem, NavLink, Row,} from 'reactstrap';
 import classnames from 'classnames';
 
 export default class AppDateTabs extends React.Component {

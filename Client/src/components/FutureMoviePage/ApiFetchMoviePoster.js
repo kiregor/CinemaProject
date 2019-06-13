@@ -7,15 +7,9 @@ import MoviePoster from './ApiMoviePoster';
 //SIZE: W92, W154, W185, W342, W500, W700;
 
 class ApiFetchMoviePoster extends Component{
-
     constructor(props){
         super(props);
-
-    {/*}    var today = today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate();
-        console.log(today); 
-    */}
         this.state= {
-            timestamp: new Date().getTime(),
             movies: [],
             isLoaded: false
         }
@@ -29,11 +23,8 @@ class ApiFetchMoviePoster extends Component{
         else {
             return(
                 <div className="ApiFetchPoster">
-                    <MoviePoster movies={this.state.movies} poster_path={this.state.movies[0][0].poster_path}/>
-                   
-                    
+                    <MoviePoster movies={this.state.movies} poster_path={this.state.movies[0][0].poster_path}/>                   
                 </div>
-                
             );
         }
     }
@@ -45,7 +36,6 @@ componentDidMount = (e) => {
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=3e9a89831a2e61d47f06983917822671&language=en-US&query=${encodeURI(this.props.title)}&page=1`)
         .then(data => data.json())
         .then(data => {
-            console.log(data.results);
             this.setState({ 
                 movies: [data.results],
                 isLoaded: true

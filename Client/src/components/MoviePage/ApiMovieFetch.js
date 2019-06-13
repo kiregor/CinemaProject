@@ -10,7 +10,7 @@ const MovieFetch = (props) => {
                     {
                         props.movies.map((movie, i) => {
                             return (
-                                <MovieDisplay key={i} image={movie.poster_path} title={movie.title} overview={movie.overview} id={movie.id} releasedate={movie.release_date} rating={movie.vote_average}/>
+                                <MovieDisplay key={i} image={movie.backdrop_path} title={movie.title} overview={movie.overview} id={movie.id} releasedate={movie.release_date} rating={movie.vote_average}/>
                             )
                         })
                     }

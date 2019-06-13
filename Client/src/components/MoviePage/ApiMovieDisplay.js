@@ -10,21 +10,28 @@ const MovieDisplay = (props) => {
     return (
         <Container>
             <Row>
-                <Col xs='7'>
-                <img src={`http://image.tmdb.org/t/p/w500${props.image}`} alt="Movie Poster" style={{width:"100%", height:600}}/>
-                </Col>
                 <Col>
-                    <div style={{fontSize: 35}}>{props.title}</div>
-                    <br/>
-                    <div style={{fontSize: 18}}>{props.overview}</div>
-                    <br/>
-                    <div style={{fontSize: 22}}>{props.releasedate}</div>
-                    <br/>
-                    <div style={{fontSize: 22}}>Rating: {props.rating}</div>
+                <img src={`http://image.tmdb.org/t/p/w1280${props.image}`} alt="Movie Poster" style={{width:"100%", height:"100%"}} />
                 </Col>
             </Row>
             <Row>
-                <DateTabs/>
+                <Col>
+                    <div style={{fontSize: 35}}>{props.title}</div>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                <   div style={{fontSize: 22}}>{props.releasedate}</div>
+                    <br/>
+                    <div style={{fontSize: 18}}>{props.rating}/10</div>
+                    <br/>
+                    <div style={{fontSize: 18}}>{props.overview}</div>
+                </Col>
+            </Row>
+            <Row>
+                <Col sm={{ size: 7, order: 2, offset: 0 }}>
+                    <DateTabs/>
+                </Col>
             </Row>
         </Container>
     )   
