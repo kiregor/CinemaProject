@@ -7,10 +7,16 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.assertj.core.api.Assertions;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.qa.CinemaProject.CinemaProjectApplication;
@@ -19,18 +25,35 @@ import com.qa.CinemaProject.entities.Ticket;
 import com.qa.CinemaProject.repo.BookingRepo;
 import com.stripe.exception.StripeException;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@SpringBootTest(classes = CinemaProjectApplication.class)
+@ActiveProfiles("test")
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = CinemaProjectApplication.class)
 public class BookingServiceTest {
 
 	@Autowired
 	private BookingRepo br;
-
+	
+	@Autowired
+	private MongoTemplate mongoTemplate;
+	
+	private interface SequenceRecord {
+		String id = "";
+		int seq = 0; 
+	}
+	
+	@Before
+	public void init() {
+		
+	}
+	
+	@After
+	public void finalize() {
+	}
 	
 	/**
 	 * Test that the repository initialises as empty. 
 	 */
-//	@Test
+	@Test
 	public void testRepositoryStartsEmpty() {
 		// Given that nothing was entered in the repository,
 		// Then the repository is empty.
@@ -40,8 +63,10 @@ public class BookingServiceTest {
 	 * See whether the repo saves one entity which can be retrieved. (Using location to index the entry).
 	 * @throws StripeException 
 	 */
-//	@Test
+	@Test
 	public void testRepositorySavesBookingEntity() throws StripeException {
+//		mongoTemplate.insert(?);
+		mongoTemplate.getCollectionNames().forEach(str -> System.out.println(str));
 		String location = "A-2";
 		// Create a fake booking. Can't find by id as it's auto-incremented. Will search via location.
 		Booking b1 = new Booking();
@@ -60,7 +85,7 @@ public class BookingServiceTest {
 	/**
 	 * Check if several entities can be persisted.
 	 */
-//	@Test
+	@Test
 	public void testRepositorySavesBookingEntities() {
 		// Given that the repository is empty...
 		String location1 = "B-1", location2 = "B-2", location3 = "B-3";
@@ -87,5 +112,4 @@ public class BookingServiceTest {
 			assertThat(t).hasFieldOrPropertyWithValue("location", location);
 		});
 	}
-
 }

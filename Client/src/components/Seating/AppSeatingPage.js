@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
 import SessionStorageService from '../../services/SessionStorageService';
-import BookingService from '../../services/BookingService';
 
 class AppSeatingPage extends Component {
     chart;
