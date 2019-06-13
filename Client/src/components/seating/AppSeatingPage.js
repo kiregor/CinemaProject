@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
-import BookingService from '../../services/BookingService';
+import SessionStorageService from '../../services/SessionStorageService';
 
 class AppSeatingPage extends Component {
     chart;
     bookedSeats = [];
+    data = {};
     constructor(props) {
         super(props)
         this.state = {
@@ -16,19 +17,18 @@ class AppSeatingPage extends Component {
             },
             pageLoaded: false
         }
+        // Get pricing data from the session
+        this.data = SessionStorageService.getObject('pricing');
+        // Convert data from string to number
+        for(let prop in this.data) this.data[prop] = +this.data[prop]
 
+        SessionStorageService.clearObject();
         this.bookSeats = this.bookSeats.bind(this);
+        this.clearTickets = this.clearTickets.bind(this);
     }
 
     componentDidMount() {
-        BookingService.getPricingInformation()
-            .then(response => {
-                this.setState({ pricing: response.data });
-                this.setState({ pageLoaded: true});
-            })
-            .catch(error => {
-                console.log(error);
-            })
+       
     }
 
     /**
@@ -36,25 +36,28 @@ class AppSeatingPage extends Component {
      * page.
      */
     bookSeats() {
-        let sc = document.getElementById('seating-chart');
-        //console.log(this.chart.selectedObjects[0]);
         this.chart.listSelectedObjects((listOfObjects) => {
-            listOfObjects.map((object) => {
+            listOfObjects.forEach((object) => {
                 let location = object.label;
                 let ticketType = object.selectedTicketType;
                 let price =
                     object.pricing.ticketTypes.filter(obj => obj.ticketType === ticketType)
                         .map((obj) => obj.price)[0];
-                console.log(ticketType, price);
                 this.bookedSeats.push({ location, ticketType, price });
                 // Make sure the list of pricing objects is exported once the list 
                 // is exhausted
                 if (listOfObjects.indexOf(object) === listOfObjects.length - 1) {
-                   BookingService.storeSeatingInformation(this.bookedSeats);
+                   SessionStorageService.setObject('bookedSeats', {"booking":{"tickets":this.bookedSeats},"token":null});
+                   console.log(SessionStorageService.getObject('bookedSeats'));
                    // Go to the payment page
+                   window.location.assign("/paymentpage");
                 }
             })
         });
+    }
+    clearTickets(e) {
+        SessionStorageService.clearObject('bookedSeats');
+
     }
     render() {
         return (
@@ -74,16 +77,16 @@ class AppSeatingPage extends Component {
                                 onRenderStarted={createdChart => this.chart = createdChart}
                                 pricing={[{
                                     'category': 1, 'ticketTypes': [
-                                        { 'ticketType': 'adult', 'price': this.state.pricing.adultPrice },
-                                        { 'ticketType': 'child', 'price': this.state.pricing.childPrice },
-                                        { 'ticketType': 'concessions', 'price': this.state.pricing.concessionsPrice }
+                                        { 'ticketType': 'adult', 'price': this.data.adultPrice },
+                                        { 'ticketType': 'child', 'price': this.data.childPrice },
+                                        { 'ticketType': 'concessions', 'price': this.data.concessionsPrice }
                                     ]
                                 },
                                 {
                                     'category': 2, 'ticketTypes': [
-                                        { 'ticketType': 'adult', 'price': this.state.pricing.adultPrice },
-                                        { 'ticketType': 'child', 'price': this.state.pricing.childPrice },
-                                        { 'ticketType': 'concessions', 'price': this.state.pricing.concessionsPrice }
+                                        { 'ticketType': 'adult', 'price': this.data.adultPrice },
+                                        { 'ticketType': 'child', 'price': this.data.childPrice },
+                                        { 'ticketType': 'concessions', 'price': this.data.concessionsPrice }
                                     ]
                                 }]}
                                 priceFormatter={price => '£' + price}
@@ -93,10 +96,11 @@ class AppSeatingPage extends Component {
                                 maxSelectedObjects={5}
                                 showRowLabels={true}
                                 selectedObjectsInputName={'selectedSeats'}
+                                onHoldTokenExpired={this.clearTickets}
                             />
                         </div>
                     </div>
-                    {this.state.pageLoaded && <div className='row'>
+                    {true && <div className='row'>
                         <div id='book-now' className='col-12'>
                             <Button onClick={this.bookSeats} color='success' size='lg' block>Book Now</Button>
                         </div>

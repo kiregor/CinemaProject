@@ -6,9 +6,6 @@ import java.util.List;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,6 +17,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.qa.CinemaProject.constants.MappingConstants.CREATE_MOVIE;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_ALL_MOVIES;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_MOVIE_ID;
+import static com.qa.CinemaProject.constants.MappingConstants.UPDATE_MOVIE;
+import static com.qa.CinemaProject.constants.MappingConstants.DELETE_MOVIE;
+import static com.qa.CinemaProject.constants.MappingConstants.PRICE_LIST;
+import static com.qa.CinemaProject.constants.MappingConstants.SEND_EMAIL;
+import static com.qa.CinemaProject.constants.MappingConstants.PAYMENT;
+import static com.qa.CinemaProject.constants.MappingConstants.BOOKING;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_ALL_BOOKINGS;
+import static com.qa.CinemaProject.constants.MappingConstants.CREATE_SINGLE_BOOKING;
 import com.qa.CinemaProject.email.Email;
 import com.qa.CinemaProject.email.EmailApplication;
 import com.qa.CinemaProject.entities.Booking;
@@ -40,8 +48,6 @@ public class MovieController {
 	private MovieService movieService;
 	private PaymentService paymentService;
 	private BookingService bookingService;
-
-	@Autowired
 	private EmailApplication email;
   
 	@Value("${adult.price}")
@@ -51,43 +57,44 @@ public class MovieController {
 	@Value("${concessions.price}")
 	private String concessionsPrice;
 	
-	public MovieController(MovieService movieService, PaymentService paymentService, BookingService bookingService) {
+	public MovieController(MovieService movieService, PaymentService paymentService, BookingService bookingService, EmailApplication email) {
 		this.movieService = movieService;
 		this.paymentService = paymentService;
 		this.bookingService = bookingService;
+		this.email = email;
 	}
 	
-	@PostMapping("/createMovie")
+	@PostMapping(CREATE_MOVIE)
 	public void createMovie(@RequestBody Movie movie){
 		this.movieService.createMovie(movie);
 	}
 	
-	@GetMapping("/getAllMovies")
+	@GetMapping(GET_ALL_MOVIES)
 	public List<Movie> getAllMovies() {
 		return this.movieService.getAllMovies();
 	}
 	
-	@GetMapping("/getMovie/{id}")
+	@GetMapping(GET_MOVIE_ID)
 	public Movie getMovie(@PathVariable Long id) {
 		return this.movieService.getMovie(id);
 	}
 	
-	@PostMapping("/updateMovie")
+	@PostMapping(UPDATE_MOVIE)
 	public void updateMovie(@RequestBody Movie movie) {
 		this.movieService.updateMovie(movie);
 	}
 	
-	@DeleteMapping("/deleteMovie/{id}")
+	@DeleteMapping(DELETE_MOVIE)
 	public void deleteMovie(@PathVariable Long id) {
 		this.movieService.deleteMovie(id);
 	}
 	
-	@GetMapping("/priceList")
+	@GetMapping(PRICE_LIST)
 	public PriceList getPriceList() {
 		return new PriceList(adultPrice, childPrice, concessionsPrice);
 	} 
   
-    @PostMapping("/sendemail")
+    @PostMapping(SEND_EMAIL)
 	public Email sendEmail(@RequestBody Email body) throws AddressException, MessagingException {
 		email.sendMail(body);
 		return body;
@@ -97,7 +104,17 @@ public class MovieController {
 	public void booking(@RequestBody BookingPayment booking ) throws StripeException {
 		int cost = booking.getBooking().getTickets().stream().mapToInt(t -> t.getPrice()).sum();
 		this.paymentService.makePayment(booking.getToken(),cost);
-		System.out.println(booking.getToken());
 		this.bookingService.saveBooking(booking.getBooking());
 	}
+	
+	@PostMapping(CREATE_SINGLE_BOOKING)
+	public void testBooking(@RequestBody Booking booking) {
+		this.bookingService.saveBooking(booking);
+	}
+	
+	@GetMapping(GET_ALL_BOOKINGS)
+	public List<Booking> getAllBookings(){
+		return this.bookingService.getAllBookings();
+	}
+
 }
