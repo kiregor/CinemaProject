@@ -36,7 +36,7 @@ public class TestContactUs {
 	}
 	
 	@Test
-	public void contactUsLinkOnHomepage() {
+	public void contactUsLinkVisibleOnHomepage() {
 		
 		assertEquals("Contact Us", we.getText());
 	}
