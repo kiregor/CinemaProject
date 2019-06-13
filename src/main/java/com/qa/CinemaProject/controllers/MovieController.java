@@ -24,16 +24,14 @@ import static com.qa.CinemaProject.constants.MappingConstants.UPDATE_MOVIE;
 import static com.qa.CinemaProject.constants.MappingConstants.DELETE_MOVIE;
 import static com.qa.CinemaProject.constants.MappingConstants.PRICE_LIST;
 import static com.qa.CinemaProject.constants.MappingConstants.SEND_EMAIL;
-import static com.qa.CinemaProject.constants.MappingConstants.PAYMENT;
-import static com.qa.CinemaProject.constants.MappingConstants.BOOKING;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_ALL_BOOKINGS;
 import static com.qa.CinemaProject.constants.MappingConstants.CREATE_SINGLE_BOOKING;
-import static com.qa.CinemaProject.constants.MappingConstants.GET_POPULAR;
+import static com.qa.CinemaProject.constants.MappingConstants.BOOKING;
 import com.qa.CinemaProject.email.Email;
 import com.qa.CinemaProject.email.EmailApplication;
 import com.qa.CinemaProject.entities.Booking;
+import com.qa.CinemaProject.entities.BookingPayment;
 import com.qa.CinemaProject.entities.Movie;
-import com.qa.CinemaProject.entities.Popular;
 import com.qa.CinemaProject.entities.PriceList;
 import com.qa.CinemaProject.service.BookingService;
 import com.qa.CinemaProject.service.MovieService;
@@ -56,13 +54,6 @@ public class MovieController {
 	private String childPrice;
 	@Value("${concessions.price}")
 	private String concessionsPrice;
-	
-	@Value("${movie.one}")
-	private String movieOne;
-	@Value("${movie.two}")
-	private String movieTwo;
-	@Value("${movie.three}")
-	private String movieThree;
 	
 	public MovieController(MovieService movieService, PaymentService paymentService, BookingService bookingService, EmailApplication email) {
 		this.movieService = movieService;
@@ -106,8 +97,8 @@ public class MovieController {
 		email.sendMail(body);
 		return body;
 	}
-  
-	@PostMapping("/booking")
+	
+	@PostMapping(BOOKING)
 	public void booking(@RequestBody BookingPayment booking ) throws StripeException {
 		int cost = booking.getBooking().getTickets().stream().mapToInt(t -> t.getPrice()).sum();
 		this.paymentService.makePayment(booking.getToken(),cost);
@@ -122,11 +113,6 @@ public class MovieController {
 	@GetMapping(GET_ALL_BOOKINGS)
 	public List<Booking> getAllBookings(){
 		return this.bookingService.getAllBookings();
-	}
-	
-	@GetMapping(GET_POPULAR)
-	public Popular getPopular() {
-		return movieService.getPopular(movieOne, movieTwo, movieThree);
 	}
 
 }
