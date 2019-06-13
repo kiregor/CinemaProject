@@ -26,15 +26,14 @@ public class BookingService {
 	}
 
 	public Booking retrieveBooking(long id) {
-
 		if (this.bookingRepo.existsById(id)) {
 			return this.bookingRepo.findById(id).get();
 		} else {
 			return new Booking();
 		}
 	}
-	
-	public List<Booking> getAllBookings(){
+
+	public List<Booking> getAllBookings() {
 		return this.bookingRepo.findAll();
 	}
 }

@@ -6,9 +6,6 @@ import org.springframework.data.annotation.Id;
 import com.qa.CinemaProject.repo.SequenceRepo;
 
 public class Movie {
-
-	@Autowired
-	static SequenceRepo seqRep;
 	
 	@Id
 	private long id;
