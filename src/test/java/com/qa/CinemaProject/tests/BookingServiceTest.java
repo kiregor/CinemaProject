@@ -14,19 +14,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.qa.CinemaProject.CinemaProjectApplication;
-import com.qa.CinemaProject.controllers.MovieController;
 import com.qa.CinemaProject.entities.Booking;
 import com.qa.CinemaProject.entities.Ticket;
 import com.qa.CinemaProject.repo.BookingRepo;
-import com.qa.CinemaProject.service.BookingService;
 import com.stripe.exception.StripeException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = CinemaProjectApplication.class)
 public class BookingServiceTest {
-
-	@Autowired
-	private BookingService bs;
 
 	@Autowired
 	private BookingRepo br;

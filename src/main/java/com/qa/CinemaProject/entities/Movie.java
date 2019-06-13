@@ -1,9 +1,6 @@
 package com.qa.CinemaProject.entities;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
-
-import com.qa.CinemaProject.repo.SequenceRepo;
 
 public class Movie {
 	

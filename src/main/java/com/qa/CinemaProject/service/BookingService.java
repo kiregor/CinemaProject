@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.qa.CinemaProject.entities.Booking;
-import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.repo.BookingRepo;
 import com.qa.CinemaProject.repo.SequenceRepo;
 
