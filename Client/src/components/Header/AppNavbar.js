@@ -11,6 +11,8 @@ import {
 } from 'reactstrap';
 import AppCreateAccount from './AppLogout';
 import AppLogin from './AppLogin';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class AppNavbar extends Component {
   state = {
@@ -54,6 +56,9 @@ class AppNavbar extends Component {
                 </NavItem>
                 <NavItem>
                     <AppCreateAccount/>    
+                </NavItem>
+                <NavItem>
+                <FontAwesomeIcon icon={faUser}/>
                 </NavItem>
               </Nav>
             </Collapse>
