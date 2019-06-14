@@ -20,20 +20,21 @@ public class BookingService {
 		this.sequenceRepo = sequenceRepo;
 	}
 
-	public void saveBooking(Booking booking) {
+	public void saveBooking(Booking booking, String holdToken) {
 		booking.setId(sequenceRepo.getNextSequenceId("booking"));
 		this.bookingRepo.save(booking);
 	}
 
 	public Booking retrieveBooking(long id) {
+
 		if (this.bookingRepo.existsById(id)) {
 			return this.bookingRepo.findById(id).get();
 		} else {
 			return new Booking();
 		}
 	}
-
-	public List<Booking> getAllBookings() {
+	
+	public List<Booking> getAllBookings(){
 		return this.bookingRepo.findAll();
 	}
 }
