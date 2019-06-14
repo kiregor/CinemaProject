@@ -12,5 +12,6 @@ public interface MappingConstants {
 			BOOKING="/booking",
 			GET_ALL_BOOKINGS="/getAllBookins",
 			CREATE_SINGLE_BOOKING="/createBooking",
-			GET_POPULAR="/getPopular";
+			GET_POPULAR="/getPopular",
+			GETSUCCESSSTATUS="/status";
 }
