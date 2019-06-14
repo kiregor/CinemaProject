@@ -1,5 +1,7 @@
 package com.qa.CinemaProject.test.repo;
 
+import static com.qa.CinemaProject.constants.MappingConstants.EVENT_COLLECTION;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +10,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
-import com.qa.CinemaProject.entities.Booking;
 import com.qa.CinemaProject.entities.MovieEvent;
-import com.qa.CinemaProject.repo.EventRepo;
 import com.qa.CinemaProject.repo.SequenceRepo;
-import com.qa.CinemaProject.repo.SequenceRepoImpl;
-import static com.qa.CinemaProject.constants.MappingConstants.*;
 /**
  * A test implementation of the BookingService, using an embedded MongoDB instance.
  * Is identical to com.qa.CinemaProject.service.BookingService but replaces the

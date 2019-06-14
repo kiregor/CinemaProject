@@ -1,6 +1,6 @@
 package com.qa.CinemaProject.test.repo;
 
-import static com.qa.CinemaProject.constants.MappingConstants.BOOKING_COLLECTION;
+import static com.qa.CinemaProject.constants.MappingConstants.*;
 
 import java.util.List;
 
@@ -28,10 +28,10 @@ public class EmbeddedBookingService {
 	MongoTemplate mongoTemplate;
 	
 	@Autowired
-	SequenceRepo sri;
+	SequenceRepo sr;
 	
 	public void saveBooking(Booking booking) {
-		booking.setId(sri.getNextSequenceId(BOOKING_COLLECTION));
+		booking.setId(sr.getNextSequenceId(BOOKING_COLLECTION));
 		this.mongoTemplate.save(booking);
 	}
 
