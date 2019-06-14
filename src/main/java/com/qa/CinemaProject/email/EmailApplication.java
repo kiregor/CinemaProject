@@ -23,13 +23,13 @@ import javax.mail.MessagingException;
 public class EmailApplication {
 	
 	@Value("${email.address}")
-	public String emailAddress;
+	private String emailAddress;
 	@Value("${email.password}")
-	public String emailPassword;
+	private String emailPassword;
 	@Value("${smtp.server}")
-	public String smtpServer;
+	private String smtpServer;
 	@Value("${smtp.port}")
-	public String smtpPort;
+	private String smtpPort;
 	
 	public void sendMail(Email email) throws AddressException, MessagingException {
 		Properties props = new Properties();

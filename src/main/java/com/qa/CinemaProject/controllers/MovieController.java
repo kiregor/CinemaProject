@@ -104,11 +104,11 @@ public class MovieController {
 	public void booking(@RequestBody BookingPayment booking ) throws StripeException {
 		int cost = booking.getBooking().getTickets().stream().mapToInt(t -> t.getPrice()).sum();
 		this.paymentService.makePayment(booking.getToken(),cost);
-		this.bookingService.saveBooking(booking.getBooking());
+		this.bookingService.saveBooking(booking.getBooking(),booking.getHoldToken());
 	}
 	
 	@PostMapping(CREATE_SINGLE_BOOKING)
-	public void testBooking(@RequestBody Booking booking) {
+	public void saveBooking(@RequestBody Booking booking) {
 		this.bookingService.saveBooking(booking);
 	}
 	

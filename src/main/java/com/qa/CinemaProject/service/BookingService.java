@@ -20,7 +20,7 @@ public class BookingService {
 		this.sequenceRepo = sequenceRepo;
 	}
 
-	public void saveBooking(Booking booking) {
+	public void saveBooking(Booking booking, String holdToken) {
 		booking.setId(sequenceRepo.getNextSequenceId("booking"));
 		this.bookingRepo.save(booking);
 	}
