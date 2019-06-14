@@ -3,11 +3,11 @@ import './poster.css'
 
 const Movie = (props) => {
     return (
-        <div className="col m4 l3">
+        <div className="col s6 m4 l3">
                 <div className="card">
                         <div className="card-image waves-effect waves-block waves-light">
                             {
-                            <img src={`http://image.tmdb.org/t/p/w500${props.image}`} alt="Movie Poster" style={{width:"100%", height: 350}}/>
+                            <img src={`http://image.tmdb.org/t/p/w500${props.image}`} alt="Movie Poster" style={{width:"100%", height: 325}}/>
                             }
                         </div>
                     <div className="card-content">
