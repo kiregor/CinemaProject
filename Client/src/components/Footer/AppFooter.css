@@ -74,6 +74,10 @@
 {
   background-color:#00aced
 }
+.social-icons a.phone:hover
+{
+  background-color:#763626
+}
 .icons
 {
     position:absolute;

@@ -27,7 +27,8 @@ class AppFooter extends Component {
                         <li><a className="facebook" href="#"><FontAwesomeIcon icon={['fab', 'facebook']} /></a></li>
                         <li><a className="twitter" href="https://twitter.com/cinema_fs"><FontAwesomeIcon icon={['fab', 'twitter']} /></a></li> 
                         <li><a className="instagram" href="https://www.instagram.com/fs.cinema/"><FontAwesomeIcon icon={['fab', 'instagram']} /></a></li> 
-                        <li><a className="envelope" href="/contact-us"><FontAwesomeIcon icon={['fas', 'envelope']} /></a></li> 
+                        <li><a className="envelope" href="/contact-us"><FontAwesomeIcon icon="envelope" /></a></li>
+                        <li><a className="phone" href="/contact-us"><FontAwesomeIcon icon="phone" /></a></li>  
                     </ul>
                 </div>
                 </Col>

@@ -7,19 +7,21 @@ import {
   CarouselCaption
 } from 'reactstrap';
 
+import './home.css';
+
 const items = [
   {
-    src: `http://image.tmdb.org/t/p/w780/vVpEOvdxVBP2aV166j5Xlvb5Cdc.jpg`,
+    src: `http://image.tmdb.org/t/p/w1280/vVpEOvdxVBP2aV166j5Xlvb5Cdc.jpg`,
     altText: 'Movie',
     caption: 'Movie 1'
   },
   {
-    src: `http://image.tmdb.org/t/p/w780/vVpEOvdxVBP2aV166j5Xlvb5Cdc.jpg`,
+    src: `http://image.tmdb.org/t/p/w1280/phxiKFDvPeQj4AbkvJLmuZEieDU.jpg`,
     altText: 'Slide 2',
     caption: 'Slide 2'
   },
   {
-    src: `http://image.tmdb.org/t/p/w780/vVpEOvdxVBP2aV166j5Xlvb5Cdc.jpg`,
+    src: `http://image.tmdb.org/t/p/w1280/2SBStvzMSzScJjZE9uTn3vIgo7b.jpg`,
     altText: 'Slide 3',
     caption: 'Slide 3'
   }
@@ -28,12 +30,13 @@ const items = [
 class Example extends Component {
   constructor(props) {
     super(props);
-    this.state = { activeIndex: 0 };
+    this.state = { activeIndex: 0, movie: [], poster:[] };
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.goToIndex = this.goToIndex.bind(this);
     this.onExiting = this.onExiting.bind(this);
     this.onExited = this.onExited.bind(this);
+  
   }
 
   onExiting() {
@@ -67,12 +70,12 @@ class Example extends Component {
     const slides = items.map((item) => {
       return (
         <CarouselItem
-          className='mt-5 mb-5'
+          className='mb-5'
           onExiting={this.onExiting}
           onExited={this.onExited}
           key={item.src}
         >
-          <a href>  <img src={item.src} alt={item.altText}/> </a>
+          <img className='carouselImg' src={item.src} alt={item.altText}/>
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       );
