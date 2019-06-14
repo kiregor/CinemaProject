@@ -3,7 +3,7 @@ import './poster.css'
 
 const Movie = (props) => {
     return (
-        <div className="col l3">
+        <div className="col m4 l3">
                 <div className="card">
                         <div className="card-image waves-effect waves-block waves-light">
                             {
