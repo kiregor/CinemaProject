@@ -1,5 +1,5 @@
 import React from 'react';
-import {TabContent, TabPane, Nav, NavItem, NavLink, Row,} from 'reactstrap';
+import {TabContent, TabPane, Nav, NavItem, NavLink, Row,Col} from 'reactstrap';
 import classnames from 'classnames';
 
 export default class AppDateTabs extends React.Component {
@@ -67,7 +67,14 @@ export default class AppDateTabs extends React.Component {
             <TabContent activeTab={this.state.activeTab}>
                 <TabPane tabId="1">
                     <Row>
+                        <Col xs="6" sm="4" l="12">
                         <h4>IMAX</h4>
+                        </Col>
+                        <Col l12>
+
+                        <a href="/seatbooking">19:00</a>
+                        </Col>
+
                     </Row>
                     <Row>
                         <h4>3D</h4>

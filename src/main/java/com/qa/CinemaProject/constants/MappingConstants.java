@@ -9,5 +9,9 @@ public interface MappingConstants {
 			PRICE_LIST="/priceList",
 			SEND_EMAIL="/sendemail",
 			PAYMENT="/payment",
-			BOOKING="/booking";
+			BOOKING="/booking",
+			GET_ALL_BOOKINGS="/getAllBookins",
+			CREATE_SINGLE_BOOKING="/createBooking",
+			GET_POPULAR="/getPopular",
+			GETSUCCESSSTATUS="/status";
 }

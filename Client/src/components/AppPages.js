@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AppNavbar from './Header/AppNavbar';
-import AppHomePage from './HomePage1/AppHomePage';
-import AppContactUsPage from './ContactUs1/AppContactUsPage';
+import AppHomePage from './HomePage/AppHomePage';
+import AppContactUsPage from './ContactUs/AppContactUsPage';
 import AppAboutUsPage from './AboutUs/AppAboutUsPage';
-import AppGettingHerePage from './FindUs1/AppGettingHerePage';
-import AppSeatingPage from './Seating1/AppSeatingPage';
+import AppGettingHerePage from './FindUs/AppGettingHerePage';
+import AppSeatingPage from './Seating/AppSeatingPage';
 import AppBreadCrumbs from './Header/AppBreadcrumbs'
-import PaymentPage from './Payment1/PaymentPage';
+import PaymentPage from './Payment/PaymentPage';
 import FutureReleases from './Future Listings/FutureReleases';
 import CurrentReleases from './Current Listings/CurrentReleases';
 import AppFooter from './Footer/AppFooter';
@@ -16,6 +16,8 @@ import MoviePage from './MoviePage/MoviePage'
 import BookingService from '../services/BookingService';
 import SessionStorageService from '../services/SessionStorageService'
 import FutureMoviePage from './FutureMoviePage/FutureMoviePage'
+import BookingSuccessPage from './summary/BookingSuccessPage';
+import ErrorPage from './ErrorPage/ErrorPage';
 
 class AppPages extends Component {
     pricing = {}
@@ -49,6 +51,8 @@ class AppPages extends Component {
                             <Route path='/FutureListings/:movietitle' component={FutureMoviePage}/>
                             <Route path='/Listings/:movietitle' component={MoviePage}/>
                             <Route path='/Listings' component={CurrentReleases}/>
+                            <Route path='/summary/bookingsuccesspage' component={BookingSuccessPage}/>
+                            <Route component={ErrorPage}/>
                         </Switch>
                     </div>
                     <AppFooter />
