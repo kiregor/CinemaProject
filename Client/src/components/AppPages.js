@@ -59,7 +59,7 @@ class AppPages extends Component {
                 <Router>
                     <AppNavbar/>
                     <AppBreadCrumbs/>
-                    <div className='AppContent' style={{height:0.7*this.state.height}}>
+                    <div className='AppContent' style={{height:0.8*this.state.height}}>
                         
                             <Switch>
                                 { /* Need the 'exact' property, as '/' matches all pages */}

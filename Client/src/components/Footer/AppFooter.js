@@ -21,7 +21,7 @@ class AppFooter extends Component {
                         </Row>
                     </ul>
                 </Col>
-                <Col>
+
                 <div className="icons">
                     <ul className="social-icons"> 
                         <li><a className="facebook" href="#"><FontAwesomeIcon icon={['fab', 'facebook']} /></a></li>
@@ -31,7 +31,7 @@ class AppFooter extends Component {
                         <li><a className="phone" href="/contact-us"><FontAwesomeIcon icon="phone" /></a></li>  
                     </ul>
                 </div>
-                </Col>
+
             </Row>
         </Container>
     </footer>
