@@ -7,12 +7,12 @@ const Movie = (props) => {
                 <div className="card">
                         <div className="card-image waves-effect waves-block waves-light">
                             {
-                            <img src={`http://image.tmdb.org/t/p/w500${props.image}`} alt="Movie Poster" style={{width:"100%", height: 300}}/>
+                            <img src={`http://image.tmdb.org/t/p/w500${props.image}`} alt="Movie Poster" style={{width:"100%", height: 350}}/>
                             }
                         </div>
                     <div className="card-content">
                         <span className="card-title grey-text text-darken-4" style={{height: 80, fontSize: 17}}>{props.title}<i className="material-icons right"></i></span>
-                        <p><a onClick={console.log(props.id)} href={`/listings/${props.title}`}>Book Now</a></p>
+                        <p><a href={`/listings/${props.title}`}>Book Now</a></p>
                     </div>
                     <div className="card-reveal">
                         <span className="card-title grey-text text-darken-4">Release Date: {props.release}<i className="material-icons right"></i></span>
