@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import stripeService from '../../services/stripeService';
 import { Button } from 'reactstrap';
+import { Toast, ToastBody, ToastHeader } from 'reactstrap';
 
 class CheckoutForm extends Component {
   seatInfo = this.props.seatInfo;
@@ -20,22 +21,53 @@ class CheckoutForm extends Component {
      this.seatInfo
     ).then(
       response => {
-        console.log('works');
+        let isSuccess;
+        stripeService.getSuccessStatus().then(
+          response => {
+            isSuccess = response.data;
+            if(isSuccess == "success"){
+              this.state = {complete: false};
+              console.log("Success");
+              window.location.assign("../summary/BookingSuccessPage");
+            }else{
+              console.log("Failed");
+              this.setState({complete: true});
+            }
+          }
+        ).catch(
+          error => {
+            console.log(error);
+          }
+          
+        )
+        
       })
-    
-    // if (response.ok) this.setState({complete: true})
-    // console.log(response)
+
   }
 
   render() {
-    if (this.state.complete) return <h1>Purchase Complete</h1>;
-    return (
-      <div className="checkout">
-        <CardElement />
-        <br/><br/>
-        <Button color="primary" size="lg" block onClick={this.submit}>Send</Button>
-      </div>
-    );
+      return (
+        <>
+          {(this.state.complete) &&
+            <Toast>
+              <ToastHeader  icon="danger">
+                Unsuccessful Transaction
+              </ToastHeader>
+              <ToastBody>
+                You don't have enough funds for this Transaction!
+              </ToastBody>
+            </Toast>
+          }
+          {(true) &&
+              <div className="checkout">
+                <CardElement />
+                <br/><br/>
+                <Button color="primary" size="lg" block onClick={this.submit}>Send</Button>
+              </div>
+
+          }
+        </>
+       )
   }
 }
 
