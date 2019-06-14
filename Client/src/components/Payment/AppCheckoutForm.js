@@ -21,10 +21,8 @@ class CheckoutForm extends Component {
     ).then(
       response => {
         console.log('works');
+        window.location.assign("../summary/BookingSuccessPage");
       })
-    
-    // if (response.ok) this.setState({complete: true})
-    // console.log(response)
   }
 
   render() {
