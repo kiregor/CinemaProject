@@ -1,7 +1,7 @@
 .site-footer
 {
   flex-shrink: 0;
-  background-color: #90AFC5;
+  background-color: #2A3132;
   padding-top:20px;
   font-size:15px;
   color:#737373;
@@ -44,8 +44,8 @@
 {
   margin-left:15px;
   border-radius:100%;
-  background-color:#33353d;
-  color:#818a91;
+  background-color:white;
+  color: #2A3132;
   font-size:16px;
   display:inline-block;
   line-height:44px;
@@ -59,8 +59,8 @@
 }
 .social-icons a:active,.social-icons a:focus,.social-icons a:hover
 {
-  color:#fff;
-  background-color:#29aafe
+  color:white;
+  background-color:#336B87
 }
 .social-icons a.facebook:hover
 {
@@ -73,6 +73,10 @@
 .social-icons a.twitter:hover
 {
   background-color:#00aced
+}
+.social-icons a.phone:hover
+{
+  background-color:#763626
 }
 .icons
 {
