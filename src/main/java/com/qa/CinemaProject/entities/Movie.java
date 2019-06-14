@@ -33,6 +33,10 @@ public class Movie {
 		return movieName;
 	}
 	
+	public void setMovieName(String name) {
+		this.movieName = name;
+	}
+	
 	public String getimdbId() {
 		return imdbId;
 	}

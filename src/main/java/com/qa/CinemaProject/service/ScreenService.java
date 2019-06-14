@@ -21,7 +21,7 @@ public class ScreenService {
 		screenRepo.save(screen);
 	}
 
-	public Screen retirieveScreen(long id) {
+	public Screen retrieveScreen(long id) {
 		if (this.screenRepo.existsById(id)) {
 			return this.screenRepo.findById(id).get();
 		} else {

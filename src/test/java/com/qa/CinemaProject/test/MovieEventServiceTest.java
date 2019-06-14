@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.qa.CinemaProject.CinemaProjectApplication;
 import com.qa.CinemaProject.entities.MovieEvent;
-import com.qa.CinemaProject.test.repo.EmbeddedMovieEventService;
+import com.qa.CinemaProject.test.services.EmbeddedMovieEventService;
 
 @ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,13 +26,13 @@ public class MovieEventServiceTest {
 	EmbeddedMovieEventService emes;
 	
 	@After
-	public void init() {
+	public void finalize() {
 		emes.clear();
 	}
 
 	@Test
 	public void testRepositorySavesMovieEventEntity() {
-		String si = "someEvent";
+		String si = "someScreenId";
 		MovieEvent m1 = new MovieEvent();
 		m1.setScreenId(si);
 		emes.createEvent(m1);

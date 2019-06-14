@@ -1,4 +1,4 @@
-package com.qa.CinemaProject.test.repo;
+package com.qa.CinemaProject.test.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,19 +8,19 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Service;
 
 import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.entities.Popular;
 import com.qa.CinemaProject.repo.SequenceRepo;
 import static com.qa.CinemaProject.constants.MappingConstants.*;
 
-public class EmbeddedMovieService {
+@Service
+public class EmbeddedMovieService extends EmbeddedService <Movie> {
 	
-	@Autowired
-	SequenceRepo sequenceRepo;
-	
-	@Autowired
-	MongoTemplate mongoTemplate;
+	public EmbeddedMovieService() {
+		super(MOVIE_COLLECTION, Movie.class);
+	}
 	
 	public void createMovie(Movie movie) {
 		movie.setId(sequenceRepo.getNextSequenceId("movie"));
@@ -28,38 +28,26 @@ public class EmbeddedMovieService {
 	}
 	
 	private Optional<Movie> findMovie(long id) {
-		Query q = new Query();
-		q.addCriteria(Criteria.where("id").is(id));
-		if (this.mongoTemplate.exists(q, MOVIE_COLLECTION)) {
-			return Optional.of(this.mongoTemplate.find(q, Movie.class).get(0));
-		} else {
-			return Optional.empty();
-		}
+		return super.findEntity(id);
 	}
 
 	public Movie getMovie(long id) {
-		Optional<Movie> maybeMovie = findMovie(id);
-		if(maybeMovie.isPresent()) {
-			return maybeMovie.get();
-		} else {
-			return new Movie();
-		}
+		return this.findMovie(id).orElse(new Movie());
 	}
 
 	public List<Movie> getAllMovies() {
-		return this.mongoTemplate.findAll(Movie.class);
+		return super.getAllEntities();
 	}
 
 	public void updateMovie(Movie movie) {
 		Query query = new Query(Criteria.where("id").is(movie.getId()));
 		Update update = new Update();
-		update.set("content", movie.getMovieName());
-		
+		update.set("movieName", movie.getMovieName());
 		mongoTemplate.updateFirst(query, update, Movie.class);
 	}
 
 	public void deleteMovie(long id) {
-		this.findMovie(id).ifPresent(movie -> mongoTemplate.remove(movie));
+		super.deleteEntityById(id);
 	}
 	
 	public Popular getPopular(String movieOne, String movieTwo, String movieThree) {
@@ -69,5 +57,4 @@ public class EmbeddedMovieService {
 				this.getAllMovies().stream().filter(m -> m.getMovieName().equals(movieThree)).findFirst().get().getimdbId());
 		return popular;
 	}
-
 }

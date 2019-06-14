@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.qa.CinemaProject.CinemaProjectApplication;
 import com.qa.CinemaProject.entities.Booking;
 import com.qa.CinemaProject.entities.Ticket;
-import com.qa.CinemaProject.test.repo.EmbeddedBookingService;
+import com.qa.CinemaProject.test.services.EmbeddedBookingService;
 import com.stripe.exception.StripeException;
 
 @ActiveProfiles("test")
@@ -27,7 +27,13 @@ public class BookingServiceTest {
 
 	@Autowired
 	private EmbeddedBookingService ems;
-
+	
+	@After
+	public void finalize() {
+		// Ensure the repository is clear before and after every test.
+		ems.clear();
+	}
+	
 	/**
 	 * Test that the repository initialises as empty.
 	 */
@@ -36,12 +42,6 @@ public class BookingServiceTest {
 		// Given that nothing was entered in the repository,
 		// Then the repository is empty.
 		assertThat(ems.getAllBookings()).isEmpty();
-	}
-
-	@After
-	public void init() {
-		// Ensure the repo is clear before and after every test
-		ems.clear();
 	}
 
 	/**
@@ -57,8 +57,8 @@ public class BookingServiceTest {
 		// via location.
 		Booking b1 = new Booking();
 		Ticket t1 = new Ticket();
-		t1.setLocation("A-2");
-		t1.setPrice(5);
+		t1.setLocation(location);
+		t1.setPrice(0);
 		b1.setTickets(List.of(t1));
 		// Given that the database is empty...
 		// When an entry with a specified location is entered...
@@ -91,7 +91,7 @@ public class BookingServiceTest {
 					.filter(booking -> booking.getTickets().stream()
 							.anyMatch(ticket -> ticket.getLocation().equals(location)))
 					.findFirst().map(booking -> (Ticket) booking.getTickets().get(0)).ifPresentOrElse(
-							(ticket -> Assertions.assertThat(ticket).hasFieldOrPropertyWithValue("location", location)),
+							ticket -> Assertions.assertThat(ticket).hasFieldOrPropertyWithValue("location", location),
 							() -> Assertions.fail(String.format("A ticket with the location %s is not present%n")));
 
 		});

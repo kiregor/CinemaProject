@@ -1,4 +1,4 @@
-package com.qa.CinemaProject.test.repo;
+package com.qa.CinemaProject.test.services;
 
 import static com.qa.CinemaProject.constants.MappingConstants.EVENT_COLLECTION;
 
