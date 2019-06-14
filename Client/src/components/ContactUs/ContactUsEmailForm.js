@@ -118,7 +118,10 @@ class ContactUsEmailForm extends Component {
                     </div>
                     <div className='row'>
                         <div className='col-12'>
-                            <p>Alternatively, send us an email to us directly at QACinema12345@gmail.com</p>
+                            <ul>Alternatively, you can contact us directly by:
+                                <li><strong>Email:</strong> QACinema12345@gmail.com</li>
+                                <li><strong>Telephone:</strong> 02079460942</li>
+                            </ul>
                         </div>
                     </div>
                     </div>}
