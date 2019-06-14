@@ -19,7 +19,8 @@ public class PaymentService {
 		payment = new ChargePayment();
 	}
 	
-	public void makePayment(String token) throws StripeException {
-		this.payment.makePayment(key,token);
+	public void makePayment(String token,int cost) throws StripeException {
+		this.payment.makePayment(token,key,cost);
 	}
+	
 }

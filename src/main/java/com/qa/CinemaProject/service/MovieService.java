@@ -5,18 +5,23 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.qa.CinemaProject.entities.Movie;
+import com.qa.CinemaProject.entities.Popular;
 import com.qa.CinemaProject.repo.MovieRepo;
+import com.qa.CinemaProject.repo.SequenceRepo;
 
 @Service
 public class MovieService {
 
 	private MovieRepo movieRepo;
+	private SequenceRepo sequenceRepo;
 
-	public MovieService(MovieRepo movieRepo) {
+	public MovieService(MovieRepo movieRepo, SequenceRepo sequenceRepo) {
 		this.movieRepo = movieRepo;
+		this.sequenceRepo = sequenceRepo;
 	}
 
 	public void createMovie(Movie movie) {
+		movie.setId(sequenceRepo.getNextSequenceId("movie"));
 		this.movieRepo.save(movie);
 	}
 
@@ -38,5 +43,14 @@ public class MovieService {
 
 	public void deleteMovie(long id) {
 		this.movieRepo.deleteById(id);
+	}
+	
+	public Popular getPopular(String movieOne, String movieTwo, String movieThree) {
+		Popular popular = new Popular(
+				movieRepo.findAll().stream().filter(m -> m.getMovieName().equals(movieOne)).findFirst().get().getimdbId(),
+				movieRepo.findAll().stream().filter(m -> m.getMovieName().equals(movieTwo)).findFirst().get().getimdbId(),
+				movieRepo.findAll().stream().filter(m -> m.getMovieName().equals(movieThree)).findFirst().get().getimdbId());
+		
+		return popular;
 	}
 }

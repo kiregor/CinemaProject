@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import AppNavbar from './Header/AppNavbar';
 import AppHomePage from './HomePage/AppHomePage';
+<<<<<<< HEAD
 import AppContactUsPage from './ContactUs1/AppContactUsPage';
+=======
+import AppContactUsPage from './ContactUs/AppContactUsPage';
+>>>>>>> f58f394e580b77f66e80622bcc63293a0c84d88c
 import AppAboutUsPage from './AboutUs/AppAboutUsPage';
-import AppGettingHerePage from './FindUs1/AppGettingHerePage';
-import AppSeatingPage from './Seating1/AppSeatingPage';
+import AppGettingHerePage from './FindUs/AppGettingHerePage';
+import AppSeatingPage from './Seating/AppSeatingPage';
 import AppBreadCrumbs from './Header/AppBreadcrumbs'
-import PaymentPage from './Payment1/PaymentPage';
+import PaymentPage from './Payment/PaymentPage';
 import FutureReleases from './Future Listings/FutureReleases';
 import CurrentReleases from './Current Listings/CurrentReleases';
 import AppFooter from './Footer/AppFooter';

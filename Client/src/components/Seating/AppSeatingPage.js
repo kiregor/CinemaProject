@@ -47,15 +47,16 @@ class AppSeatingPage extends Component {
                 // Make sure the list of pricing objects is exported once the list 
                 // is exhausted
                 if (listOfObjects.indexOf(object) === listOfObjects.length - 1) {
-                   SessionStorageService.setObject('bookingDetails', this.bookedSeats);
-                   console.log(SessionStorageService.getObject('bookingDetails'));
+                   SessionStorageService.setObject('bookedSeats', {"booking":{"tickets":this.bookedSeats},"token":null, "holdToken":this.chart.holdToken});
+                   console.log(SessionStorageService.getObject('bookedSeats'));
                    // Go to the payment page
+                   window.location.assign("/paymentpage");
                 }
             })
         });
     }
     clearTickets(e) {
-        SessionStorageService.clearObject('bookingDetails');
+        SessionStorageService.clearObject('bookedSeats');
 
     }
     render() {
