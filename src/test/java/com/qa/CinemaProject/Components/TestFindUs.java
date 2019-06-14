@@ -37,13 +37,13 @@ public class TestFindUs {
 	}
 	
 	@Test
-	public void contactUsLinkVisibleOnHomepage() {	
+	public void fundUsLinkVisibleOnHomepage() {	
 		
 		assertEquals("Getting Here", we.getText());		
 	}
 	
 	@Test
-	public void contactUsLinkWorking() {
+	public void findUsLinkWorking() {
 		
 		we.sendKeys(Keys.ENTER);
 		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div[2]/div/div/h1"));
@@ -51,16 +51,24 @@ public class TestFindUs {
 	}
 	
 	@Test
-	@Ignore
-	public void contactUsLinkPageContent() {
+	public void findUsLinkPageLocation() {
 		we.sendKeys(Keys.ENTER);
-		we = driver.findElement(By.xpath("//*[@id=\"mapDiv\"]/div/div/div[9]/div/div/div/div[2]/div[1]/a/div[2]"));
-		assertEquals("Directions", we.getText());		
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div[1]/div/div/h1"));
+		assertEquals("Location", we.getText());		
 	}
 	
 	@Test
+	public void findUsLinkPageTransit() {
+		we.sendKeys(Keys.ENTER);
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div[1]/div/div/h2"));
+		assertEquals("Nearby transit", we.getText());		
+	}
+	
+	
+	
+	@Test
 	@Ignore
-	public void contactUsLinkPageFunction() {
+	public void findUsLinkPageFunction() {
 		we.sendKeys(Keys.ENTER);
 		we = driver.findElement(By.xpath("//*[@id=\"mapDiv\"]/div/div/div[9]/div/div/div/div[2]/div[1]/a/div[2]"));
 		we.sendKeys(Keys.ENTER);
