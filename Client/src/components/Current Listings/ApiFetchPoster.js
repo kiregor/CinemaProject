@@ -7,8 +7,7 @@ import Pagination from './AppPagination';
 //PATH FOR MOVE POSTER: http://tmdb.org/t/p/<SIZE>/<POSTER_PATH>;
 //SIZE: W92, W154, W185, W342, W500, W700;
 
-const ageR = 'label.age-declaration.rating.age';
-const ageI = 'label.age-declaration.rating.ageIcons';
+const ageR = 'label.age-declaration.rating.age-adds';
 
 class ApiFetchPoster extends Component{
     constructor(props){
@@ -40,7 +39,6 @@ class ApiFetchPoster extends Component{
             console.log(data2);
             this.setState({
                 ageRating: [data2.ageR],
-                ageIcon: [data2.ageI]
             })
         })
     
