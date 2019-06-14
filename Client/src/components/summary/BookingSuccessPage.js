@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SummaryPage from './SummaryPage';
 import SessionStorageService from '../../services/SessionStorageService';
-import { Badge } from 'reactstrap';
+import { Alert } from 'reactstrap';
 
 let seatInfo = SessionStorageService.getObject('bookedSeats');
 
@@ -11,8 +11,11 @@ class BookingSuccessPage extends Component {
         return (
             <div className='BookingSuccessPage'>
                  <div className='container'>
-                    <h1><Badge color="success">Booking Successful</Badge></h1>
-                    <h6><Badge color="secondary" >Enjoy your movie!</Badge></h6> <br/><br/>
+                     <Alert color="success">
+                        <h1>Transaction Successful</h1>
+                        Your account has been charged successfully!
+                            Enjoy your movie!
+                    </Alert>
                     <SummaryPage seatInfo={seatInfo}/>
                  </div>
             </div>

@@ -43,33 +43,28 @@ class CheckoutForm extends Component {
         ).catch(
           error => {
             console.log(error);
-          }
-          
+          }  
         )
-        
       })
-
   }
-
   render() {
       return (
         <>
-            <Toast isOpen={this.state.show}>
-              <ToastHeader toggle={this.toggle} icon="danger">
-                Unsuccessful Transaction
-              </ToastHeader>
-              <ToastBody>
-                You don't have enough funds for this Transaction!
-              </ToastBody>
-            </Toast>
-          
           {(true) &&
               <div className="checkout">
                 <CardElement />
                 <br/><br/>
+                <Toast isOpen={this.state.show}>
+                  <ToastHeader toggle={this.toggle} icon="danger">
+                    Unsuccessful Transaction
+                  </ToastHeader>
+                  <ToastBody>
+                    You don't have enough money in your account for this Transaction!
+                  </ToastBody>
+                </Toast>
+                <br/><br/>
                 <Button color="primary" size="lg" block onClick={this.submit}>Send</Button>
               </div>
-
           }
         </>
        )
