@@ -1,7 +1,5 @@
 package com.qa.CinemaProject.test.repo;
 
-import static com.qa.CinemaProject.constants.MappingConstants.BOOKING_COLLECTION;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -61,15 +59,14 @@ public class EmbeddedMovieService {
 	}
 
 	public void deleteMovie(long id) {
-		this.mongoTemplate.remove(object)
+		this.findMovie(id).ifPresent(movie -> mongoTemplate.remove(movie));
 	}
 	
 	public Popular getPopular(String movieOne, String movieTwo, String movieThree) {
 		Popular popular = new Popular(
-				mongoTemplate.findAll().stream().filter(m -> m.getMovieName().equals(movieOne)).findFirst().get().getimdbId(),
-				mongoTemplate.findAll().stream().filter(m -> m.getMovieName().equals(movieTwo)).findFirst().get().getimdbId(),
-				mongoTemplate.findAll().stream().filter(m -> m.getMovieName().equals(movieThree)).findFirst().get().getimdbId());
-		
+				this.getAllMovies().stream().filter(m -> m.getMovieName().equals(movieOne)).findFirst().get().getimdbId(),
+				this.getAllMovies().stream().filter(m -> m.getMovieName().equals(movieTwo)).findFirst().get().getimdbId(),
+				this.getAllMovies().stream().filter(m -> m.getMovieName().equals(movieThree)).findFirst().get().getimdbId());
 		return popular;
 	}
 
