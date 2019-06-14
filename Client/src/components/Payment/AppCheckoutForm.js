@@ -8,9 +8,15 @@ class CheckoutForm extends Component {
   seatInfo = this.props.seatInfo;
   constructor(props) {
     super(props);
-    this.state = {complete: false};
+    this.state = {complete: false, show: false};
     this.submit = this.submit.bind(this);
-    
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState({
+      show: !this.state.show
+    });
   }
 
   async submit(ev) {
@@ -31,7 +37,7 @@ class CheckoutForm extends Component {
               window.location.assign("../summary/BookingSuccessPage");
             }else{
               console.log("Failed");
-              this.setState({complete: true});
+              this.setState({show: true});
             }
           }
         ).catch(
@@ -48,16 +54,15 @@ class CheckoutForm extends Component {
   render() {
       return (
         <>
-          {(this.state.complete) &&
-            <Toast>
-              <ToastHeader  icon="danger">
+            <Toast isOpen={this.state.show}>
+              <ToastHeader toggle={this.toggle} icon="danger">
                 Unsuccessful Transaction
               </ToastHeader>
               <ToastBody>
                 You don't have enough funds for this Transaction!
               </ToastBody>
             </Toast>
-          }
+          
           {(true) &&
               <div className="checkout">
                 <CardElement />
