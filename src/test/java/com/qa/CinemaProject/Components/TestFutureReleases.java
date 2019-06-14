@@ -26,7 +26,7 @@ public class TestFutureReleases {
 	@BeforeClass
 	public static void setup() {
 		System.setProperty("webdriver.chrome.driver", 
-				"C:\\Users\\Admin\\Downloads\\chromedriver_win32\\chromedriver.exe");
+				"src\\test\\resources\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		
@@ -51,14 +51,6 @@ public class TestFutureReleases {
 		we = driver.findElement(By.xpath("//*[@id=\"bcrumb\"]/ol/span"));
 		assertEquals("Future-Listings", we.getText());		
 		
-	}
-	
-	@Test
-	public void futureListingLinkPageContent() {		;
-		we.sendKeys(Keys.ENTER);		
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div"));
-		List<WebElement> imagelist= driver.findElements(By.tagName("img"));
-		assertTrue(imagelist.size()>4);		
 	}
 	
 	

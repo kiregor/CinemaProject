@@ -24,7 +24,7 @@ public class TestFindUs {
 	@BeforeClass
 	public static void setup() {
 		System.setProperty("webdriver.chrome.driver", 
-				"C:\\Users\\Admin\\Downloads\\chromedriver_win32\\chromedriver.exe");
+				"src\\test\\resources\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		
