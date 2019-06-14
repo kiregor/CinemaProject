@@ -20,7 +20,7 @@ class AppSeatingPage extends Component {
         // Get pricing data from the session
         this.data = SessionStorageService.getObject('pricing');
         // Convert data from string to number
-        for(let prop in this.data) this.data[prop] = +this.data[prop]
+        for (let prop in this.data) this.data[prop] = +this.data[prop]
 
         SessionStorageService.clearObject();
         this.bookSeats = this.bookSeats.bind(this);
@@ -28,7 +28,7 @@ class AppSeatingPage extends Component {
     }
 
     componentDidMount() {
-       
+
     }
 
     /**
@@ -37,9 +37,9 @@ class AppSeatingPage extends Component {
      */
     bookSeats() {
         this.chart.listSelectedObjects((listOfObjects) => {
-            if(listOfObjects.length === 0) {
-                 window.confirm('Please select 1 or more seats'); 
-                 return;  
+            if (listOfObjects.length === 0) {
+                window.confirm('Please select 1 or more seats');
+                return;
             }
             listOfObjects.forEach((object) => {
                 let location = object.label;
@@ -54,7 +54,7 @@ class AppSeatingPage extends Component {
             SessionStorageService.setObject('bookedSeats', {
                 "booking": {
                     "tickets": this.bookedSeats
-                },"token": null
+                }, "token": null
             });
             console.log(SessionStorageService.getObject('bookedSeats'));
             // Go to the payment page
@@ -82,7 +82,7 @@ class AppSeatingPage extends Component {
                                 publicKey='d2967a3f-f10b-48e3-8b3c-424d2169759d'
                                 event='33cdea62-50da-4fa7-a835-c09009a9a99b'
                                 id='seating-chart'
-                                onRenderStarted={createdChart => {this.chartAdded(createdChart)}}
+                                onRenderStarted={createdChart => { this.chartAdded(createdChart) }}
                                 pricing={[{
                                     'category': 1, 'ticketTypes': [
                                         { 'ticketType': 'adult', 'price': this.data.adultPrice },
@@ -108,11 +108,11 @@ class AppSeatingPage extends Component {
                             />
                         </div>
                     </div>
-                    {true && <div className='row'>
+                    <div className='row'>
                         <div id='book-now' className='col-12'>
                             <Button onClick={this.bookSeats} color='success' size='lg' block>Book Now</Button>
                         </div>
-                    </div>}
+                    </div>
                     <div id='seats-info' className='row'>
                         <div className='col-12'>
                             <h1>QA Cinema 2D<span className='inner-symbol'> &copy;</span> Screen</h1>
