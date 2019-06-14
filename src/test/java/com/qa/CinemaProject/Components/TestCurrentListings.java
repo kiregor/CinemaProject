@@ -3,6 +3,8 @@ package com.qa.CinemaProject.Components;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -30,9 +32,10 @@ public class TestCurrentListings {
 	}
 	
 	@Before
-	public void init() {
+	public void init() throws InterruptedException {
 		driver.get(url);
 		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/nav/div/div/ul[1]/li[1]/a"));
+		Thread.sleep(500);
 	}
 	
 	@Test
@@ -51,13 +54,10 @@ public class TestCurrentListings {
 	
 	@Test
 	public void currentListingLinkPageContent() {		;
-		we.sendKeys(Keys.ENTER);		
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div"));
-		assertTrue((we.isDisplayed() && we.isEnabled()));
-		//web elements can't be accessed "NoSuchElementException"
-		//in the big div we should count how many times images/booking are inserted must be at least 4
-		
-		//we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div/div/div/div[1]/div/div[1]/img"));
+		we.sendKeys(Keys.ENTER);	
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div/div/div"));
+		List<WebElement> imagelist= driver.findElements(By.tagName("img"));
+		assertTrue(imagelist.size()>4);		
 	
 	}
 	

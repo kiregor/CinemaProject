@@ -3,6 +3,8 @@ package com.qa.CinemaProject.Components;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,7 +46,7 @@ public class TestFutureReleases {
 	}
 	
 	@Test
-	public void contactUsLinkWorking() {	
+	public void futureListingLinkWorking() {	
 		we.sendKeys(Keys.ENTER);
 		we = driver.findElement(By.xpath("//*[@id=\"bcrumb\"]/ol/span"));
 		assertEquals("Future-Listings", we.getText());		
@@ -55,7 +57,8 @@ public class TestFutureReleases {
 	public void futureListingLinkPageContent() {		;
 		we.sendKeys(Keys.ENTER);		
 		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div"));
-		assertTrue((we.isDisplayed() && we.isEnabled()));	
+		List<WebElement> imagelist= driver.findElements(By.tagName("img"));
+		assertTrue(imagelist.size()>4);		
 	}
 	
 	

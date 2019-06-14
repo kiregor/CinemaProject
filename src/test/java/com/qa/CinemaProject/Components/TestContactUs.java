@@ -81,9 +81,7 @@ public class TestContactUs {
 		we.sendKeys(Keys.ENTER);
 		we = driver.findElement(By.xpath("//*[@id=\"email-form\"]/div[2]/div/div/h1"));
 		assertEquals("Success.", we.getText());
-	}
-	
-	
+	}	
 	
 	
 	@After
