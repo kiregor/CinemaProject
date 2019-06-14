@@ -69,7 +69,7 @@ class ApiFetchPoster extends Component{
         else {
             return(
                 <div className="ApiFetchPoster">
-                    <MoviePoster movies={this.state.movies} ageIcon={this.state.ageIcon}/>
+                    <MoviePoster movies={this.state.movies} ageRating={this.state.ageRating}/>
                     <Pagination pages={3} nextPage={this.nextPage} currentPage={this.state.currentPage}/>
                 </div>
             );
