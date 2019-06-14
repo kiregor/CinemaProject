@@ -2,10 +2,16 @@
 {
   flex-shrink: 0;
   background-color: #2A3132;
-  padding-top:20px;
+  padding-top:10px;
   font-size:15px;
   color:#737373;
+  padding-bottom:0px;
 }
+
+.footerRow{
+  margin-bottom: 0;
+}
+
 .site-footer h6
 {
   color:#fff;

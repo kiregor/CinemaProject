@@ -10,11 +10,11 @@ class AppFooter extends Component {
         return(
     <footer className="site-footer">
         <Container>
-            <Row>
+            <Row className="footerRow">
                 <Col md="4" sm="6" xs="12">
                     <ul className="footer-links">
                     <h6>Quick Links</h6>
-                        <Row>
+                        <Row className="footerRow">
                         <li><a href="/about-us/">About Us </a></li><br/>
                         <li style={{paddingLeft:10}}><a href="/contact-us/">Contact Us </a></li><br/>
                         <li style={{paddingLeft:10}}><a href="https://bbfc.co.uk/">Classifications</a></li>

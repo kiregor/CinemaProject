@@ -20,6 +20,12 @@ import BookingSuccessPage from './summary/BookingSuccessPage';
 import ErrorPage from './ErrorPage/ErrorPage';
 
 class AppPages extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { width: 0, height: 0 };
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+      }
+
     pricing = {}
     componentWillMount() {
         BookingService.getPricingInformation()
@@ -32,28 +38,45 @@ class AppPages extends Component {
             console.log(error);
         })
     }
+      componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+      }
+      
+      componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+      }
+      
+      updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+      }
+
+
+
     render() {
         return (
             <div className='AppPages'>
                 <Router>
                     <AppNavbar/>
                     <AppBreadCrumbs/>
-                    <div className='AppContent'>
-                        <Switch>
-                            { /* Need the 'exact' property, as '/' matches all pages */}
-                            <Route path='/' exact component={AppHomePage}/>
-                            <Route path='/about-us' component={AppAboutUsPage}/>
-                            <Route path='/contact-us' component={AppContactUsPage}/>
-                            <Route path='/getting-here' component={AppGettingHerePage}/>
-                            <Route path='/seatbooking' component={AppSeatingPage}/>
-                            <Route path='/PaymentPage' component={PaymentPage}/>
-                            <Route path='/Future-Listings' component={FutureReleases}/>
-                            <Route path='/FutureListings/:movietitle' component={FutureMoviePage}/>
-                            <Route path='/Listings/:movietitle' component={MoviePage}/>
-                            <Route path='/Listings' component={CurrentReleases}/>
-                            <Route path='/summary/bookingsuccesspage' component={BookingSuccessPage}/>
-                            <Route component={ErrorPage}/>
-                        </Switch>
+                    <div className='AppContent' style={{height:0.7*this.state.height}}>
+                        
+                            <Switch>
+                                { /* Need the 'exact' property, as '/' matches all pages */}
+                                <Route path='/' exact component={AppHomePage}/>
+                                <Route path='/about-us' component={AppAboutUsPage}/>
+                                <Route path='/contact-us' component={AppContactUsPage}/>
+                                <Route path='/getting-here' component={AppGettingHerePage}/>
+                                <Route path='/seatbooking' component={AppSeatingPage}/>
+                                <Route path='/PaymentPage' component={PaymentPage}/>
+                                <Route path='/Future-Listings' component={FutureReleases}/>
+                                <Route path='/FutureListings/:movietitle' component={FutureMoviePage}/>
+                                <Route path='/Listings/:movietitle' component={MoviePage}/>
+                                <Route path='/Listings' component={CurrentReleases}/>
+                                <Route path='/summary/bookingsuccesspage' component={BookingSuccessPage}/>
+                                <Route component={ErrorPage}/>
+                            </Switch>
+
                     </div>
                     <AppFooter />
                 </Router>
