@@ -23,4 +23,9 @@ public class MovieRepoImpl implements MovieRepoCustom {
 		mongoTemplate.updateFirst(query, update, Movie.class);
 		
 	}
+	
+	public Movie findByName(String movieName) {
+		Query query = new Query(Criteria.where("movieName").is(movieName));
+		return mongoTemplate.find(query, Movie.class).get(0);
+	}
 }

@@ -10,6 +10,7 @@ public interface MappingConstants {
 			SEND_EMAIL="/sendemail",
 			PAYMENT="/payment",
 			BOOKING="/booking",
-			GET_ALL_BOOKINGS="/getAllBookings",
-			CREATE_SINGLE_BOOKING="/createBooking";
+			GET_ALL_BOOKINGS="/getAllBookins",
+			CREATE_SINGLE_BOOKING="/createBooking",
+			GET_POPULAR="/getPopular";
 }
