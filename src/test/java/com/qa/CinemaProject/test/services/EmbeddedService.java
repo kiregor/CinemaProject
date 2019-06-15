@@ -43,8 +43,12 @@ public abstract class EmbeddedService <T> {
 	}
 	
 	public Optional<T> findEntity(long id) {
+		return findEntityByField("id", id);
+	}
+	
+	public Optional<T> findEntityByField(String fieldName, Object fieldValue) {
 		Query q = new Query();
-		q.addCriteria(Criteria.where("id").is(id));
+		q.addCriteria(Criteria.where(fieldName).is(fieldValue));
 		if (this.mongoTemplate.exists(q, cless)) {
 			return Optional.of(this.mongoTemplate.find(q, cless).get(0));
 		} else {
@@ -68,6 +72,6 @@ public abstract class EmbeddedService <T> {
 	 * Utility function that ensures the repository is empty between tests.
 	 */
 	public void clear() {
-		mongoTemplate.dropCollection(collectionName);
+		mongoTemplate.dropCollection(this.cless);
 	}
 }

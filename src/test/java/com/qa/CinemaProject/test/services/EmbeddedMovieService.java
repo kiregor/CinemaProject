@@ -44,6 +44,8 @@ public class EmbeddedMovieService extends EmbeddedService <Movie> {
 		Update update = new Update();
 		update.set("movieName", movie.getMovieName());
 		mongoTemplate.updateFirst(query, update, Movie.class);
+		update.set("imdbId", movie.getimdbId());
+		mongoTemplate.updateFirst(query, update, Movie.class);
 	}
 
 	public void deleteMovie(long id) {

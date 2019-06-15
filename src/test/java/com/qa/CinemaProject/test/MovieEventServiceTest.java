@@ -36,8 +36,8 @@ public class MovieEventServiceTest {
 		MovieEvent m1 = new MovieEvent();
 		m1.setScreenId(si);
 		emes.createEvent(m1);
-		MovieEvent m2 = emes.getAllEvents().get(0);
-		Assertions.assertThat(m2).hasFieldOrPropertyWithValue("screenId", si);
+		MovieEvent m2 = emes.getAllEntities().get(0);
+		Assertions.assertThat(emes.retrieveEvent(m2.getId())).hasFieldOrPropertyWithValue("screenId", si);
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class MovieEventServiceTest {
 			return m;
 		}).forEach(m -> emes.createEvent(m));
 		// Then they should all be retrievable.
-		List<MovieEvent> movieEvents = emes.getAllEvents();
+		List<MovieEvent> movieEvents = emes.getAllEntities();
 		Stream.of(screens).forEach(screen -> {
 			movieEvents.stream()
 					.filter(me -> me.getScreenId().equals(screen))

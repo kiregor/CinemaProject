@@ -46,8 +46,9 @@ public class MovieServiceTest {
 	@Test
 	public void testServiceUpdatesEntity() throws Exception {
 		Movie movie = new Movie();
-		String movieName = "Trainspotting", otherName = "Schindler's List";
+		String movieName = "Trainspotting", otherName = "Schindler's List", imdb1 = "luke", imdb2 = "skywalker";
 		movie.setMovieName(movieName);
+		movie.setimdbId(imdb1);
 		ems.createMovie(movie);
 		// Get the movie's id. Throw an exception/fail assertion otherwise.
 		long movieId = ems.getAllMovies().stream()
@@ -58,11 +59,11 @@ public class MovieServiceTest {
 				});
 		Movie m  = ems.findEntity(movieId).get();
 		assertThat(m).hasFieldOrPropertyWithValue("movieName", movieName);
+		assertThat(m).hasFieldOrPropertyWithValue("imdbId", imdb1);
 		m.setMovieName(otherName);
+		m.setimdbId(imdb2);
 		ems.updateMovie(m);
-		System.out.println(m.getMovieName());
-		System.out.println(movieId);
-		System.out.println(m.getId());
 		assertThat(ems.findEntity(movieId).get()).hasFieldOrPropertyWithValue("movieName", otherName);
+		assertThat(ems.findEntity(movieId).get()).hasFieldOrPropertyWithValue("imdbId", imdb2);
 	}
 }

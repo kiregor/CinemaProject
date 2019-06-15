@@ -21,37 +21,21 @@ import com.qa.CinemaProject.repo.SequenceRepo;
  *
  */
 @Service
-public class EmbeddedMovieEventService {
+public class EmbeddedMovieEventService extends EmbeddedService<MovieEvent> {
 	
-	@Autowired
-	MongoTemplate mongoTemplate;
-	
-	@Autowired
-	SequenceRepo sri;
+	public EmbeddedMovieEventService() {
+		super(EVENT_COLLECTION, MovieEvent.class);
+		// TODO Auto-generated constructor stub
+	}
 	
 	public void createEvent(MovieEvent movieEvent) {
-		movieEvent.setId(sri.getNextSequenceId(EVENT_COLLECTION));
+		movieEvent.setId(sequenceRepo.getNextSequenceId(EVENT_COLLECTION));
 		this.mongoTemplate.save(movieEvent);
 	}
 	
 	public MovieEvent retrieveEvent(long id) {
-		Query q = new Query();
-		q.addCriteria(Criteria.where("id").is(id));
-		if (this.mongoTemplate.exists(q, EVENT_COLLECTION)) {
-			return this.mongoTemplate.find(q, MovieEvent.class).get(0);
-		} else {
-			return new MovieEvent();
-		}
+		return this.findEntity(id).orElse(new MovieEvent());
 	}
-	
-	public List<MovieEvent> getAllEvents(){
-		return this.mongoTemplate.findAll(MovieEvent.class);
-	}
-	/**
-	 * Utility function that ensures the repository is empty between tests.
-	 */
-	public void clear() {
-		this.mongoTemplate.dropCollection(MovieEvent.class);
-	}
+
 
 }

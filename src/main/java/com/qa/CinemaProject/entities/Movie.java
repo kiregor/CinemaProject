@@ -41,4 +41,8 @@ public class Movie {
 		return imdbId;
 	}
 	
+	public void setimdbId(String str) {
+		this.imdbId = str;
+	}
+	
 }
