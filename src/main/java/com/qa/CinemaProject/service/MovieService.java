@@ -12,8 +12,8 @@ import com.qa.CinemaProject.repo.SequenceRepo;
 @Service
 public class MovieService {
 
-	private MovieRepo movieRepo;
-	private SequenceRepo sequenceRepo;
+	protected MovieRepo movieRepo;
+	protected SequenceRepo sequenceRepo;
 
 	public MovieService(MovieRepo movieRepo, SequenceRepo sequenceRepo) {
 		this.movieRepo = movieRepo;

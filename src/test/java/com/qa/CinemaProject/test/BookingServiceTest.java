@@ -2,8 +2,10 @@ package com.qa.CinemaProject.test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import org.assertj.core.api.Assertions;
@@ -28,16 +30,19 @@ public class BookingServiceTest {
 
 	@Autowired
 	private EmbeddedBookingService ebs;
-	
+
+	private final String DUMMY_HOLD_TOKEN = "token";
+
+	private Optional<Booking> getBookingByTotalPrice(int totalPrice) {
+		return ebs.getAllBookings().stream().filter(b -> b.getTotalPrice() == totalPrice).findFirst();
+	}
+
 	@After
 	public void finalize() {
 		// Ensure the repository is clear before and after every test.
 		ebs.clear();
 	}
-	
-	/**
-	 * Test that the repository initialises as empty.
-	 */
+
 	@Test
 	public void testRepositoryStartsEmpty() {
 		// Given that nothing was entered in the repository,
@@ -45,12 +50,6 @@ public class BookingServiceTest {
 		assertThat(ebs.getAllBookings()).isEmpty();
 	}
 
-	/**
-	 * See whether the repo saves one entity which can be retrieved. (Using location
-	 * to locate the entry).
-	 * 
-	 * @throws StripeException
-	 */
 	@Test
 	public void testRepositorySavesBookingEntity() throws StripeException {
 		String location = "A-2";
@@ -63,7 +62,7 @@ public class BookingServiceTest {
 		b1.setTickets(List.of(t1));
 		// Given that the database is empty...
 		// When an entry with a specified location is entered...
-		ebs.saveBooking(b1);
+		ebs.saveBooking(b1, DUMMY_HOLD_TOKEN);
 		// Then that entry is persisted in the database.
 		Ticket t2 = ebs.getAllBookings().get(0).getTickets().get(0);
 		Assertions.assertThat(t2).hasFieldOrPropertyWithValue("location", location);
@@ -83,9 +82,8 @@ public class BookingServiceTest {
 			t.setLocation(l);
 			b.setTickets(List.of(t));
 			return b;
-		}).forEach(booking -> ebs.saveBooking(booking));
+		}).forEach(booking -> ebs.saveBooking(booking, DUMMY_HOLD_TOKEN));
 		// Then they should all be retrievable.
-		String[] locations = { location1, location2, location3 };
 		List<Booking> bookings = ebs.getAllBookings();
 		Stream.of(location1, location2, location3).forEach(location -> {
 			bookings.stream()
@@ -97,22 +95,40 @@ public class BookingServiceTest {
 
 		});
 	}
-	
-	// Can't test this as it is currently not implemented in the main program
-	// @Test
+
+	@Test
 	public void testRepositoryRemovesBookingEntities() {
 		String location = "A-1";
 		int totalPrice = 3;
 		Booking b = new Booking();
 		Ticket t = new Ticket();
-		t.setLocation("A-1");
+		t.setLocation(location);
 		b.setTickets(List.of(t));
-		b.setTotalPrice(3);
-		ebs.saveBooking(b);
-		Optional<Booking> b2 = ebs.findEntityByField("totalPrice", totalPrice);
-		Assertions.assertThat(b2).isNotEmpty();
-		ebs.deleteEntity(b2.get());
-		b2 = ebs.findEntityByField("totalPrice", totalPrice);
+		b.setTotalPrice(totalPrice);
+		ebs.saveBooking(b, DUMMY_HOLD_TOKEN);
+		Optional<Booking> b1 = this.getBookingByTotalPrice(totalPrice);
+		Assertions.assertThat(b1).isNotEmpty();
+		ebs.delete(b1.get());
+		Optional<Booking> b2 = this.getBookingByTotalPrice(totalPrice);
 		Assertions.assertThat(b2).isEmpty();
+	}
+
+	@Test
+	public void testServiceRetrieveBooking() {
+		int[] totalPrices = { 1, 3000, 245 };
+		IntStream.range(0, 3).forEach(i -> {
+			Booking booking = new Booking(List.of(), totalPrices[i]);
+			ebs.saveBooking(booking, "holdToken");
+			System.out.println(booking.toString());
+		});
+		Arrays.stream(totalPrices).forEach(price -> ebs.getAllBookings().stream()
+				.filter(booking -> booking.getTotalPrice() == price).forEach(booking -> {
+					assertThat(ebs.retrieveBooking(booking.getId())).isEqualToComparingFieldByField(booking);
+				}));
+	}
+	
+	@Test
+	public void testServiceReturnsNewBookingIfNotExist() {
+		assertThat(ebs.retrieveBooking(0)).isNotNull();
 	}
 }

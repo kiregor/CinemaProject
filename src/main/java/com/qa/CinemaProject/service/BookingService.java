@@ -11,8 +11,8 @@ import com.qa.CinemaProject.repo.SequenceRepo;
 @Service
 public class BookingService {
 
-	private BookingRepo bookingRepo;
-	private SequenceRepo sequenceRepo;
+	protected BookingRepo bookingRepo;
+	protected SequenceRepo sequenceRepo;
 
 	public BookingService(BookingRepo bookingRepo, SequenceRepo sequenceRepo) {
 		this.bookingRepo = bookingRepo;

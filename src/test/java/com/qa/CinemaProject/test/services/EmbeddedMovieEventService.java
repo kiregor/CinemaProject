@@ -1,17 +1,13 @@
 package com.qa.CinemaProject.test.services;
 
-import static com.qa.CinemaProject.constants.MappingConstants.EVENT_COLLECTION;
-
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.qa.CinemaProject.entities.MovieEvent;
 import com.qa.CinemaProject.repo.SequenceRepo;
+import com.qa.CinemaProject.service.MovieEventService;
+import com.qa.CinemaProject.test.repo.EmbeddedMovieEventRepo;
 /**
  * A test implementation of the BookingService, using an embedded MongoDB instance.
  * Is identical to com.qa.CinemaProject.service.BookingService but replaces the
@@ -21,21 +17,26 @@ import com.qa.CinemaProject.repo.SequenceRepo;
  *
  */
 @Service
-public class EmbeddedMovieEventService extends EmbeddedService<MovieEvent> {
-	
-	public EmbeddedMovieEventService() {
-		super(EVENT_COLLECTION, MovieEvent.class);
+public class EmbeddedMovieEventService extends MovieEventService implements EmbeddedService<MovieEvent> {
+
+	public EmbeddedMovieEventService(EmbeddedMovieEventRepo eventRepo, SequenceRepo sequenceRepo) {
+		super(eventRepo, sequenceRepo);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void createEvent(MovieEvent movieEvent) {
-		movieEvent.setId(sequenceRepo.getNextSequenceId(EVENT_COLLECTION));
-		this.mongoTemplate.save(movieEvent);
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		this.eventRepo.deleteAll();
+	}
+
+	@Override
+	public void delete(MovieEvent entity) {
+		this.eventRepo.delete(entity);
 	}
 	
-	public MovieEvent retrieveEvent(long id) {
-		return this.findEntity(id).orElse(new MovieEvent());
+	@Override
+	public List<MovieEvent> getAllEntities() {
+		return super.getAllEvents();
 	}
-
-
 }

@@ -1,5 +1,9 @@
 package com.qa.CinemaProject.test.config;
 
+/**
+ * Running unit tests creates an embedded mongodb instance, for easy setup/teardown.
+ * The database is initialized in this class.
+ */
 import java.io.IOException;
 
 import org.springframework.context.annotation.Bean;
@@ -12,18 +16,16 @@ import com.qa.CinemaProject.entities.SequenceId;
 
 import cz.jirutka.spring.embedmongo.EmbeddedMongoFactoryBean;
 import static com.qa.CinemaProject.constants.MappingConstants.*;
-@Profile("test")
+@Profile("test") /* Classes with @ActiveProfiles("test") will use this configuration. */
 @Configuration
 public class MongoEmbedConfiguration {
 	
-	private final String MONGO_DB_URL = EMBEDDED_MONGODB_HOST;
-	private final String MONGO_DB_NAME = EMBEDDED_MONGODB_DATABASE;
 	@Bean
 	public MongoTemplate mongoTemplate() throws IOException {
 		EmbeddedMongoFactoryBean mongo = new EmbeddedMongoFactoryBean();
-		mongo.setBindIp(MONGO_DB_URL);
+		mongo.setBindIp(EMBEDDED_MONGODB_HOST);
 		MongoClient mongoClient = mongo.getObject();
-		MongoTemplate mongoTemplate = new MongoTemplate(mongoClient, MONGO_DB_NAME);
+		MongoTemplate mongoTemplate = new MongoTemplate(mongoClient, EMBEDDED_MONGODB_DATABASE);
 		// Required for MongoDB auto-increment
 		SequenceId siBooking = new SequenceId(),
 				siMovie = new SequenceId(),

@@ -2,18 +2,20 @@ package com.qa.CinemaProject.test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.stream.IntStream;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.qa.CinemaProject.CinemaProjectApplication;
 import com.qa.CinemaProject.entities.Movie;
+import com.qa.CinemaProject.entities.Popular;
 import com.qa.CinemaProject.test.services.EmbeddedMovieService;
 
 @ActiveProfiles("test")
@@ -53,17 +55,55 @@ public class MovieServiceTest {
 		// Get the movie's id. Throw an exception/fail assertion otherwise.
 		long movieId = ems.getAllMovies().stream()
 				.filter(mov -> mov.getMovieName().equals(movieName))
-				.findAny().map(m -> m.getId()).orElseThrow(() -> {
-					Assert.assertTrue(false);
-					return new Exception();
-				});
-		Movie m  = ems.findEntity(movieId).get();
+				.findAny().map(m -> m.getId()).orElseThrow();
+		Movie m  = ems.getMovie(movieId);
 		assertThat(m).hasFieldOrPropertyWithValue("movieName", movieName);
 		assertThat(m).hasFieldOrPropertyWithValue("imdbId", imdb1);
 		m.setMovieName(otherName);
 		m.setimdbId(imdb2);
 		ems.updateMovie(m);
-		assertThat(ems.findEntity(movieId).get()).hasFieldOrPropertyWithValue("movieName", otherName);
-		assertThat(ems.findEntity(movieId).get()).hasFieldOrPropertyWithValue("imdbId", imdb2);
+		assertThat(ems.getMovie(movieId)).hasFieldOrPropertyWithValue("movieName", otherName);
+		assertThat(ems.getMovie(movieId)).hasFieldOrPropertyWithValue("imdbId", imdb2);
+	}
+	
+	@Test
+	public void testServiceReturnsNewMovieIfNotExist() {
+		// There's nothing in the repo
+		assertThat(ems.getMovie(1)).isNotNull();
+	}
+	
+	@Test
+	public void testServiceDeletesMovie() {
+		String movieName = "Men in Black";
+		Movie movie = new Movie();
+		movie.setMovieName(movieName);
+		ems.createMovie(movie);
+		assertThat(ems.getAllMovies()).isNotEmpty();
+		long id = ems.getAllMovies().stream()
+		.filter(m -> m.getMovieName().equals(movieName)).findFirst()
+		.map(m -> m.getId()).orElseThrow();
+		ems.deleteMovie(id);
+		assertThat(ems.getAllMovies()).isEmpty();
+	}
+	
+	@Test
+	public void testServiceGetsPopularMovies() {
+		String[] imdb = {"alpha", "beta", "gamma"};
+		String[] movies = {"Star Wars", "Lord of the Rings", "Hunger Games",
+				"Slumdog Millionaire", "Charlie's Angels"};
+		IntStream.range(0, movies.length).forEach(i -> {
+				Movie movie = new Movie();
+				if(i < imdb.length) {
+					movie.setimdbId(imdb[i]);
+				} else {
+					movie.setimdbId("Some imdbId");
+				}
+				movie.setMovieName(movies[i]);
+				ems.createMovie(movie);
+		});
+		Popular popular = ems.getPopular(movies[1], movies[2], "Charlie's Angels");
+		assertThat(popular.getMovieOne()).isEqualTo(imdb[1]);
+		assertThat(popular.getMovieTwo()).isEqualTo(imdb[2]);
+		assertThat(popular.getMovieThree()).isEqualTo("Some imdbId");
 	}
 }

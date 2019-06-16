@@ -8,16 +8,20 @@ import com.qa.CinemaProject.repo.SequenceRepo;
 
 public class ScreenService {
 
-	private ScreenRepo screenRepo;
-	private SequenceRepo sequenceRepo;
+	protected ScreenRepo screenRepo;
+	protected SequenceRepo sequenceRepo;
 
 	public ScreenService(ScreenRepo screenRepo, SequenceRepo sequenceRepo) {
 		this.screenRepo = screenRepo;
 		this.sequenceRepo = sequenceRepo;
 	}
 
-	public void saveScreen(Screen screen) {
+	public void createScreen(Screen screen) {
 		screen.setId(sequenceRepo.getNextSequenceId("screen"));
+		screenRepo.save(screen);
+	}
+	
+	public void saveScreen(Screen screen) {
 		screenRepo.save(screen);
 	}
 
