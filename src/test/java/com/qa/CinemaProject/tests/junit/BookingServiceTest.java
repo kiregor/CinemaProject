@@ -1,4 +1,4 @@
-package com.qa.CinemaProject.test;
+package com.qa.CinemaProject.tests.junit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.qa.CinemaProject.CinemaProjectApplication;
 import com.qa.CinemaProject.entities.Booking;
 import com.qa.CinemaProject.entities.Ticket;
-import com.qa.CinemaProject.test.services.EmbeddedBookingService;
+import com.qa.CinemaProject.tests.junit.services.EmbeddedBookingService;
 import com.stripe.exception.StripeException;
 
 @ActiveProfiles("test")
@@ -119,16 +119,16 @@ public class BookingServiceTest {
 		IntStream.range(0, 3).forEach(i -> {
 			Booking booking = new Booking(List.of(), totalPrices[i]);
 			ebs.saveBooking(booking, "holdToken");
-			System.out.println(booking.toString());
 		});
-		Arrays.stream(totalPrices).forEach(price -> ebs.getAllBookings().stream()
-				.filter(booking -> booking.getTotalPrice() == price).forEach(booking -> {
-					assertThat(ebs.retrieveBooking(booking.getId())).isEqualToComparingFieldByField(booking);
-				}));
+		Arrays.stream(totalPrices).forEach(price -> getBookingByTotalPrice(price).ifPresent(booking -> {
+			assertThat(ebs.retrieveBooking(booking.getId())).isEqualToComparingFieldByField(booking);
+		}));
 	}
-	
+
 	@Test
 	public void testServiceReturnsNewBookingIfNotExist() {
 		assertThat(ebs.retrieveBooking(0)).isNotNull();
 	}
+	
+	
 }

@@ -1,4 +1,4 @@
-package com.qa.CinemaProject.test.config;
+package com.qa.CinemaProject.tests.junit.config;
 
 /**
  * Running unit tests creates an embedded mongodb instance, for easy setup/teardown.
@@ -27,6 +27,11 @@ public class MongoEmbedConfiguration {
 		MongoClient mongoClient = mongo.getObject();
 		MongoTemplate mongoTemplate = new MongoTemplate(mongoClient, EMBEDDED_MONGODB_DATABASE);
 		// Required for MongoDB auto-increment
+		MongoEmbedConfiguration.initializeSequences(mongoTemplate);
+		return mongoTemplate;
+	}
+	
+	public static MongoTemplate initializeSequences(MongoTemplate mongoTemplate) {
 		SequenceId siBooking = new SequenceId(),
 				siMovie = new SequenceId(),
 				siScreen = new SequenceId(),

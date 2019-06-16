@@ -1,4 +1,4 @@
-package com.qa.CinemaProject.test.repo;
+package com.qa.CinemaProject.tests.junit.repositories;
 
 import java.util.List;
 import java.util.Optional;

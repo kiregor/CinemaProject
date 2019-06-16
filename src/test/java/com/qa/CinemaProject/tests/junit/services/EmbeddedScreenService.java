@@ -1,4 +1,4 @@
-package com.qa.CinemaProject.test.services;
+package com.qa.CinemaProject.tests.junit.services;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.qa.CinemaProject.entities.Screen;
 import com.qa.CinemaProject.repo.SequenceRepo;
 import com.qa.CinemaProject.service.ScreenService;
-import com.qa.CinemaProject.test.repo.EmbeddedScreenRepo;
+import com.qa.CinemaProject.tests.junit.repositories.EmbeddedScreenRepo;
 
 @Service
 public class EmbeddedScreenService extends ScreenService implements EmbeddedService<Screen> {

@@ -1,4 +1,4 @@
-package com.qa.CinemaProject.test;
+package com.qa.CinemaProject.tests.junit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.qa.CinemaProject.CinemaProjectApplication;
 import com.qa.CinemaProject.entities.Screen;
-import com.qa.CinemaProject.test.services.EmbeddedScreenService;
+import com.qa.CinemaProject.tests.junit.services.EmbeddedScreenService;
 
 @ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,6 +25,11 @@ public class ScreenServiceTest {
 	@After
 	public void finalize() {
 		ess.clear();
+	}
+	
+	@Test
+	public void testRepositoryStartsEmpty() {
+		assertThat(ess.getAllScreens()).isEmpty();
 	}
 	
 	@Test
@@ -43,6 +48,11 @@ public class ScreenServiceTest {
 		ess.saveScreen(screen);
 		assertThat(ess.retrieveScreen(screenId))
 		.hasFieldOrPropertyWithValue("screenType", testStringType);
+	}
+	
+	@Test
+	public void testServiceReturnsNewScreenIfNotExist() {
+		assertThat(ess.retrieveScreen(0)).isNotNull();
 	}
 
 }

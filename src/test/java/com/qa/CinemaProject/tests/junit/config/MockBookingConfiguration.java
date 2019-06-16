@@ -1,4 +1,4 @@
-package com.qa.CinemaProject.test.config;
+package com.qa.CinemaProject.tests.junit.config;
 
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;

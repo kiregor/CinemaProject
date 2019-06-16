@@ -1,4 +1,6 @@
-package com.qa.CinemaProject.test;
+package com.qa.CinemaProject.tests.junit;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -15,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.qa.CinemaProject.CinemaProjectApplication;
 import com.qa.CinemaProject.entities.MovieEvent;
-import com.qa.CinemaProject.test.services.EmbeddedMovieEventService;
+import com.qa.CinemaProject.tests.junit.services.EmbeddedMovieEventService;
 
 @ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,6 +30,11 @@ public class MovieEventServiceTest {
 	@After
 	public void finalize() {
 		emes.clear();
+	}
+	
+	@Test
+	public void testRepositoryStartsEmpty() {
+		assertThat(emes.getAllEvents()).isEmpty();;
 	}
 
 	@Test
@@ -64,6 +71,11 @@ public class MovieEventServiceTest {
 							() -> Assertions.fail(String.format("A screen with the screenId %s is not present%n")));
 
 		});
+	}
+	
+	@Test
+	public void testServiceReturnsNewMovieEventIfNotExist() {
+		assertThat(emes.retrieveEvent(0)).isNotNull();
 	}
 
 }

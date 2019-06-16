@@ -1,11 +1,10 @@
-package com.qa.CinemaProject.test;
+package com.qa.CinemaProject.tests.junit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.stream.IntStream;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.qa.CinemaProject.CinemaProjectApplication;
 import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.entities.Popular;
-import com.qa.CinemaProject.test.services.EmbeddedMovieService;
+import com.qa.CinemaProject.tests.junit.services.EmbeddedMovieService;
 
 @ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -73,6 +72,25 @@ public class MovieServiceTest {
 	}
 	
 	@Test
+	public void testServicesIncrementId() {
+		String movieName = "Test Movie";
+		Movie previousMovie = new Movie();
+		previousMovie.setMovieName("Some Movie");
+		ems.createMovie(previousMovie);
+		long id = ems.getAllEntities().stream()
+				.findFirst().map(movie -> movie.getId()).orElseThrow();
+		Movie nextMovie = new Movie();
+		nextMovie.setMovieName(movieName);
+		ems.createMovie(nextMovie);
+		System.out.println(nextMovie.getMovieName());
+		System.out.println(ems.getAllMovies().size());
+		nextMovie = ems.getAllMovies().stream()
+		.filter(movie -> movie.getMovieName().equals(movieName))
+		.findAny().orElseThrow();
+		assertThat(nextMovie.getId()).isEqualTo(id + 1);
+	}
+	
+	@Test
 	public void testServiceDeletesMovie() {
 		String movieName = "Men in Black";
 		Movie movie = new Movie();
@@ -106,4 +124,5 @@ public class MovieServiceTest {
 		assertThat(popular.getMovieTwo()).isEqualTo(imdb[2]);
 		assertThat(popular.getMovieThree()).isEqualTo("Some imdbId");
 	}
+	
 }

@@ -1,4 +1,4 @@
-package com.qa.CinemaProject.test.repo;
+package com.qa.CinemaProject.tests.junit.repositories;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +24,10 @@ public class EmbeddedMovieRepo extends MovieRepoImpl implements MovieRepo {
 	
 	private Query getIdQuery(long id) {
 		return new Query().addCriteria(Criteria.where("id").is(id));
+	}
+	
+	public void dropCollection(String collectionName) {
+		this.mongoTemplate.dropCollection(collectionName);
 	}
 	
 	@Override
@@ -142,6 +146,10 @@ public class EmbeddedMovieRepo extends MovieRepoImpl implements MovieRepo {
 	@Override
 	public void deleteAll(Iterable<? extends Movie> entities) {
 		entities.forEach(entity -> this.mongoTemplate.remove(entity));
+	}
+	
+	public MongoTemplate getMongoTemplate() {
+		return this.mongoTemplate;
 	}
 
 }

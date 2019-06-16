@@ -12,9 +12,18 @@ public class BookingPayment {
 			return booking;
 		}
 		
+		public void setBooking(Booking b) {
+			this.booking = b;
+		}
+		
 		public String getToken() {
 			return token;
 		}
+		
+		public void setToken(String str) {
+			this.token = str;
+		}
+		
 		public String getHoldToken() {
 			return holdToken;
 		}

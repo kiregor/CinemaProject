@@ -1,4 +1,4 @@
-package com.qa.CinemaProject.test.services;
+package com.qa.CinemaProject.tests.junit.services;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.qa.CinemaProject.entities.MovieEvent;
 import com.qa.CinemaProject.repo.SequenceRepo;
 import com.qa.CinemaProject.service.MovieEventService;
-import com.qa.CinemaProject.test.repo.EmbeddedMovieEventRepo;
+import com.qa.CinemaProject.tests.junit.repositories.EmbeddedMovieEventRepo;
 /**
  * A test implementation of the BookingService, using an embedded MongoDB instance.
  * Is identical to com.qa.CinemaProject.service.BookingService but replaces the
