@@ -19,9 +19,9 @@ const Movie = (props) => {
                 </FlippingCard>
             </div>
             <div>
-                <span>
-                    <Button color='info'>Click Me</Button>{' '}
-                    <Button color='success'>Click Me</Button>    
+                <span style={{ margin:25 }}>
+                    <a href={`/listings/${props.title}`}><Button color='danger'>Book Now</Button></a>{' '}
+                    <a href={`/listings/${props.title}`}><Button color='secondary'>More Info</Button></a>{' '}
                 </span>
             </div>
         </div>
