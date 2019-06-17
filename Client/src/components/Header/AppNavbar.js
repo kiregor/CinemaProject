@@ -43,8 +43,7 @@ class AppNavbar extends Component {
 
   render() {
     return (
-      <div>
-        <Navbar style={{backgroundColor:BACKGROUNDCOLOR}} dark expand='lg'>
+        <Navbar className="navbar-form navbar-fixed-top" sticky={'bottom'} style={{backgroundColor:BACKGROUNDCOLOR}} dark expand='lg'>
           <Container>
             <NavbarBrand href='/' className='navbar-nav ml-auto'>QA CINEMA LOGO</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
@@ -83,7 +82,6 @@ class AppNavbar extends Component {
             </Collapse>
           </Container>
         </Navbar>
-      </div>
     );
   }
 }

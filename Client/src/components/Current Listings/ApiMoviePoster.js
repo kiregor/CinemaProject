@@ -1,5 +1,5 @@
 import React from 'react';
-import Movie from './ApiMovie';
+import Movie from './ApiMovie2';
 
 const MoviePoster = (props) => {
     return(

@@ -12,8 +12,11 @@ import com.qa.CinemaProject.tests.junit.repositories.EmbeddedBookingRepo;
 @Service
 public class EmbeddedBookingService extends BookingService implements EmbeddedService<Booking> {
 	
+	EmbeddedBookingRepo bookingRepo;
+	
 	public EmbeddedBookingService(EmbeddedBookingRepo bookingRepo, SequenceRepo sequenceRepo) {
-		super(bookingRepo, sequenceRepo);
+		super(bookingRepo, sequenceRepo, null);
+		this.bookingRepo = bookingRepo;
 		// TODO Auto-generated constructor stub
 	}
 	
