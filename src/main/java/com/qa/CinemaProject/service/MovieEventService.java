@@ -11,8 +11,8 @@ import com.qa.CinemaProject.repo.SequenceRepo;
 @Service
 public class MovieEventService {
 	
-	private EventRepo eventRepo;
-	private SequenceRepo sequenceRepo;
+	protected EventRepo eventRepo;
+	protected SequenceRepo sequenceRepo;
 	
 	public MovieEventService(EventRepo eventRepo, SequenceRepo sequenceRepo) {
 		this.eventRepo = eventRepo;

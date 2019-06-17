@@ -12,7 +12,7 @@ public class MovieEvent {
 	
 	public MovieEvent() {}
 	
-	public MovieEvent(long movieId, String screenId) {
+	public MovieEvent(long movieId, String screenId, String seatsIOKey) {
 		this.movieId = movieId;
 		this.screenId = screenId;
 	}

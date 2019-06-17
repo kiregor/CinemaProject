@@ -1,9 +1,6 @@
 package com.qa.CinemaProject.entities;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
-
-import com.qa.CinemaProject.repo.SequenceRepo;
 
 public class Movie {
 	
@@ -36,8 +33,16 @@ public class Movie {
 		return movieName;
 	}
 	
+	public void setMovieName(String name) {
+		this.movieName = name;
+	}
+	
 	public String getimdbId() {
 		return imdbId;
+	}
+	
+	public void setimdbId(String str) {
+		this.imdbId = str;
 	}
 	
 }

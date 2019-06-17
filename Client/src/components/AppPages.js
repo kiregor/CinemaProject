@@ -59,24 +59,22 @@ class AppPages extends Component {
                 <Router>
                     <AppNavbar/>
                     <AppBreadCrumbs/>
-                    <div className='AppContentContainer'>
-                        <div className='AppContent'>
-                                <Switch>
-                                    { /* Need the 'exact' property, as '/' matches all pages */}
-                                    <Route path='/' exact component={AppHomePage}/>
-                                    <Route path='/about-us' component={AppAboutUsPage}/>
-                                    <Route path='/contact-us' component={AppContactUsPage}/>
-                                    <Route path='/getting-here' component={AppGettingHerePage}/>
-                                    <Route path='/seatbooking' component={AppSeatingPage}/>
-                                    <Route path='/PaymentPage' component={PaymentPage}/>
-                                    <Route path='/Future-Listings' component={FutureReleases}/>
-                                    <Route path='/FutureListings/:movietitle' component={FutureMoviePage}/>
-                                    <Route path='/Listings/:movietitle' component={MoviePage}/>
-                                    <Route path='/Listings' component={CurrentReleases}/>
-                                    <Route path='/summary/bookingsuccesspage' component={BookingSuccessPage}/>
-                                    <Route component={ErrorPage}/>
-                                </Switch>
-                        </div>
+                    <div className='AppContent'>
+                        <Switch>
+                            { /* Need the 'exact' property, as '/' matches all pages */}
+                            <Route path='/' exact component={AppHomePage}/>
+                            <Route path='/about-us' component={AppAboutUsPage}/>
+                            <Route path='/contact-us' component={AppContactUsPage}/>
+                            <Route path='/getting-here' component={AppGettingHerePage}/>
+                            <Route path='/seatbooking' component={AppSeatingPage}/>
+                            <Route path='/PaymentPage' component={PaymentPage}/>
+                            <Route path='/Future-Listings/:movietitle' component={FutureMoviePage}/>
+                            <Route path='/Future-Listings' component={FutureReleases}/>
+                            <Route path='/Listings/:movietitle' component={MoviePage}/>
+                            <Route path='/Listings' component={CurrentReleases}/>
+                            <Route path='/summary/bookingsuccesspage' component={BookingSuccessPage}/>
+                            <Route component={ErrorPage}/>
+                        </Switch>
                     </div>
                     <AppFooter />
                 </Router>
