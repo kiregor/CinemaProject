@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -39,12 +40,14 @@ public class TestCurrentListings {
 	}
 	
 	@Test
+	
 	public void currentListingLinkVisibleOnHomepage() {
 		
 		assertEquals("Listings", we.getText());
 	}
 	
 	@Test
+
 	public void currentListingLinkWorking() {	
 		we.sendKeys(Keys.ENTER);
 		we = driver.findElement(By.xpath("//*[@id=\"bcrumb\"]/ol/span"));
@@ -53,13 +56,14 @@ public class TestCurrentListings {
 	}
 	
 	@Test
+
 	public void currentListingLinkPageContent() {		;
-		we.sendKeys(Keys.ENTER);			
+		we.sendKeys(Keys.ENTER);	
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div"));
 		List<WebElement> imagelist= driver.findElements(By.tagName("img"));
 		assertTrue(imagelist.size()>4);		
 	
 	}
-	
 	
 	@After
 	public void finalise() {

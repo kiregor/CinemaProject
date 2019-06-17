@@ -62,7 +62,8 @@ export default class AppDateTabs extends React.Component {
                     >
                     Friday XXst 
                     </NavLink>
-                </NavItem>
+                </NavItem>                
+                
             </Nav>
             <TabContent activeTab={this.state.activeTab}>
                 <TabPane tabId="1">
