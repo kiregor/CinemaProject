@@ -13,6 +13,7 @@ import AppCreateAccount from './AppLogout';
 import AppLogin from './AppLogin';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AppSearchBar from './AppSearchBar';
 
 const BACKGROUNDCOLOR='#2A3132'
 const LIGHTCOLOR='#336B87'
@@ -65,6 +66,9 @@ class AppNavbar extends Component {
                 </NavItem> 
               </Nav>
               <Nav className='ml-auto' navbar>
+                <NavItem>
+                  <AppSearchBar/>
+                </NavItem>
                 <NavItem>
                   <AppLogin/>    
                 </NavItem>

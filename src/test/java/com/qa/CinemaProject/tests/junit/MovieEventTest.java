@@ -21,7 +21,7 @@ public class MovieEventTest {
 		String expected, screenId = "Test Screen Id";
 		long id = 0, movieId = 2;
 		expected = "Event [id=" + id + ", movieId=" + movieId + ", screenId=" + screenId + "]";
-		MovieEvent movieEvent = new MovieEvent(movieId, screenId);
+		MovieEvent movieEvent = new MovieEvent(movieId, screenId, "seatsIOApi");
 		assertThat(movieEvent.toString()).isEqualTo(expected);
 	}
 	

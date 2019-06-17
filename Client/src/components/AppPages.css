@@ -19,6 +19,22 @@ html, body {
     overflow: auto;
     max-height: 70%;
 }
+
+.bgColor button {
+    background-color: #2A3132;
+}
+
+.bgColor button:hover {
+    background-color: #2A3132;
+}
+
+.lightColor button {
+    /* background-color: #336B87; */
+}
+
+.searchBar button {
+    /* border-style: none; */
+}
 .AppContent::-webkit-scrollbar{
     width: 0em;
 }
