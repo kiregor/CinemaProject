@@ -20,10 +20,14 @@ import FutureMoviePage from './FutureMoviePage/FutureMoviePage'
 import BookingSuccessPage from './summary/BookingSuccessPage';
 import ErrorPage from './ErrorPage/ErrorPage';
 
+
 class AppPages extends Component {
     constructor(props) {
         super(props);
-        this.state = { width: 0, height: 0 };
+        this.state = { 
+            width: 0, 
+            height: 0
+         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
       }
 

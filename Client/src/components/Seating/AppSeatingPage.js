@@ -7,7 +7,6 @@ class AppSeatingPage extends Component {
     chart;
     bookedSeats = [];
     data = {};
-    eventKey;
     constructor(props) {
         super(props)
         this.state = {
@@ -21,9 +20,7 @@ class AppSeatingPage extends Component {
         // Get pricing data from the session
         this.data = SessionStorageService.getObject('pricing');
         // Convert data from string to number
-        for(let prop in this.data) this.data[prop] = +this.data[prop]
-
-        this.eventKey = '33cdea62-50da-4fa7-a835-c09009a9a99b';
+        for (let prop in this.data) this.data[prop] = +this.data[prop]
 
         SessionStorageService.clearObject();
         this.bookSeats = this.bookSeats.bind(this);
@@ -31,7 +28,7 @@ class AppSeatingPage extends Component {
     }
 
     componentDidMount() {
-       
+
     }
 
     /**
@@ -40,6 +37,10 @@ class AppSeatingPage extends Component {
      */
     bookSeats() {
         this.chart.listSelectedObjects((listOfObjects) => {
+            if (listOfObjects.length === 0) {
+                window.confirm('Please select 1 or more seats');
+                return;
+            }
             listOfObjects.forEach((object) => {
                 let location = object.label;
                 let ticketType = object.selectedTicketType;
@@ -49,13 +50,15 @@ class AppSeatingPage extends Component {
                 this.bookedSeats.push({ location, ticketType, price });
                 // Make sure the list of pricing objects is exported once the list 
                 // is exhausted
-                if (listOfObjects.indexOf(object) === listOfObjects.length - 1) {
-                   SessionStorageService.setObject('bookedSeats', {"booking":{"tickets":this.bookedSeats},"token":null, "holdToken":this.chart.holdToken, "eventToken":this.eventKey});
-                   console.log(SessionStorageService.getObject('bookedSeats'));
-                   // Go to the payment page
-                   window.location.assign("/paymentpage");
-                }
-            })
+            });
+            SessionStorageService.setObject('bookedSeats', {
+                "booking": {
+                    "tickets": this.bookedSeats
+                }, "token": null
+            });
+            console.log(SessionStorageService.getObject('bookedSeats'));
+            // Go to the payment page
+            window.location.assign("/paymentpage");
         });
     }
     clearTickets(e) {
@@ -77,9 +80,9 @@ class AppSeatingPage extends Component {
                         <div className='col-12'>
                             <SeatsioSeatingChart
                                 publicKey='d2967a3f-f10b-48e3-8b3c-424d2169759d'
-                                event={this.eventKey}
+                                event='33cdea62-50da-4fa7-a835-c09009a9a99b'
                                 id='seating-chart'
-                                onRenderStarted={createdChart => this.chart = createdChart}
+                                onRenderStarted={createdChart => { this.chartAdded(createdChart) }}
                                 pricing={[{
                                     'category': 1, 'ticketTypes': [
                                         { 'ticketType': 'adult', 'price': this.data.adultPrice },

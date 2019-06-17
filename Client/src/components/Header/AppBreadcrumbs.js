@@ -19,7 +19,7 @@ const AppBreadcrumbs = (props) => {
     if(i === 0) { append = '';} else {append = '/' + breadcrumbs[i];}
     jsxbreadcrumbs.push(
       <BreadcrumbItem key={i} tag={active} href={prev_links + append}>
-        {capitalize(breadcrumbs[i])}
+        {breadcrumbs[i].match(/\w+\W*/g).map(str => capitalize(str)).join("")}
       </BreadcrumbItem>
     )
     prev_links += append;
