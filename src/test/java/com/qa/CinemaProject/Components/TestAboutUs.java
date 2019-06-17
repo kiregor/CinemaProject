@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -24,7 +25,7 @@ public class TestAboutUs {
 	@BeforeClass
 	public static void setup() {
 		System.setProperty("webdriver.chrome.driver", 
-				"C:\\Users\\Admin\\Downloads\\chromedriver_win32\\chromedriver.exe");
+				"src\\test\\resources\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		
@@ -52,6 +53,7 @@ public class TestAboutUs {
 	}
 	
 	@Test //tests that the page contains required elements
+	@Ignore
 	public void aboutUsLinkContent() throws InterruptedException {
 		we.sendKeys(Keys.ENTER);
 		Thread.sleep(000);
@@ -63,6 +65,7 @@ public class TestAboutUs {
 	}
 	
 	@Test //tests that required elements work i.e. external links
+	@Ignore
 	public void aboutUsLinkFunction() {
 		we.sendKeys(Keys.ENTER);
 		we = driver.findElement(By.xpath("/html/body/div/div[2]/a"));
