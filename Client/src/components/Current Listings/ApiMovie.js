@@ -1,8 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 // import {Modal, Button } from 'react-materialize';
-=======
->>>>>>> development-branch
 import './poster.css'
 
 const Movie = (props) => {
