@@ -23,3 +23,8 @@
 .heading {
     margin-bottom: 2em;
 }
+
+ul
+{
+    list-style-type: none;
+}

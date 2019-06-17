@@ -23,4 +23,8 @@ public class PaymentService {
 		this.payment.makePayment(token,key,cost);
 	}
 	
+	public String getStatus() {
+		return payment.getStatus();
+	}
+	
 }

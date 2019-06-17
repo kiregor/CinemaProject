@@ -47,7 +47,7 @@ class AppSeatingPage extends Component {
                 // Make sure the list of pricing objects is exported once the list 
                 // is exhausted
                 if (listOfObjects.indexOf(object) === listOfObjects.length - 1) {
-                   SessionStorageService.setObject('bookedSeats', {"booking":{"tickets":this.bookedSeats},"token":null});
+                   SessionStorageService.setObject('bookedSeats', {"booking":{"tickets":this.bookedSeats},"token":null, "holdToken":this.chart.holdToken});
                    console.log(SessionStorageService.getObject('bookedSeats'));
                    // Go to the payment page
                    window.location.assign("/paymentpage");

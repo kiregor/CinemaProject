@@ -21,7 +21,7 @@ class AppLogin extends React.Component {
   render() {
     return (
       <div>
-        <Button color="dark" onClick={this.toggle}>Log In</Button>
+        <Button style={{backgroundColor:'#2A3132'}} onClick={this.toggle}>Log In</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Log in</ModalHeader>
           <ModalBody>
