@@ -28,7 +28,7 @@ import static com.qa.CinemaProject.constants.MappingConstants.GET_ALL_BOOKINGS;
 import static com.qa.CinemaProject.constants.MappingConstants.CREATE_SINGLE_BOOKING;
 import static com.qa.CinemaProject.constants.MappingConstants.BOOKING;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_POPULAR;
-import static com.qa.CinemaProject.constants.MappingConstants.GETSUCCESSSTATUS;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_SUCCESS_STATUS;
 import com.qa.CinemaProject.email.Email;
 import com.qa.CinemaProject.email.EmailApplication;
 import com.qa.CinemaProject.entities.Booking;
@@ -113,10 +113,11 @@ public class MovieController {
 	
 	@PostMapping(BOOKING)
 	public void booking(@RequestBody BookingPayment booking ) throws StripeException {
+		System.out.println(booking.getEventToken());
 		int cost = booking.getBooking().getTickets().stream().mapToInt(t -> t.getPrice()).sum();
 		this.paymentService.makePayment(booking.getToken(),cost);
 		if(paymentService.getStatus().equals("success")) {
-			this.bookingService.saveBooking(booking.getBooking(),booking.getHoldToken());
+			this.bookingService.saveBooking(booking.getBooking(),booking.getHoldToken(), booking.getEventToken());
 		}
 	}
 	
@@ -135,12 +136,12 @@ public class MovieController {
 		return movieService.getPopular(movieOne, movieTwo, movieThree);
 	}
 	
-	@PostMapping("/testSeats")
-	public void testSeats(@RequestBody Booking booking) {
-		this.seatsIo.bookTickets(booking.getTickets(), "33cdea62-50da-4fa7-a835-c09009a9a99b");
-	}
+//	@PostMapping("/testSeats")
+//	public void testSeats(@RequestBody Booking booking) {
+//		this.seatsIo.bookTickets(booking.getTickets(), "33cdea62-50da-4fa7-a835-c09009a9a99b");
+//	}
 	
-	@GetMapping(GETSUCCESSSTATUS)
+	@GetMapping(GET_SUCCESS_STATUS)
 	public String getSuccessStatus() {
 		return paymentService.getStatus();
 	}

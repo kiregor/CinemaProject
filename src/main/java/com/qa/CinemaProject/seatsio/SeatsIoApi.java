@@ -17,7 +17,11 @@ public class SeatsIoApi {
 	
 	@Value("${2D.screen}")
 	private String key;
-	SeatsioClient client;
+	private SeatsioClient client;
+	
+	public SeatsIoApi(@Value("${SeatsIo.Key}") String key) {
+		this.client = new SeatsioClient(key);
+	}
 	
 	public MovieEvent createEvent(long movieId, String screenId, String eventKey) {
 		Event event = client.events.create(key, eventKey);
@@ -28,7 +32,7 @@ public class SeatsIoApi {
 	public void bookTickets(List<Ticket> tickets, String eventKey, String holdToken) {
 		tickets.stream().map(t -> t.getLocation()).forEach(t -> System.out.println(t));
 		List<String> tickList = tickets.stream().map(t -> t.getLocation()).collect(Collectors.toList());
-		System.out.println(tickList);
-		client.events.book(eventKey, tickets, holdToken);
+		System.out.println(tickList + " " + eventKey + " " + holdToken);
+		client.events.book(eventKey, tickList, holdToken);
 	}
 }
