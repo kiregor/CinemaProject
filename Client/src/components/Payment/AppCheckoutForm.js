@@ -11,6 +11,7 @@ class CheckoutForm extends Component {
     this.state = {show: false, visible: false};
     this.submit = this.submit.bind(this);
     this.toggle = this.toggle.bind(this);
+    console.log(this.seatInfo.eventToken);
   }
 
   toggle() {
