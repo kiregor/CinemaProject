@@ -19,7 +19,7 @@ const Movie = (props) => {
                 </FlippingCard>
             </div>
             <div>
-                <span style={{ margin:25 }}>
+                <span style={{ contentAlign: "center" }}>
                     <a href={`/listings/${props.title}`}><Button color='danger'>Book Now</Button></a>{' '}
                     <a href={`/listings/${props.title}`}><Button color='secondary'>More Info</Button></a>{' '}
                 </span>
