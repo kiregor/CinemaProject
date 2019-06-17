@@ -1,20 +1,31 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, Input, InputGroup, InputGroupAddon } from 'reactstrap'
+import MovieService from '../../services/MovieService'
 
 class AppSearchBar extends Component {
-
+    keyPresses;
     constructor(props) {
         super(props)
         this.state = {
             modal: false
         }
+        this.keyPresses = 0;
         this.toggle = this.toggle.bind(this);
+        this.onKeyDown = this.onKeyDown.bind(this);
     }
 
     toggle() {
         this.setState(prevState => ({
             modal: !prevState.modal
         }))
+    }
+
+    onKeyDown() {
+        ++this.keyPresses;
+        if(this.keyPresses >= 3) {
+            this.keyPresses = 0;
+            console.log("SEARCH!");
+        }
     }
 
     render() {
@@ -26,7 +37,7 @@ class AppSearchBar extends Component {
                     <ModalBody>
                         <InputGroup>
                             <InputGroupAddon addonType="prepend"><Button>Search</Button></InputGroupAddon>
-                            <Input/>
+                            <Input onKeyDown={this.onKeyDown}/>
                         </InputGroup>
                     </ModalBody>
                 </Modal>
