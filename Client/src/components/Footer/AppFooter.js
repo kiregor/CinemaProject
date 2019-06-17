@@ -9,20 +9,17 @@ class AppFooter extends Component {
     render() {
         return(
     <footer className="site-footer">
-        <Container>
             <Row className="footerRow">
-                <Col md="4" sm="6" xs="12">
+                <Col sm="6" xs="12">
                     <ul className="footer-links">
-                    <h6>Quick Links</h6>
-                        <Row className="footerRow">
-                        <li><a href="/about-us/">About Us </a></li><br/>
-                        <li style={{paddingLeft:10}}><a href="/contact-us/">Contact Us </a></li><br/>
-                        <li style={{paddingLeft:10}}><a href="https://bbfc.co.uk/">Classifications</a></li>
-                        </Row>
+                        <h6>Quick Links</h6>
+                        <li><a href="/about-us/">About Us </a></li>
+                        <li><a href="/contact-us/">Contact Us </a></li>
+                        <li><a href="https://bbfc.co.uk/">Classifications</a></li>
                     </ul>
                 </Col>
 
-                <div className="icons">
+                <Col sm="6" xs="12" className="icons">
                     <ul className="social-icons"> 
                         <li><a className="facebook" href="#"><FontAwesomeIcon icon={['fab', 'facebook']} /></a></li>
                         <li><a className="twitter" href="https://twitter.com/cinema_fs"><FontAwesomeIcon icon={['fab', 'twitter']} /></a></li> 
@@ -30,10 +27,9 @@ class AppFooter extends Component {
                         <li><a className="envelope" href="/contact-us"><FontAwesomeIcon icon="envelope" /></a></li>
                         <li><a className="phone" href="/contact-us"><FontAwesomeIcon icon="phone" /></a></li>  
                     </ul>
-                </div>
+                </Col>
 
             </Row>
-        </Container>
     </footer>
         );
     }
