@@ -7,7 +7,10 @@ class AppSeatingPage extends Component {
     chart;
     bookedSeats = [];
     data = {};
+<<<<<<< HEAD
     eventKey;
+=======
+>>>>>>> origin/development-branch
     constructor(props) {
         super(props)
         this.state = {
@@ -21,9 +24,13 @@ class AppSeatingPage extends Component {
         // Get pricing data from the session
         this.data = SessionStorageService.getObject('pricing');
         // Convert data from string to number
+<<<<<<< HEAD
         for(let prop in this.data) this.data[prop] = +this.data[prop]
 
         this.eventKey = '33cdea62-50da-4fa7-a835-c09009a9a99b';
+=======
+        for (let prop in this.data) this.data[prop] = +this.data[prop]
+>>>>>>> origin/development-branch
 
         SessionStorageService.clearObject();
         this.bookSeats = this.bookSeats.bind(this);
@@ -31,7 +38,11 @@ class AppSeatingPage extends Component {
     }
 
     componentDidMount() {
+<<<<<<< HEAD
        
+=======
+
+>>>>>>> origin/development-branch
     }
 
     /**
@@ -40,6 +51,13 @@ class AppSeatingPage extends Component {
      */
     bookSeats() {
         this.chart.listSelectedObjects((listOfObjects) => {
+<<<<<<< HEAD
+=======
+            if (listOfObjects.length === 0) {
+                window.confirm('Please select 1 or more seats');
+                return;
+            }
+>>>>>>> origin/development-branch
             listOfObjects.forEach((object) => {
                 let location = object.label;
                 let ticketType = object.selectedTicketType;
@@ -60,6 +78,9 @@ class AppSeatingPage extends Component {
     }
     clearTickets(e) {
         SessionStorageService.clearObject('bookedSeats');
+    }
+    chartAdded(newChart) {
+        this.chart = newChart;
     }
     render() {
         return (
@@ -102,11 +123,11 @@ class AppSeatingPage extends Component {
                             />
                         </div>
                     </div>
-                    {true && <div className='row'>
+                    <div className='row'>
                         <div id='book-now' className='col-12'>
                             <Button onClick={this.bookSeats} color='success' size='lg' block>Book Now</Button>
                         </div>
-                    </div>}
+                    </div>
                     <div id='seats-info' className='row'>
                         <div className='col-12'>
                             <h1>QA Cinema 2D<span className='inner-symbol'> &copy;</span> Screen</h1>
