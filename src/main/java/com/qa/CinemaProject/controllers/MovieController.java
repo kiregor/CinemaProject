@@ -29,6 +29,7 @@ import static com.qa.CinemaProject.constants.MappingConstants.CREATE_SINGLE_BOOK
 import static com.qa.CinemaProject.constants.MappingConstants.BOOKING;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_POPULAR;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_SUCCESS_STATUS;
+import static com.qa.CinemaProject.constants.MappingConstants.CHECK_MOVIES;
 import com.qa.CinemaProject.email.Email;
 import com.qa.CinemaProject.email.EmailApplication;
 import com.qa.CinemaProject.entities.Booking;
@@ -144,6 +145,11 @@ public class MovieController {
 	@GetMapping(GET_SUCCESS_STATUS)
 	public String getSuccessStatus() {
 		return paymentService.getStatus();
+	}
+	
+	@PostMapping(CHECK_MOVIES)
+	public void checkMovies(@RequestBody List<Movie> movies) {
+		this.movieService.checkAndAddMovies(movies);
 	}
 
 }
