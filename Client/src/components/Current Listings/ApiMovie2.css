@@ -1,6 +1,13 @@
 .flip {
-     width: 800px;
-     height: 200px;
-      position: relative;
-      margin: 50px auto;
-  }
+    width: 800px;
+    height: 200px;
+    position: relative;
+    margin: 50px auto;
+}
+
+a button.booknowbtn{
+  background:#763626
+}
+a button.moreinfobtn{
+  background:#336b87
+}

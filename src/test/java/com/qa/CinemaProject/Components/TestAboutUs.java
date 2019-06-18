@@ -34,7 +34,7 @@ public class TestAboutUs {
 	@Before
 	public void init() throws InterruptedException {
 		driver.get(url);
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/footer/div/div/div[1]/ul/div/li[1]/a"));
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/footer/div/div[1]/ul/li[1]/a"));
 		Thread.sleep(500);
 	}
 	
