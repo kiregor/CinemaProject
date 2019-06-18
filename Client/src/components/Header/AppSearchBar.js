@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, Input, InputGroup, InputGroupAddon, ListGroup, ListGroupItem } from 'reactstrap'
 import movieList from '../../services/MovieList'
+import MovieService from '../../services/MovieService';
 
 class AppSearchBar extends Component {
 
@@ -30,7 +31,14 @@ class AppSearchBar extends Component {
         let input = e.target.value;
         this.setState({searchInput: input});
         if(input.length !== 0 && input.length % 3 === 0) {
-            this.populateResults(e.target.value, movieList);
+            MovieService.getMoviesFromBackend()
+            .then(response => {
+                this.populateResults(input, response.data);
+            })
+            .catch(error => {
+                console.log(error)
+            })
+            
         } else if(input.length === 0) {
             this.clearResults();
         }
@@ -44,7 +52,7 @@ class AppSearchBar extends Component {
             movieLowerCase = movieList[i].movieName;
             movieLowerCase = Array.prototype.map.call(movieLowerCase, str => str.toLowerCase()).join("")
             if(movieLowerCase.indexOf(searchTerm) !== -1){
-                results.push(<ListGroupItem tag='a' href={`/listings/${movieLowerCase}`}>{movieList[i].movieName}</ListGroupItem>);
+                results.push(<ListGroupItem key={i} tag='a' href={`/listings/${movieLowerCase}`}>{movieList[i].movieName}</ListGroupItem>);
             }
         }
         if(results.length > 0) { 
