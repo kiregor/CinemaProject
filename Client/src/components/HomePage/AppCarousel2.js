@@ -6,7 +6,7 @@ const MoviePoster = (props) => {
   return(
     <div>
   <h1>Now Playing</h1>
-    <Carousel slidesToShow='5' wrapAround>
+    <Carousel slidesToShow='5' wrapAround pauseOnHover >
       {
         props.movies.map((movie, i) => {
           return (

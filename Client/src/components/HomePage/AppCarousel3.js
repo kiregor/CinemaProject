@@ -1,20 +1,22 @@
 import React from 'react';
+import AppCarousel21 from './AppCarousel21';
 import Carousel from 'nuka-carousel';
 
-export default class extends React.Component {
-  render() {
-    return (
-      <div>
-      <h2> Future Releases </h2>
-      <Carousel slidesToShow='4' cellSpacing='15' wrapAround="true" autoplay='true' autoplayInterval='1500'>
-        <h5>hi</h5>
-        <h5>bye</h5>
-        <h5>hi</h5>
-        <h5>bye</h5>
-        <h5>hi</h5>
-        <h5>bye</h5>
-      </Carousel>
-      </div>
-    );
-  }
+const MoviePoster = (props) => {
+  return(
+    <div>
+  <h1>Coming Soon</h1>
+    <Carousel slidesToShow='5' wrapAround pauseOnHover >
+      {
+        props.movies.map((movie, i) => {
+          return (
+            <AppCarousel21 key={i} image={movie.poster_path} title={movie.title}/>
+          )
+        })
+      }
+    </Carousel>
+    </div>
+  );
 }
+
+export default MoviePoster;

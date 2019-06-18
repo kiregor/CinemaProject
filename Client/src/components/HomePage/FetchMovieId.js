@@ -3,6 +3,7 @@ import { Spinner } from 'reactstrap';
 import FetchPosterPath from './FetchPosterPath';
 import Carousel from './AppCarousel';
 import Carousel2 from './AppCarousel2';
+import Carousel3 from './AppCarousel3';
 
 class FetchMovieId extends Component{
     constructor(props){
@@ -45,7 +46,11 @@ class FetchMovieId extends Component{
             return(
                 <div>
                     <Carousel/>
+                    <br/>
                     <Carousel2 movies={this.state.movie} />
+                    <br/><br/><br/><br/><br/>
+                    <Carousel3 movies={this.state.movieFuture} />
+                    <br/><br/><br/>
                 </div>
             );
         }
