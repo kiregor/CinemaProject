@@ -21,7 +21,7 @@ import com.qa.CinemaProject.tests.junit.repositories.EmbeddedMovieEventRepo;
 public class EmbeddedMovieEventService extends MovieEventService implements EmbeddedService<MovieEvent> {
 
 	public EmbeddedMovieEventService(EmbeddedMovieEventRepo eventRepo, SequenceRepo sequenceRepo) {
-		super(eventRepo, sequenceRepo);
+		super(eventRepo, sequenceRepo, null);
 		// TODO Auto-generated constructor stub
 	}
 	

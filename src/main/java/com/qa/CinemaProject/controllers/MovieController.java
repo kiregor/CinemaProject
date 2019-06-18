@@ -190,7 +190,7 @@ public class MovieController {
 	}
 	
 	@PostMapping("/getevents")
-	public List<MovieEvent> getEvents(Movie movie){
+	public List<MovieEvent> getEvents(@RequestBody Movie movie){
 		return eventService.getEventsByMovie(movie);
 	}
 
