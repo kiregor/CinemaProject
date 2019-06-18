@@ -1,5 +1,6 @@
 package com.qa.CinemaProject.seatsio;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,9 +24,9 @@ public class SeatsIoApi {
 		this.client = new SeatsioClient(key);
 	}
 	
-	public MovieEvent createEvent(long movieId, String screenId, String eventKey) {
+	public MovieEvent createEvent(long movieId, String screenId, String eventKey, Date date) {
 		Event event = client.events.create(key, eventKey);
-		MovieEvent tempEvent = new MovieEvent(movieId, screenId, event.key);
+		MovieEvent tempEvent = new MovieEvent(movieId, screenId, event.key, date);
 		return tempEvent;
 	}
 	

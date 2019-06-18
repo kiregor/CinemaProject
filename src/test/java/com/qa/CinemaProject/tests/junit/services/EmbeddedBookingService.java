@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.qa.CinemaProject.entities.Booking;
+import com.qa.CinemaProject.repo.BookingRepo;
 import com.qa.CinemaProject.repo.SequenceRepo;
 import com.qa.CinemaProject.service.BookingService;
 import com.qa.CinemaProject.tests.junit.repositories.EmbeddedBookingRepo;
@@ -12,9 +13,12 @@ import com.qa.CinemaProject.tests.junit.repositories.EmbeddedBookingRepo;
 @Service
 public class EmbeddedBookingService extends BookingService implements EmbeddedService<Booking> {
 	
+	EmbeddedBookingRepo bookingRepo;
+	
 	public EmbeddedBookingService(EmbeddedBookingRepo bookingRepo, SequenceRepo sequenceRepo) {
-		super(bookingRepo, sequenceRepo);
+		super(bookingRepo, sequenceRepo, null );
 		// TODO Auto-generated constructor stub
+		this.bookingRepo = bookingRepo;
 	}
 	
 	@Override

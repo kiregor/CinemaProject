@@ -2,10 +2,13 @@ package com.qa.CinemaProject.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.qa.CinemaProject.entities.Screen;
 import com.qa.CinemaProject.repo.ScreenRepo;
 import com.qa.CinemaProject.repo.SequenceRepo;
 
+@Service
 public class ScreenService {
 
 	protected ScreenRepo screenRepo;
