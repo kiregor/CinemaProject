@@ -50,34 +50,27 @@ class AppNavbar extends Component {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className='mr-auto' navbar>
                 <NavItem onMouseOver={this.onMouseOver('listings')} onMouseOut={this.onMouseOut('listings')} style={{backgroundColor:this.state.listings}}>
-                  <NavLink href="/Listings" color='primary'>Listings</NavLink>    
+                  <NavLink href="/Listings" color='primary'>Listings</NavLink>
                 </NavItem>
                 <NavItem onMouseOver={this.onMouseOver('future')} onMouseOut={this.onMouseOut('future')} style={{backgroundColor:this.state.future}}>
-                  <NavLink href="/Future-Listings" color='primary'>Future Releases</NavLink>    
+                  <NavLink href="/Future-Listings" color='primary'>Future Releases</NavLink>
                 </NavItem>
                 <NavItem onMouseOver={this.onMouseOver('screens')} onMouseOut={this.onMouseOut('screens')} style={{backgroundColor:this.state.screens}}>
                   <NavLink href="/" color='primary'>Screens</NavLink>
-                </NavItem>    
+                </NavItem>
                 <NavItem onMouseOver={this.onMouseOver('gettinghere')} onMouseOut={this.onMouseOut('gettinghere')} style={{backgroundColor:this.state.gettinghere}}>
-                  <NavLink href="/getting-here" color='primary'>Getting Here</NavLink>    
+                  <NavLink href="/getting-here" color='primary'>Getting Here</NavLink>
                 </NavItem>
                 <NavItem onMouseOver={this.onMouseOver('myaccount')} onMouseOut={this.onMouseOut('myaccount')} style={{backgroundColor:this.state.myaccount}}>
-                  <NavLink href="/" color='primary'>My Account</NavLink>    
-                </NavItem> 
+                  <NavLink href="/" color='primary'>My Account</NavLink>
+                </NavItem>
               </Nav>
               <Nav className='ml-auto' navbar>
                 <NavItem>
-                  <AppSearchBar/>
+                    <AppSearchBar/>
+                  <AppLogin/>
                 </NavItem>
-                <NavItem>
-                  <AppLogin/>    
-                </NavItem>
-                <NavItem>
-                  <AppCreateAccount/>    
-                </NavItem>
-                <NavItem>
-                  <FontAwesomeIcon icon={faUser}/>
-                </NavItem>
+
               </Nav>
             </Collapse>
           </Container>

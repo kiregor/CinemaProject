@@ -75,3 +75,4 @@ const MovieDisplay = (props) => {
     )   
 }
 export default MovieDisplay;
+export var bgColors;
