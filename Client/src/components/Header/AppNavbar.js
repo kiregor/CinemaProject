@@ -62,7 +62,7 @@ class AppNavbar extends Component {
                   <NavLink href="/getting-here" color='primary'>Getting Here</NavLink>    
                 </NavItem>
                 <NavItem onMouseOver={this.onMouseOver('myaccount')} onMouseOut={this.onMouseOut('myaccount')} style={{backgroundColor:this.state.myaccount}}>
-                  <NavLink href="/" color='primary'>My Account</NavLink>    
+                  <NavLink href="/my-account" color='primary'>My Account</NavLink>    
                 </NavItem> 
               </Nav>
               <Nav className='ml-auto' navbar>

@@ -15,9 +15,10 @@ import './AppPages.css';
 import MoviePage from './MoviePage/MoviePage'
 import BookingService from '../services/BookingService';
 import MovieService from '../services/MovieService';
-import SessionStorageService from '../services/SessionStorageService'
-import FutureMoviePage from './FutureMoviePage/FutureMoviePage'
+import SessionStorageService from '../services/SessionStorageService';
+import FutureMoviePage from './FutureMoviePage/FutureMoviePage';
 import BookingSuccessPage from './summary/BookingSuccessPage';
+import MyAccountPage from './Login/MyAccountPage';
 import ErrorPage from './ErrorPage/ErrorPage';
 
 class AppPages extends Component {
@@ -87,6 +88,7 @@ class AppPages extends Component {
                             <Route path='/Listings/:movietitle' component={MoviePage}/>
                             <Route path='/Listings' component={CurrentReleases}/>
                             <Route path='/summary/bookingsuccesspage' component={BookingSuccessPage}/>
+                            <Route path='/my-account' component={MyAccountPage}/>
                             <Route component={ErrorPage}/>
                         </Switch>
                     </div>
