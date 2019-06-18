@@ -33,7 +33,7 @@ public class BookingTest {
 		booking.setTickets(tickets);
 		// The totalPrice field has to be set manually, instead of adding up the ticket prices internally.
 		booking.setTotalPrice(expectedTotalPrice);
-		String expected = String.format("Booking[id=%s, totalPrice='%s', numTickets='%s']",
+		String expected = String.format("Booking[id=%s, totalPrice='%s', numTickets=%d]",
 				bookingId, expectedTotalPrice, expectedNumberOfTickets);
 		assertThat(booking.toString()).isEqualTo(expected);
 	}
