@@ -1,7 +1,8 @@
 import React from 'react';
 import {TabContent, TabPane, Nav, NavItem, NavLink, Row,Col} from 'reactstrap';
 import classnames from 'classnames';
-
+import bgColors from '../../Constants';
+                
 export default class AppDateTabs extends React.Component {
   constructor(props) {
     super(props);
@@ -73,7 +74,7 @@ export default class AppDateTabs extends React.Component {
                         </Col>
                         <Col l12>
 
-                        <a href="/seatbooking">19:00</a>
+                        <a id="timing" href="/seatbooking">19:00</a>
                         </Col>
 
                     </Row>

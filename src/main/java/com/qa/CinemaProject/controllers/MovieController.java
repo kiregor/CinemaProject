@@ -33,10 +33,12 @@ import static com.qa.CinemaProject.constants.MappingConstants.GET_SUCCESS_STATUS
 import static com.qa.CinemaProject.constants.MappingConstants.CHECK_MOVIES;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_SCREENS;
 import static com.qa.CinemaProject.constants.MappingConstants.CREATE_EVENT;
+import static com.qa.CinemaProject.constants.MappingConstants.ADMIN_LOGIN;
 import com.qa.CinemaProject.email.Email;
 import com.qa.CinemaProject.email.EmailApplication;
 import com.qa.CinemaProject.entities.Booking;
 import com.qa.CinemaProject.entities.BookingPayment;
+import com.qa.CinemaProject.entities.Login;
 import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.entities.MovieTemp;
 import com.qa.CinemaProject.entities.Popular;
@@ -176,6 +178,11 @@ public class MovieController {
 	@GetMapping("/testMovieTemp")
 	public MovieTemp test() {
 		return new MovieTemp(1, "", "", new Date());
+	}
+	
+	@PostMapping(ADMIN_LOGIN)
+	public boolean adminLogin(@RequestBody Login login) {
+		return this.adminService.login(login);
 	}
 
 }
