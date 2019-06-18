@@ -2,6 +2,7 @@ import React from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import DateTabs from './AppDateTabs';
 import './poster.css'
+import axios from 'axios';
 
 // BASE URL FOR POSTER -->  http://image.tmdb.org/t/p/w500$
 // BASE URL FOR YOUTUBE VIDEO --> https://www.youtube.com/watch/?v=
@@ -33,6 +34,15 @@ const styles2 = {
 
 
 const MovieDisplay = (props) => {
+    
+    let dataReceived = [];
+
+    axios.post('http://locolhost:8080/getevents' , {movieName:props.title, imdbId:props.id} ) 
+        .then(data => 
+                dataReceived = data.data
+            )
+        console.log(dataReceived);
+        
     return (
         
         <Container>
