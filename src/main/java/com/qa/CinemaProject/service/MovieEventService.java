@@ -1,9 +1,11 @@
 package com.qa.CinemaProject.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.qa.CinemaProject.entities.Movie;
 import com.qa.CinemaProject.entities.MovieEvent;
 import com.qa.CinemaProject.repo.EventRepo;
 import com.qa.CinemaProject.repo.SequenceRepo;
@@ -34,6 +36,10 @@ public class MovieEventService {
 	
 	public List<MovieEvent> getAllEvents(){
 		return this.eventRepo.findAll();
+	}
+	
+	public List<MovieEvent> getEventsByMovie(Movie movie){
+		return this.eventRepo.findAll().stream().filter(m -> m.getMovieId() == movie.getId()).collect(Collectors.toList());
 	}
 
 }
