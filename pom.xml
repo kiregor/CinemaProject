@@ -13,6 +13,10 @@
 	<artifactId>CinemaProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CinemaProject</name>
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
+
 	<repositories>
 		<repository>
 			<id>jitpack.io</id>
@@ -22,7 +26,7 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>9</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 	</properties>
@@ -121,32 +125,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version><!--$NO-MVN-MAN-VER$-->
+				<version>3.8.0</version>
 				<configuration>
-					<release>11</release>
+					<release>9</release>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.0</version><!--$NO-MVN-MAN-VER$-->
-				<configuration>
-					<argLine>
-						--illegal-access=permit
-					</argLine>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.22.0</version><!--$NO-MVN-MAN-VER$-->
-				<configuration>
-					<argLine>
-						--illegal-access=permit
-					</argLine>
-				</configuration>
-			</plugin>
+
 		</plugins>
 	</build>
-
 </project>
