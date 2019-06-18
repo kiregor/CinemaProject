@@ -50,7 +50,7 @@ class AppLogin extends Component {
             />
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={this.toggle}>Close</Button>
+            <Button color="danger" onClick={this.toggle}>Close</Button>
           </ModalFooter>
         </Modal>
       </div>
