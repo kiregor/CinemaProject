@@ -126,12 +126,13 @@ public class MovieController {
 	}
 	
 	@PostMapping(BOOKING)
-	public void booking(@RequestBody BookingPayment booking ) throws StripeException {
-		System.out.println(booking.getEventToken());
-		int cost = booking.getBooking().getTickets().stream().mapToInt(t -> t.getPrice()).sum();
-		this.paymentService.makePayment(booking.getToken(),cost);
+	public void booking(@RequestBody BookingPayment bookingPayment ) throws StripeException {
+		System.out.println(bookingPayment.getEventToken());
+		int cost = bookingPayment.getBooking().getTickets().stream().mapToInt(t -> t.getPrice()).sum();
+		this.paymentService.makePayment(bookingPayment.getToken(),cost);
 		if(paymentService.getStatus().equals("success")) {
-			this.bookingService.saveBooking(booking.getBooking(),booking.getHoldToken(), booking.getEventToken());
+			bookingPayment.getBooking().setUserId(bookingPayment.getUserId());
+			this.bookingService.saveBooking(bookingPayment.getBooking(),bookingPayment.getHoldToken(), bookingPayment.getEventToken());
 		}
 	}
 	

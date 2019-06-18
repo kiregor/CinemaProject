@@ -3,7 +3,7 @@ import { LOCAL_BACKEND_SERVER, CHECK_TICKETS } from '../../src/Constants'
 
 class LoginService {
     hasLoggedIn(){
-        return (window.sessionStorage.getItem('loggedin')==='true');
+        return (window.sessionStorage.getItem('userId')!==null);
     }
     getTickets() {
         let user_id=window.sessionStorage.getItem('tokenid');
