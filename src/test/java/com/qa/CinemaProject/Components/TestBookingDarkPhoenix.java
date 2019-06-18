@@ -47,8 +47,14 @@ public class TestBookingDarkPhoenix {
 		List<WebElement> list= driver.findElements(By.tagName("span"));
 		assertTrue(list.stream().anyMatch(x->x.getText().equals("Dark Phoenix")));		
 		we = driver.findElement(By.id("timing"));
-		we.click();		
+		we.click();	
+		Thread.sleep(5000);
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div[1]/div/h3"));
+		assertEquals("Specify the number of seats:", we.getText());
+		we = driver.findElement(By.xpath("//*[@id=\"chartContainer\"]/canvas"));
 	}
+	
+	//*[@id="chartContainer"]/canvas
 	
 	
 	
