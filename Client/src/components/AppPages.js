@@ -19,6 +19,7 @@ import SessionStorageService from '../services/SessionStorageService'
 import FutureMoviePage from './FutureMoviePage/FutureMoviePage'
 import BookingSuccessPage from './summary/BookingSuccessPage';
 import ErrorPage from './ErrorPage/ErrorPage';
+import GoogleSignInAPI from './accounts/GoogleSignInAPI';
 
 class AppPages extends Component {
     constructor(props) {
@@ -30,8 +31,8 @@ class AppPages extends Component {
     pricing = {}
     componentWillMount() {
         BookingService.getPricingInformation()
-        .then( response => { 
-            if(response && response.data){ 
+        .then( response => {
+            if(response && response.data){
                 SessionStorageService.setObject('pricing', response.data);
             }
         })
@@ -86,6 +87,7 @@ class AppPages extends Component {
                             <Route path='/Future-Listings' component={FutureReleases}/>
                             <Route path='/Listings/:movietitle' component={MoviePage}/>
                             <Route path='/Listings' component={CurrentReleases}/>
+                            <Route path='/accounts/googlesigninapi' component={GoogleSignInAPI}/>
                             <Route path='/summary/bookingsuccesspage' component={BookingSuccessPage}/>
                             <Route component={ErrorPage}/>
                         </Switch>
