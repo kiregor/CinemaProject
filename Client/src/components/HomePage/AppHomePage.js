@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Carousel from './AppCarousel';
+import FetchMovieId from './FetchMovieId';
+//import Carousel from './AppCarousel';
 
 
 class AppHomePage extends Component {
@@ -8,7 +9,7 @@ class AppHomePage extends Component {
         return (
             <>
             <div className="AppHomePage" >
-                <Carousel/>
+                <FetchMovieId/>
             </div>
             </>
         );

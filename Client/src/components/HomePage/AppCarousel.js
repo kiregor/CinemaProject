@@ -9,9 +9,9 @@ import {
 
 import './home.css';
 
-const items = [
+const items = (props) => [
   {
-    src: `http://image.tmdb.org/t/p/w1280/vVpEOvdxVBP2aV166j5Xlvb5Cdc.jpg`,
+    src: `http://image.tmdb.org/t/p/w1280/${props.image}.jpg`,
     altText: 'Movie',
     caption: 'Movie 1'
   },
