@@ -82,11 +82,7 @@ public class BookingServiceTest {
 			t.setLocation(l);
 			b.setTickets(List.of(t));
 			return b;
-<<<<<<< HEAD
 		}).forEach(booking -> ebs.saveBooking(booking, DUMMY_HOLD_TOKEN, "eventToken"));
-=======
-		}).forEach(booking -> ebs.saveBooking(booking, DUMMY_HOLD_TOKEN, ""));
->>>>>>> development-branch
 		// Then they should all be retrievable.
 		List<Booking> bookings = ebs.getAllBookings();
 		Stream.of(location1, location2, location3).forEach(location -> {
@@ -109,11 +105,7 @@ public class BookingServiceTest {
 		t.setLocation(location);
 		b.setTickets(List.of(t));
 		b.setTotalPrice(totalPrice);
-<<<<<<< HEAD
 		ebs.saveBooking(b, DUMMY_HOLD_TOKEN, "eventToken");
-=======
-		ebs.saveBooking(b, DUMMY_HOLD_TOKEN, "");
->>>>>>> development-branch
 		Optional<Booking> b1 = this.getBookingByTotalPrice(totalPrice);
 		Assertions.assertThat(b1).isNotEmpty();
 		ebs.delete(b1.get());
@@ -126,11 +118,7 @@ public class BookingServiceTest {
 		int[] totalPrices = { 1, 3000, 245 };
 		IntStream.range(0, 3).forEach(i -> {
 			Booking booking = new Booking(List.of(), totalPrices[i]);
-<<<<<<< HEAD
 			ebs.saveBooking(booking, "holdToken", "eventToken");
-=======
-			ebs.saveBooking(booking, "holdToken", "");
->>>>>>> development-branch
 		});
 		Arrays.stream(totalPrices).forEach(price -> getBookingByTotalPrice(price).ifPresent(booking -> {
 			assertThat(ebs.retrieveBooking(booking.getId())).isEqualToComparingFieldByField(booking);
