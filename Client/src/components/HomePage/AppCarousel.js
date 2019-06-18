@@ -36,7 +36,6 @@ class Example extends Component {
     this.goToIndex = this.goToIndex.bind(this);
     this.onExiting = this.onExiting.bind(this);
     this.onExited = this.onExited.bind(this);
-  
   }
 
   onExiting() {
