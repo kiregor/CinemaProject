@@ -31,7 +31,6 @@ class AppLogin extends Component {
 
   render() {
       const responseGoogle = (response) => {
-          console.log("WORKKKKKK!!!!")
           if(response.googleId === undefined){
               console.log("User did NOT login!!")
           }else {

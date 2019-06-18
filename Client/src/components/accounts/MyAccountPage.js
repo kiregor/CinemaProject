@@ -7,21 +7,18 @@ import BookingService from '../../services/BookingService';
 import SessionStorageService from '../../services/SessionStorageService';
 
 class MyAccountPage extends Component {
-    //if not logged in show login/sign up
-    //else if logged in do a request for their tickets
-
     constructor(props) {
         super(props);
         this.getTickets = LoginService.getTickets();
         this.loggedIn = LoginService.hasLoggedIn();
     }
 
-    getBookings(){
-        let bookings = BookingService.getUserBookings(SessionStorageService.getObject("userId"));
-        console.log("User Bookings: "+bookings);
-    }
+
 
     render() {
+        // console.log("WORKKKKKK");
+
+            
         if(!this.loggedIn){
             return (
                 <div className='NotLoggedIn'>
@@ -39,7 +36,6 @@ class MyAccountPage extends Component {
             </div>
         )
     }
-
     componentDidMount () {
 
     }
