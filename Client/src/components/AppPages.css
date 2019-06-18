@@ -38,3 +38,10 @@ html, body {
 .AppContent::-webkit-scrollbar{
     width: 0em;
 }
+
+ul.searchResults {
+    margin-top: .7em;
+    margin-left: 3em;
+}
+
+

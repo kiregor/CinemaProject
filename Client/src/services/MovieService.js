@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOCAL_BACKEND_SERVER, PRICE_LIST, API_KEY, CHECK_MOVIES } from '../../src/Constants'
+import { LOCAL_BACKEND_SERVER, PRICE_LIST, API_KEY, CHECK_MOVIES, GET_ALL_MOVIES } from '../../src/Constants'
 
 class Movie {
     movieName
@@ -50,6 +50,9 @@ class MovieService {
 
     sendMoviesToBackend(movies) {
         return axios.post(`${LOCAL_BACKEND_SERVER}/${CHECK_MOVIES}`, movies)
+    }
+    getMoviesFromBackend() {
+        return axios.get(`${LOCAL_BACKEND_SERVER}/${GET_ALL_MOVIES}`)
     }
 
 }
