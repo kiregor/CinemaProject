@@ -30,8 +30,8 @@ class AppLogin extends Component {
 
 
   render() {
-
       const responseGoogle = (response) => {
+          console.log("WORKKKKKK!!!!")
           if(response.googleId === undefined){
               console.log("User did NOT login!!")
           }else {
@@ -39,7 +39,7 @@ class AppLogin extends Component {
               console.log(response);
               console.log(response.googleId);
               SessionStorageService.setObject("userId",response.googleId);
-              // window.location.assign("Redirect it to the account page");
+              window.location.assign("/my-account");
           }
       }
 

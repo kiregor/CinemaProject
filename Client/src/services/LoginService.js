@@ -6,7 +6,7 @@ class LoginService {
         return (window.sessionStorage.getItem('userId')!==null);
     }
     getTickets() {
-        let user_id=window.sessionStorage.getItem('tokenid');
+        let user_id=window.sessionStorage.getItem('userId');
         return axios.post(`${LOCAL_BACKEND_SERVER}/${CHECK_TICKETS}`,{user_id});
     }
 }

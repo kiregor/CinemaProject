@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOCAL_BACKEND_SERVER, PRICE_LIST } from '../../src/Constants'
+import { LOCAL_BACKEND_SERVER, PRICE_LIST, GET_USER_BOOKINGS} from '../../src/Constants'
 
 class BookingService {
     url;
@@ -9,10 +9,6 @@ class BookingService {
 
     getPricingInformation() {
         return axios.get(`${this.url}/${PRICE_LIST}`);
-    }
-
-    getUserBookings(userId){
-        return axios.get()
     }
 }
 

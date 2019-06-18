@@ -3,15 +3,22 @@ import {Container, Row, Col} from 'reactstrap';
 import LoginService from '../../services/LoginService';
 import AppHomePage from '../HomePage/AppHomePage';
 import AppLogin from '../Header/AppLogin';
+import BookingService from '../../services/BookingService';
+import SessionStorageService from '../../services/SessionStorageService';
 
 class MyAccountPage extends Component {
     //if not logged in show login/sign up
     //else if logged in do a request for their tickets
-    
+
     constructor(props) {
         super(props);
         this.getTickets = LoginService.getTickets();
         this.loggedIn = LoginService.hasLoggedIn();
+    }
+
+    getBookings(){
+        let bookings = BookingService.getUserBookings(SessionStorageService.getObject("userId"));
+        console.log("User Bookings: "+bookings);
     }
 
     render() {
@@ -27,12 +34,8 @@ class MyAccountPage extends Component {
         }
         return (
             <div className='MyAccountPage'>
-                <Container>
-                    <Row>
-                        <Col>
-                        </Col>
-                    </Row>
-                </Container>
+            <h2>Welcome</h2>
+
             </div>
         )
     }

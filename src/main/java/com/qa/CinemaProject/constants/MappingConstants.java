@@ -25,5 +25,5 @@ public interface MappingConstants {
 			SCREEN_COLLECTION = "screen",
 			EVENT_COLLECTION = "event",
 			BOOKING_COLLECTION = "booking",
-			GET_USER_BOOKINGS="/getUserBookings";
+			GET_USER_BOOKINGS="/getUserBookings/{id}";
 }

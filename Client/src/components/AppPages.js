@@ -18,9 +18,8 @@ import MovieService from '../services/MovieService';
 import SessionStorageService from '../services/SessionStorageService';
 import FutureMoviePage from './FutureMoviePage/FutureMoviePage';
 import BookingSuccessPage from './summary/BookingSuccessPage';
-import MyAccountPage from './Login/MyAccountPage';
+import MyAccountPage from './accounts/MyAccountPage';
 import ErrorPage from './ErrorPage/ErrorPage';
-import GoogleSignInAPI from './accounts/GoogleSignInAPI';
 
 class AppPages extends Component {
     constructor(props) {
@@ -58,11 +57,11 @@ class AppPages extends Component {
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
       }
-      
+
       componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
       }
-      
+
       updateWindowDimensions() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
       }
@@ -88,7 +87,6 @@ class AppPages extends Component {
                             <Route path='/Future-Listings' component={FutureReleases}/>
                             <Route path='/Listings/:movietitle' component={MoviePage}/>
                             <Route path='/Listings' component={CurrentReleases}/>
-                            <Route path='/accounts/googlesigninapi' component={GoogleSignInAPI}/>
                             <Route path='/summary/bookingsuccesspage' component={BookingSuccessPage}/>
                             <Route path='/my-account' component={MyAccountPage}/>
                             <Route component={ErrorPage}/>

@@ -11,6 +11,7 @@ import {
 } from 'reactstrap';
 import AppCreateAccount from './AppLogout';
 import AppLogin from './AppLogin';
+import AppLogout from './AppLogout';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AppSearchBar from './AppSearchBar';
@@ -64,9 +65,14 @@ class AppNavbar extends Component {
                 </NavItem>
               </Nav>
               <Nav className='ml-auto' navbar>
+                  <NavItem>
+                      <AppLogin/>
+                  </NavItem>
+                  <NavItem>
+                      <AppLogout/>
+                  </NavItem>
                 <NavItem>
                     <AppSearchBar/>
-                  <AppLogin/>
                 </NavItem>
 
               </Nav>

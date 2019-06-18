@@ -188,7 +188,7 @@ public class MovieController {
 	}
 	
 	@GetMapping(GET_USER_BOOKINGS)
-	public List<Booking> getUserBookings(String userId){
+	public List<Booking> getUserBookings(@PathVariable String userId){
 		return this.bookingService.getUserBookings(userId);
 	}
 
