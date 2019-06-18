@@ -2,22 +2,20 @@ package com.qa.CinemaProject.Components;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 import java.util.List;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
-public class TestBookingOption {
+public class TestDarkPhoenixMoviePage { //to test other movies use corresponding IDs
 
 	static WebDriver driver;
 	static String url= "localhost:3000/Listings";
@@ -34,33 +32,36 @@ public class TestBookingOption {
 	
 	@Before
 	public void init() throws InterruptedException {
-		driver.get(url);		
-		Thread.sleep(1000);
-		
-	}
-
-	@Test
-	public void bookNowVisible() throws InterruptedException {		
-		we = driver.findElement(By.id("Dark phoenix"));			
-				
+		driver.get(url);
+		Thread.sleep(500);
 	}
 	
-//	@Test
-//	public void bookNowLinkContent() throws InterruptedException {
-//		assertEquals("Book Now", we.getText());
-//		we.click();
-//		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div/div[4]/div/div/a"));
-//		assertEquals("Upcoming Showings", we.getText());
-//				
-//	}
-//	
-//	@Test
-//	public void bookNowLinkFunction() throws InterruptedException {
-//		we.click();
-//		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div/div[5]/div/div/div/div[1]/div[1]/div[2]"));
-//		we.click();
-//				
-//	}
+	@Test
+	public void moviePageLinkVisible(){
+		List<WebElement> list= driver.findElements(By.tagName("a"));
+		assertTrue(list.stream().anyMatch(x->x.getText().equals("Book Now")));
+		
+	}
+	
+	@Test
+	public void moviePageLinkAccessible() {	
+		we = driver.findElement(By.id("Dark Phoenix"));
+		assertEquals("Book Now", we.getText());	
+		we.click();		
+	}
+	
+	@Test
+	public void bookingFeature() throws InterruptedException {
+		
+		we = driver.findElement(By.id("Dark Phoenix"));
+		assertEquals("Book Now", we.getText());	
+		we.click();		
+		
+		List<WebElement> list= driver.findElements(By.tagName("span"));
+		assertTrue(list.stream().anyMatch(x->x.getText().equals("Dark Phoenix")));		
+		we = driver.findElement(By.id("timing"));
+		we.click();		
+	}
 	
 	
 	
@@ -73,9 +74,7 @@ public class TestBookingOption {
 	
 	@AfterClass
 	public static void teardown() throws InterruptedException {
-		Thread.sleep(3000);
 		driver.quit();
 	}
 }
-
 
