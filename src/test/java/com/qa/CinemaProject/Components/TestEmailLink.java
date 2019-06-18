@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -31,7 +32,7 @@ public class TestEmailLink {
 	@Before
 	public void init() throws InterruptedException {
 		driver.get(url);
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/footer/div/div/div[1]/ul/div/li[2]/a"));
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/footer/div/div[1]/ul/li[2]/a"));
 		Thread.sleep(1000);
 	}
 

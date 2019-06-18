@@ -40,6 +40,10 @@ class AppSeatingPage extends Component {
      */
     bookSeats() {
         this.chart.listSelectedObjects((listOfObjects) => {
+            if (listOfObjects.length === 0) {
+                window.confirm('Please select 1 or more seats');
+                return;
+            }
             listOfObjects.forEach((object) => {
                 let location = object.label;
                 let ticketType = object.selectedTicketType;

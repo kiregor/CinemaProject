@@ -46,7 +46,7 @@ public class TestContactUs {
 	public void contactUsLinkWorking() {		
 		we.sendKeys(Keys.ENTER);
 		we = driver.findElement(By.xpath("//*[@id=\"bcrumb\"]/ol/span"));
-		assertEquals("contact-us", we.getText());		
+		assertEquals("Contact-us", we.getText());		
 		
 	}
 	
