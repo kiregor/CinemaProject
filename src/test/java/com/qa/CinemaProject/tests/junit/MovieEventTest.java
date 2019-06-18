@@ -2,6 +2,8 @@ package com.qa.CinemaProject.tests.junit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +23,7 @@ public class MovieEventTest {
 		String expected, screenId = "Test Screen Id";
 		long id = 0, movieId = 2;
 		expected = "Event [id=" + id + ", movieId=" + movieId + ", screenId=" + screenId + "]";
-		MovieEvent movieEvent = new MovieEvent(movieId, screenId, "seatsIOApi");
+		MovieEvent movieEvent = new MovieEvent(movieId, screenId, "seatsIoKey", new Date());
 		assertThat(movieEvent.toString()).isEqualTo(expected);
 	}
 	

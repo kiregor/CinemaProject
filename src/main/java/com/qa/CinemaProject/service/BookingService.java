@@ -36,8 +36,6 @@ public class BookingService {
 		}
 	}
 	
-	
-	
 	public List<Booking> getAllBookings(){
 		return this.bookingRepo.findAll();
 	}
