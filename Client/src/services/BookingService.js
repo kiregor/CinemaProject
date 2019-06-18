@@ -10,6 +10,10 @@ class BookingService {
     getPricingInformation() {
         return axios.get(`${this.url}/${PRICE_LIST}`);
     }
+
+    getUserBookings(userId){
+        return axios.get()
+    }
 }
 
 export default new BookingService(LOCAL_BACKEND_SERVER);
