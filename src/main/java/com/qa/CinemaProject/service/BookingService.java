@@ -1,6 +1,8 @@
 package com.qa.CinemaProject.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.qa.CinemaProject.entities.Booking;
@@ -34,6 +36,10 @@ public class BookingService {
 		} else {
 			return new Booking();
 		}
+	}
+	
+	public List<Booking> getUserBookings(String userId) {
+		return this.bookingRepo.findAll().stream().filter(b -> b.getUserId().equals(userId)).collect(Collectors.toList());
 	}
 	
 	public List<Booking> getAllBookings(){

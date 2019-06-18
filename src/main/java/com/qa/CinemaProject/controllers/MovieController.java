@@ -26,6 +26,7 @@ import static com.qa.CinemaProject.constants.MappingConstants.DELETE_MOVIE;
 import static com.qa.CinemaProject.constants.MappingConstants.PRICE_LIST;
 import static com.qa.CinemaProject.constants.MappingConstants.SEND_EMAIL;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_ALL_BOOKINGS;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_USER_BOOKINGS;
 import static com.qa.CinemaProject.constants.MappingConstants.CREATE_SINGLE_BOOKING;
 import static com.qa.CinemaProject.constants.MappingConstants.BOOKING;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_POPULAR;
@@ -184,6 +185,11 @@ public class MovieController {
 	@PostMapping(ADMIN_LOGIN)
 	public boolean adminLogin(@RequestBody Login login) {
 		return this.adminService.login(login);
+	}
+	
+	@GetMapping(GET_USER_BOOKINGS)
+	public List<Booking> getUserBookings(String userId){
+		return this.bookingService.getUserBookings(userId);
 	}
 
 }
