@@ -17,6 +17,7 @@ public interface MappingConstants {
 			CHECK_MOVIES = "/checkmovies",
 			GET_SCREENS = "/getscreens",
 			CREATE_EVENT = "/newevent",
+			ADMIN_LOGIN="/adminlogin",
 			EMBEDDED_MONGODB_HOST= "localhost",
 			EMBEDDED_MONGODB_DATABASE = "embedded_db",
 			SEQUENCE_COLLECTION = "sequence",
