@@ -39,6 +39,8 @@ public class BookingService {
 	}
 	
 	public List<Booking> getUserBookings(String userId) {
+		System.out.println("User id: "+userId);
+		this.bookingRepo.findAll().stream().forEach(x -> System.out.println("db ID: "+x));
 		return this.bookingRepo.findAll().stream().filter(b -> b.getUserId().equals(userId)).collect(Collectors.toList());
 	}
 	

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import static com.qa.CinemaProject.constants.MappingConstants.CREATE_MOVIE;
@@ -188,8 +189,9 @@ public class MovieController {
 	}
 	
 	@GetMapping(GET_USER_BOOKINGS)
-	public List<Booking> getUserBookings(@PathVariable String userId){
-		return this.bookingService.getUserBookings(userId);
+	@ResponseBody
+	public List<Booking> getUserBookings(@PathVariable String id){
+		return this.bookingService.getUserBookings(id);
 	}
 
 }
