@@ -77,7 +77,7 @@ const MovieDisplay = (props) => {
             </Row>
             <Row>
                 <Col  sm={{ size: 7, order: 2, offset: 0 }}>
-                    <DateTabs/>
+                    <DateTabs data={dataReceived}/>
                 </Col>
                 
             </Row>
