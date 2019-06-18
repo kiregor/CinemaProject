@@ -10,7 +10,7 @@ class Summary extends Component {
             <div className='SummaryPage'>
                 <div className='container'>
                     <h1>Summary</h1><br/>
-                    <h3>Tickets</h3>
+                    <h4>Tickets</h4>
                     <Table dark>
                         <thead>
                             <tr>
@@ -22,7 +22,7 @@ class Summary extends Component {
                     </Table>
                     {details.booking.tickets.map((detail,index) => <Detail key={index} detail={detail}/>)}
                 </div>
-                
+
             </div>
         )
     }

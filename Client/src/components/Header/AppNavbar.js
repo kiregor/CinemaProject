@@ -13,6 +13,7 @@ import AppCreateAccount from './AppLogout';
 import AppLogin from './AppLogin';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AppSearchBar from './AppSearchBar';
 
 const BACKGROUNDCOLOR='#2A3132'
 const LIGHTCOLOR='#336B87'
@@ -42,8 +43,7 @@ class AppNavbar extends Component {
 
   render() {
     return (
-      <div>
-        <Navbar style={{backgroundColor:BACKGROUNDCOLOR}} dark expand='lg'>
+        <Navbar className="navbar-form navbar-fixed-top" sticky={'bottom'} style={{backgroundColor:BACKGROUNDCOLOR}} dark expand='lg'>
           <Container>
             <NavbarBrand href='/' className='navbar-nav ml-auto'>QA CINEMA LOGO</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
@@ -67,6 +67,9 @@ class AppNavbar extends Component {
               </Nav>
               <Nav className='ml-auto' navbar>
                 <NavItem>
+                  <AppSearchBar/>
+                </NavItem>
+                <NavItem>
                   <AppLogin/>    
                 </NavItem>
                 <NavItem>
@@ -79,7 +82,6 @@ class AppNavbar extends Component {
             </Collapse>
           </Container>
         </Navbar>
-      </div>
     );
   }
 }
