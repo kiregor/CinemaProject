@@ -24,7 +24,7 @@ const Movie = (props) => {
             </div>
             <div>
                 <span style={{ contentAlign: "center" }}>
-                    <a id= "btn" href={`/listings/${props.title}`}><Button className="booknowbtn">Book Now</Button></a>{' '}
+                    <a id= {props.title} href={`/listings/${props.title}`}><Button className="booknowbtn">Book Now</Button></a>{' '}
                     <a href={`/listings/${props.title}`}><Button className="moreinfobtn">More Info</Button></a>{' '}
                 </span>
             </div>

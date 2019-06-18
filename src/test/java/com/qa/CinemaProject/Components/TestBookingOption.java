@@ -3,6 +3,8 @@ package com.qa.CinemaProject.Components;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import java.util.List;
+
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -32,54 +34,48 @@ public class TestBookingOption {
 	
 	@Before
 	public void init() throws InterruptedException {
-		driver.get(url);
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div[1]/div/div/div[1]/div/div[2]/p/a"));
-		Thread.sleep(500);
-	}
-	
-	@Test 
-	public void bookingOptionVisible() {
+		driver.get(url);		
+		Thread.sleep(1000);
 		
-		assertEquals("About Us", we.getText());		
 	}
-	
-	
+
 	@Test
-	@Ignore
-	public void abouttUsLinkWorking() {	
-		we.sendKeys(Keys.ENTER);
-		we = driver.findElement(By.xpath("//*[@id=\"bcrumb\"]/ol/span"));
-		assertEquals("about-us", we.getText());			
+	public void bookNowVisible() throws InterruptedException {		
+		we = driver.findElement(By.id("Dark phoenix"));			
+				
 	}
 	
-	@Test //tests that the page contains required elements
-	@Ignore
-	public void aboutUsLinkContent() throws InterruptedException {
-		we.sendKeys(Keys.ENTER);
-		Thread.sleep(000);
-		
-		List <WebElement> taglist =  driver.findElements(By.tagName("iframe"));
-		assertTrue(taglist.stream().anyMatch(x->x.getText().equals("View More on Instagram")));		
-		taglist.stream().forEach(x->System.out.println(x.getText()));
+//	@Test
+//	public void bookNowLinkContent() throws InterruptedException {
+//		assertEquals("Book Now", we.getText());
+//		we.click();
+//		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div/div[4]/div/div/a"));
+//		assertEquals("Upcoming Showings", we.getText());
+//				
+//	}
+//	
+//	@Test
+//	public void bookNowLinkFunction() throws InterruptedException {
+//		we.click();
+//		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div/div[5]/div/div/div/div[1]/div[1]/div[2]"));
+//		we.click();
+//				
+//	}
+	
+	
+	
+	
+	@After
+	public void finalise() {
 		
 	}
-	
-	@Test //tests that required elements work i.e. external links
-	@Ignore
-	public void aboutUsLinkFunction() {
-		we.sendKeys(Keys.ENTER);
-		we = driver.findElement(By.xpath("/html/body/div/div[2]/a"));
-		we.click();
-		we = driver.findElement(By.xpath("//*[@id=\"react-root\"]/section/main/div/header/section/div[1]/h1"));
-		assertEquals("fs.cinema", we.getText());
-		
-	}	
 	
 	
 	@AfterClass
 	public static void teardown() throws InterruptedException {
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		driver.quit();
 	}
 }
+
 
