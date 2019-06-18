@@ -16,6 +16,7 @@ class AppFooter extends Component {
                         <li><a href="/about-us/">About Us </a></li>
                         <li><a href="/contact-us/">Contact Us </a></li>
                         <li><a href="https://bbfc.co.uk/">Classifications</a></li>
+                        <li><a href="/places-to-go">Places To Go</a></li>
                     </ul>
                 </Col>
 

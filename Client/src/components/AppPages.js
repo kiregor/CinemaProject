@@ -19,6 +19,7 @@ import SessionStorageService from '../services/SessionStorageService'
 import FutureMoviePage from './FutureMoviePage/FutureMoviePage'
 import BookingSuccessPage from './summary/BookingSuccessPage';
 import ErrorPage from './ErrorPage/ErrorPage';
+import AppPlacesToGoPage from './PlacesToGo/AppPlacesToGoPage';
 
 class AppPages extends Component {
     constructor(props) {
@@ -87,6 +88,7 @@ class AppPages extends Component {
                             <Route path='/Listings/:movietitle' component={MoviePage}/>
                             <Route path='/Listings' component={CurrentReleases}/>
                             <Route path='/summary/bookingsuccesspage' component={BookingSuccessPage}/>
+                            <Route path='/places-to-go' component={AppPlacesToGoPage}/>
                             <Route component={ErrorPage}/>
                         </Switch>
                     </div>
