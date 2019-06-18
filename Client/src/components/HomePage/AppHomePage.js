@@ -11,6 +11,7 @@ class AppHomePage extends Component {
             <>
             <div className="AppHomePage" >
                 <Carousel/>
+                <Carousel2/>
 
             </div>
             </>
