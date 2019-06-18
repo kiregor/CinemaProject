@@ -10,16 +10,15 @@ class FetchMovieId extends Component{
             isLoaded: false,
         }
     }
-
+//USE LOCALHOST:8080 FOR THE FETCH
     componentDidMount = () => {
         fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=3e9a89831a2e61d47f06983917822671&language=en-US&page=1&region=gb`)
         .then(data => data.json())
         .then(data => {
-                this.setState({ 
-                    movieId: [...data.results],
-                    isLoaded: true,
-                })
-            
+            this.setState({ 
+                movieId: [...data.results],
+                isLoaded: true,
+            })
         })
     }
         
