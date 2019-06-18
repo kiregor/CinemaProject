@@ -65,8 +65,6 @@ class AppPages extends Component {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
       }
 
-
-
     render() {
         return (
             <div className='AppPages'>

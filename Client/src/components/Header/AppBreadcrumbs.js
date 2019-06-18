@@ -9,7 +9,7 @@ const AppBreadcrumbs = (props) => {
   .filter(str => str.length > 0);
   if (breadcrumbs.length === 0) return <> </>;
   breadcrumbs.unshift("Home");
-  let capitalize = (str) => str[0].toUpperCase() + str.slice(- (str.length - 1));
+  let capitalize = (str) => str.length > 1 ? str[0].toUpperCase() + str.slice(- (str.length - 1)) : str[0].toUpperCase();
   let jsxbreadcrumbs = [];
   let active = "a"
   let prev_links = 'http://localhost:3000'
@@ -19,7 +19,7 @@ const AppBreadcrumbs = (props) => {
     if(i === 0) { append = '';} else {append = '/' + breadcrumbs[i];}
     jsxbreadcrumbs.push(
       <BreadcrumbItem key={i} tag={active} href={prev_links + append}>
-        {capitalize(breadcrumbs[i])}
+        {breadcrumbs[i].split(/[ -]/g).map(str => capitalize(str)).join(" ")}
       </BreadcrumbItem>
     )
     prev_links += append;
