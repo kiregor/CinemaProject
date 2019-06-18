@@ -9,21 +9,21 @@ import {
 
 import './home.css';
 
-const items = (props) => [
+const items = [
   {
-    src: `http://image.tmdb.org/t/p/w1280/${props.image}.jpg`,
+    src: `http://image.tmdb.org/t/p/w1280/vVpEOvdxVBP2aV166j5Xlvb5Cdc.jpg`,
     altText: 'Movie',
-    caption: 'Movie 1'
+    caption: 'John Wick Chapter 3 - Parabellum'
   },
   {
     src: `http://image.tmdb.org/t/p/w1280/phxiKFDvPeQj4AbkvJLmuZEieDU.jpg`,
     altText: 'Slide 2',
-    caption: 'Slide 2'
+    caption: 'Dark Phoenix'
   },
   {
     src: `http://image.tmdb.org/t/p/w1280/2SBStvzMSzScJjZE9uTn3vIgo7b.jpg`,
     altText: 'Slide 3',
-    caption: 'Slide 3'
+    caption: 'Men in Black: International'
   }
 ];
 
@@ -76,7 +76,7 @@ class Example extends Component {
           key={item.src}
         >
           <img className='carouselImg' src={item.src} alt={item.altText}/>
-          <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+          <CarouselCaption captionHeader={item.caption} />
         </CarouselItem>
       );
     });

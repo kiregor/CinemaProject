@@ -1,10 +1,11 @@
-import React, { Component }from 'react';
+import React from 'react';
 import AppCarousel from './AppCarousel';
+//import AppCarousel2 from './AppCarousel2';
 
 const FetchPosterPath = (props) => {
     return (
-        <AppCarousel image={props.movieId.backdrop_path} title={props.movieId.title}/>
+        <AppCarousel image={props.movieId.backdrop_path} title={props.movieId.title}/>   
     )
 }
 
-export default FetchPosterPath
+export default FetchPosterPath;
