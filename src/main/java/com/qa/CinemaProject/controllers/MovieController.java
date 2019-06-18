@@ -1,5 +1,6 @@
 package com.qa.CinemaProject.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -29,17 +30,24 @@ import static com.qa.CinemaProject.constants.MappingConstants.CREATE_SINGLE_BOOK
 import static com.qa.CinemaProject.constants.MappingConstants.BOOKING;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_POPULAR;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_SUCCESS_STATUS;
+import static com.qa.CinemaProject.constants.MappingConstants.CHECK_MOVIES;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_SCREENS;
+import static com.qa.CinemaProject.constants.MappingConstants.CREATE_EVENT;
 import com.qa.CinemaProject.email.Email;
 import com.qa.CinemaProject.email.EmailApplication;
 import com.qa.CinemaProject.entities.Booking;
 import com.qa.CinemaProject.entities.BookingPayment;
 import com.qa.CinemaProject.entities.Movie;
+import com.qa.CinemaProject.entities.MovieTemp;
 import com.qa.CinemaProject.entities.Popular;
 import com.qa.CinemaProject.entities.PriceList;
+import com.qa.CinemaProject.entities.Screen;
 import com.qa.CinemaProject.seatsio.SeatsIoApi;
+import com.qa.CinemaProject.service.AdminService;
 import com.qa.CinemaProject.service.BookingService;
 import com.qa.CinemaProject.service.MovieService;
 import com.qa.CinemaProject.service.PaymentService;
+import com.qa.CinemaProject.service.ScreenService;
 import com.stripe.exception.StripeException;
 
 @RequestMapping
@@ -50,6 +58,8 @@ public class MovieController {
 	private MovieService movieService;
 	private PaymentService paymentService;
 	private BookingService bookingService;
+	private ScreenService screenService;
+	private AdminService adminService;
 	private EmailApplication email;
 	private SeatsIoApi seatsIo;
   
@@ -67,10 +77,12 @@ public class MovieController {
 	@Value("${movie.three}")
 	private String movieThree;
 	
-	public MovieController(MovieService movieService, PaymentService paymentService, BookingService bookingService, EmailApplication email, SeatsIoApi seatsIo) {
+	public MovieController(MovieService movieService, PaymentService paymentService, BookingService bookingService, EmailApplication email, SeatsIoApi seatsIo, ScreenService screenService, AdminService adminService) {
 		this.movieService = movieService;
 		this.paymentService = paymentService;
 		this.bookingService = bookingService;
+		this.screenService = screenService;
+		this.adminService = adminService;
 		this.email = email;
 		this.seatsIo = seatsIo;
 	}
@@ -144,6 +156,26 @@ public class MovieController {
 	@GetMapping(GET_SUCCESS_STATUS)
 	public String getSuccessStatus() {
 		return paymentService.getStatus();
+	}
+	
+	@PostMapping(CHECK_MOVIES)
+	public void checkMovies(@RequestBody List<Movie> movies) {
+		this.movieService.checkAndAddMovies(movies);
+	}
+	
+	@GetMapping(GET_SCREENS)
+	public List<Screen> getAllScreens(){
+		return this.screenService.getAllScreens();
+	}
+	
+	@PostMapping(CREATE_EVENT)
+	public void createEvent(@RequestBody MovieTemp movie) {
+		this.adminService.newEvent(movie);
+	}
+	
+	@GetMapping("/testMovieTemp")
+	public MovieTemp test() {
+		return new MovieTemp(1, "", "", new Date());
 	}
 
 }

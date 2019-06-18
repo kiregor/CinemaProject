@@ -1,6 +1,7 @@
 package com.qa.CinemaProject.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -52,5 +53,16 @@ public class MovieService {
 				movieRepo.findAll().stream().filter(m -> m.getMovieName().equals(movieThree)).findFirst().get().getimdbId());
 		
 		return popular;
+	}
+	
+	public void checkAndAddMovies(List<Movie> newMovies) {
+		List<Movie> existing = this.movieRepo.findAll();
+		List<Boolean> confirmNew = newMovies.stream().map(n -> (Boolean) existing.stream().map(e -> e.getMovieName()).noneMatch(e -> e.contentEquals(n.getMovieName()))).collect(Collectors.toList());
+		for(int i = 0; i < newMovies.size(); i++) {
+			if(confirmNew.get(i)) {
+				newMovies.get(i).setId(sequenceRepo.getNextSequenceId("movie"));
+				this.movieRepo.save(newMovies.get(i));
+			}
+		}
 	}
 }
