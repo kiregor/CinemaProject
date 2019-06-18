@@ -107,7 +107,7 @@ public class MovieServiceTest {
 	@Test
 	public void testServiceGetsPopularMovies() {
 		String[] imdb = {"alpha", "beta", "gamma"};
-		String[] movies = {"Star Wars", "Lord of the Rings", "Hunger Games",
+		String[] movies = {"Dark Phoenix", "John Wick Parabellum", "Avengers: End Game",
 				"Slumdog Millionaire", "Charlie's Angels"};
 		IntStream.range(0, movies.length).forEach(i -> {
 				Movie movie = new Movie();

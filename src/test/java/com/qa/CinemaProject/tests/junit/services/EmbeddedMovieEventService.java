@@ -16,7 +16,8 @@ import com.qa.CinemaProject.tests.junit.repositories.EmbeddedMovieEventRepo;
  * @author Admin
  *
  */
-@Service
+
+//@Service
 public class EmbeddedMovieEventService extends MovieEventService implements EmbeddedService<MovieEvent> {
 
 	public EmbeddedMovieEventService(EmbeddedMovieEventRepo eventRepo, SequenceRepo sequenceRepo) {

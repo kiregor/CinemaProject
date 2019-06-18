@@ -4,6 +4,8 @@ import {Container, Row, Col, Button} from 'reactstrap'
 import MovieService from '../services/MovieService';
 import ScreenService from '../services/ScreenService';
 import DateTimePicker from 'react-datetime-picker'
+import moment from 'moment'
+import axios from 'axios'
 
 class AppAdminEventPage extends Component {
 
@@ -33,6 +35,7 @@ class AppAdminEventPage extends Component {
         this.toggleButton = this.toggleButton.bind(this)
         this.switchOffOtherButtons = this.switchOffOtherButtons.bind(this)
         this.onChange = this.onChange.bind(this)
+        this.submit = this.submit.bind(this)
     }
 
     generateList(prop, field) {
@@ -71,6 +74,29 @@ class AppAdminEventPage extends Component {
         this.setState({date})
     }
 
+    submit() {
+        let movie = this.state.movieSelectedButton
+        let screen = this.state.screenSelectedButton
+        let date = this.state.date
+        if(!movie || !screen || !date) {
+            window.alert("empty fields..")
+        } else {
+            let len = this.state.movieSelectedButton.id.length
+            let movieId = +this.state.movieSelectedButton.id[len - 1]
+            len = this.state.screenSelectedButton.id.length
+            let screenId = +this.state.screenSelectedButton.id[len - 1]
+            axios.post("http://localhost:8080/newevent", {
+                movieId: movieId + 1,
+                screenId: screenId + 1,
+                eventKey: moment(this.state.date).format('YYYY-MM-DD-hh-mm') + "-2D",
+                date: this.state.date
+            }).then(response => {
+                console.log(response)
+            }).catch(error => console.log(error))
+        }
+        console.log(movie)
+    }
+
     render() {
         const date = '1990-06-05', 
         format = 'YYYY-MM-DD',
@@ -81,16 +107,20 @@ class AppAdminEventPage extends Component {
                 <Container>
                     <Row>
                         <Col>
-                            <h1>List of Movies</h1>
+                            <h3>List of Movies</h3>
                             {this.state.movieDisplay}
                         </Col>
                         <Col>
-                            <h1>List of Screens</h1>
+                            <h3>List of Screens</h3>
                             {this.state.screenDisplay}
                         </Col>
                         <Col>
-                            <h1>Datetime Picker</h1>
-                            <DateTimePicker onChange={this.onChange} value={this.state.date}/>
+                            <h3>Datetime Picker</h3>
+                            <DateTimePicker format="yy-MM-dd h:mm" onChange={this.onChange} value={this.state.date}/>
+                        </Col>
+                        <Col>
+                            <h3>Done</h3>
+                            <Button onClick={this.submit}>Submit</Button>
                         </Col>
                     </Row>
                 </Container>
