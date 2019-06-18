@@ -2,6 +2,9 @@ import React from 'react';
 import './poster.css'
 import {FlippingCard, FlippingCardBack, FlippingCardFront} from 'react-ui-cards';
 import {Button} from 'reactstrap';
+import bgColors from '../MoviePage/ApiMovieDisplay';
+import './ApiMovie2.css';
+
 
 
 const Movie = (props) => {
@@ -10,9 +13,10 @@ const Movie = (props) => {
             <div>
                 <FlippingCard>
                     <FlippingCardBack>
-                        <p><h3>{props.title}</h3></p>
-                        <p style={{fontSize:12}}><h6>{props.overview}</h6></p>
+                        <h3>{props.title}</h3>
+                        <h6>{props.overview}</h6>
                     </FlippingCardBack>
+                    
                     <FlippingCardFront>
                         <img src={`http://image.tmdb.org/t/p/w500${props.image}`} style={{width:"100%", height: "100%"}}/>
                     </FlippingCardFront>
@@ -20,8 +24,8 @@ const Movie = (props) => {
             </div>
             <div>
                 <span style={{ contentAlign: "center" }}>
-                    <a href={`/listings/${props.title}`}><Button color='danger'>Book Now</Button></a>{' '}
-                    <a href={`/listings/${props.title}`}><Button color='secondary'>More Info</Button></a>{' '}
+                    <a id= {props.title} href={`/listings/${props.title}`}><Button className="booknowbtn">Book Now</Button></a>{' '}
+                    <a href={`/listings/${props.title}`}><Button className="moreinfobtn">More Info</Button></a>{' '}
                 </span>
             </div>
         </div>
