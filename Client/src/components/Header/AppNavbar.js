@@ -14,18 +14,16 @@ import AppLogin from './AppLogin';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AppSearchBar from './AppSearchBar';
-
-const BACKGROUNDCOLOR='#2A3132'
-const LIGHTCOLOR='#336B87'
+import bgColors from '../../Constants';
 
 class AppNavbar extends Component {
   state = {
     isOpen: false,
-    listings: BACKGROUNDCOLOR,
-    future: BACKGROUNDCOLOR,
-    screens: BACKGROUNDCOLOR,
-    gettinghere: BACKGROUNDCOLOR,
-    myaccount: BACKGROUNDCOLOR
+    listings: bgColors.Shadow,
+    future: bgColors.Shadow,
+    screens: bgColors.Shadow,
+    gettinghere: bgColors.Shadow,
+    myaccount: bgColors.Shadow
   };
 
   toggle = () => {
@@ -35,15 +33,15 @@ class AppNavbar extends Component {
   };
 
   onMouseOut = name => event => {
-    this.setState({ [name]: BACKGROUNDCOLOR });
+    this.setState({ [name]: bgColors.Shadow });
   }
   onMouseOver = name => event => {
-    this.setState({ [name]: LIGHTCOLOR });
+    this.setState({ [name]: bgColors.Stone });
   }
 
   render() {
     return (
-        <Navbar className="navbar-form navbar-fixed-top" sticky={'bottom'} style={{backgroundColor:BACKGROUNDCOLOR}} dark expand='lg'>
+        <Navbar className="navbar-form navbar-fixed-top" sticky={'bottom'} style={{backgroundColor:bgColors.Shadow}} dark expand='lg'>
           <Container>
             <NavbarBrand href='/' className='navbar-nav ml-auto'>QA CINEMA LOGO</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
