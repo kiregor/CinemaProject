@@ -10,7 +10,7 @@ import stripe.ChargePayment;
 @Service
 public class PaymentService {
 
-	private ChargePayment payment;
+	protected ChargePayment payment;
 
 	@Value("${stripeKey}")
 	private String key;

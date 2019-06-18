@@ -18,10 +18,10 @@ public class MovieRepoImpl implements MovieRepoCustom {
 		
 		Query query = new Query(Criteria.where("id").is(movie.getId()));
 		Update update = new Update();
-		update.set("content", movie.getMovieName());
-		
+		update.set("movieName", movie.getMovieName());
 		mongoTemplate.updateFirst(query, update, Movie.class);
-		
+		update.set("imdbId", movie.getimdbId());
+		mongoTemplate.updateFirst(query, update, Movie.class);
 	}
 	
 	public Movie findByName(String movieName) {

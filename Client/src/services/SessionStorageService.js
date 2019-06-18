@@ -19,11 +19,11 @@ class SessionStorageService {
     }
 
     /**
-     * Name of a key in the session to delete
+     * Calls sessionStorage.removeItem on a key
      * @param {string} name Key to delete
      */
     clearObject(name) {
-        window.sessionStorage.setItem(name, '');
+        window.sessionStorage.removeItem(name, '');
     }
 }
 export default new SessionStorageService();

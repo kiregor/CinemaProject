@@ -2,16 +2,10 @@ package com.qa.CinemaProject.email;
 
 public class Email {
 
+	private String queryNo;
+	
 	private String sender;
 	private String message;
-	private String queryNo;
-	public String getQueryNo() {
-		return queryNo;
-	}
-
-	public void setQueryNo(String queryNo) {
-		this.queryNo = queryNo;
-	}
 
 	public Email() {
 		
@@ -21,6 +15,14 @@ public class Email {
 		super();
 		this.sender = sender;
 		this.message = message;
+		this.queryNo = queryNo;
+	}
+	
+	public String getQueryNo() {
+		return queryNo;
+	}
+	
+	public void setQueryNo(String queryNo) {
 		this.queryNo = queryNo;
 	}
 
@@ -35,5 +37,10 @@ public class Email {
 	}
 	public void setSender(String sender) {
 		this.sender = sender;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("Email [ sender = %s, message = %s, queryNo = %s ]", sender, message, queryNo);
 	}
 }

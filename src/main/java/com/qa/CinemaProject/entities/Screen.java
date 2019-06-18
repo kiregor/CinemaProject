@@ -26,8 +26,8 @@ public class Screen {
 		return screenType;
 	}
 
-	public void setScreenType(String screenType) {
-		this.screenType = screenType;
+	public void setScreenType(String str) {
+		this.screenType = str;
 	}
 
 	@Override
