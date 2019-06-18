@@ -5,9 +5,6 @@ import AppNavbar from './Header/AppNavbar';
 import AppBreadCrumbs from './Header/AppBreadcrumbs'
 import AppFooter from './Footer/AppFooter';
 import './AppPages.css';
-import BookingService from '../services/BookingService';
-import MovieService from '../services/MovieService';
-import SessionStorageService from '../services/SessionStorageService'
 import ErrorPage from './ErrorPage/ErrorPage';
 
 class AppPages extends Component {
@@ -19,27 +16,6 @@ class AppPages extends Component {
 
     pricing = {}
     componentWillMount() {
-        BookingService.getPricingInformation()
-            .then(response => {
-                if (response && response.data) {
-                    SessionStorageService.setObject('pricing', response.data);
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            });
-        // Get two pages of tmdb movies and send to back-end
-        MovieService.getMoviesFromTmdb(data => {
-            console.log(data)
-            // Send data to the back-end
-            MovieService.sendMoviesToBackend(data)
-                .then(response => {
-                    console.log(response)
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-        });
 
     }
     componentDidMount() {
