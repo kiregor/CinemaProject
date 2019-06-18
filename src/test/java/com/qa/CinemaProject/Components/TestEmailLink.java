@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -36,6 +37,7 @@ public class TestEmailLink {
 	}
 
 	@Test
+	@Ignore
 	public void contactUsLinkEmailFunction() throws InterruptedException {
 		we.sendKeys(Keys.ENTER);
 		Thread.sleep(1000);
