@@ -16,9 +16,9 @@ export default class AppDateTabs extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       activeTab: '1',
-      screenId: this.props.dataReceived.screenId,
-      seatsIOKey: this.props.dataReceived.seatsIOKey
-    };
+      screenId: [],
+      seatsIOKey: []
+       };
   }
 
   toggle(tab) {
