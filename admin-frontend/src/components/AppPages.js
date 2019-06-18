@@ -6,6 +6,7 @@ import AppBreadCrumbs from './Header/AppBreadcrumbs'
 import AppFooter from './Footer/AppFooter';
 import './AppPages.css';
 import ErrorPage from './ErrorPage/ErrorPage';
+import AppAdminEventPage from './AppAdminEventPage'
 
 class AppPages extends Component {
     constructor(props) {
@@ -42,6 +43,7 @@ class AppPages extends Component {
                             { /* Need the 'exact' property, as '/' matches all pages */}
                             {/* <Route path='/' exact component={AppHomePage} /> */}
                             <Route path='/' exact component={AppAdminLoginPage} />
+                            <Route path='/event-page' exact component={AppAdminEventPage} />
                             <Route component={ErrorPage} />
                         </Switch>
                     </div>

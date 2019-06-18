@@ -28,13 +28,6 @@ html, body {
     background-color: #2A3132;
 }
 
-.lightColor button {
-    /* background-color: #336B87; */
-}
-
-.searchBar button {
-    /* border-style: none; */
-}
 .AppContent::-webkit-scrollbar{
     width: 0em;
 }
@@ -50,4 +43,28 @@ html, body {
 
 .adminLoginBox .row {
     margin-bottom: 1.5em;
+}
+
+button.selected {
+    background-color: green;
+}
+
+button.selected:hover {
+    background-color: darkgreen;
+}
+
+.adminEventPage .btn {
+    width: 90%;
+    margin: .5em auto 0;
+}
+.react-datetime-picker {
+    margin: .75em auto 0;
+}
+
+.adminEventPage {
+    margin-top: 2em;
+}
+
+.adminEventPage h1,h2 {
+    margin-bottom: 1em;
 }
