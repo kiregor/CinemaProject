@@ -20,7 +20,7 @@ const AppScreensPage = (props) => {
         <div id='bg'>
 
         </div>
-        <Container>
+        <Container className='AppScreensPage'>
             <br/><br/>
             <Row>
                 <Col>
