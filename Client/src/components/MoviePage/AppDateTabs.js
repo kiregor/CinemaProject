@@ -57,7 +57,7 @@ export default class AppDateTabs extends React.Component {
   componentDidMount(){
       let day1TabTemp = [];
       for(let i = 0; i<this.state.day1.length; i++){
-        day1TabTemp.push(<Col l12><a id={`timing-${this.state.day1[i]}`} href='/seatbooking'>{this.state.day1[i].substring(12,16)}</a></Col>);
+        day1TabTemp.push(<Col l12><a id={`timing-${this.state.day1[i]}`} href='/seatbooking' onClick={sessionStorage.setItem('seatsKey',this.state.day1[i])}>{this.state.day1[i].substring(12,16)}</a></Col>);
       }
       console.log(day1TabTemp);
       this.setState({day1tab:day1TabTemp});
