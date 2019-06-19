@@ -17,7 +17,6 @@ public class EmbeddedBookingService extends BookingService implements EmbeddedSe
 	
 	public EmbeddedBookingService(EmbeddedBookingRepo bookingRepo, SequenceRepo sequenceRepo) {
 		super(bookingRepo, sequenceRepo, null );
-		// TODO Auto-generated constructor stub
 		this.bookingRepo = bookingRepo;
 	}
 	

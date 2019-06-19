@@ -33,56 +33,73 @@ const styles2 = {
 };
 
 
-const MovieDisplay = (props) => {
+class MovieDisplay extends React.Component {
     
-    let dataReceived = [];
+    constructor(props){
+        super(props);
+        this.state = {
+            dataReceived: [],
+            title: this.props.title,
+            id: this.props.id,
+            dateTabs: null
+        }
+    }
 
-    axios.post('http://locolhost:8080/getevents' , {movieName:props.title, imdbId:props.id} ) 
-        .then(data => 
-                dataReceived = data.data
-            )
-        console.log(dataReceived);
+    componentDidMount(){
+        axios.post('http://localhost:8080/getevents' , {
+            movieName:this.state.title,
+            imdbId:this.state.id
+        }) 
+        .then(response => {
+            console.log(response);
+            this.state.dataReceived = response.data;
+        this.setState({dateTabs:<DateTabs data={this.state.dataReceived}/>})
+        })
+        .catch(error => console.log(error))
+    }    
         
-    return (
-        
-        <Container>
-            <Row>
-                <Col style ={styles.well}>
-                <img style ={styles.well} src={`http://image.tmdb.org/t/p/w1280${props.image}`} alt="Movie Poster" style={{width:"100%", height:"100%"}} />
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <div  style={{fontSize: 35}}>{props.title}</div>
-                </Col>                
-            </Row>
-            <Row>
-                <Col>
-                <   div style={{fontSize: 22}}> <a style={{color: bgColors.Shadow}} >Release Date : {props.releasedate} </a></div>
-                    <br/>
-                    <div style={{fontSize: 18}}> <a style={{color: bgColors.Autumn}}> Rating : {props.rating}/10 </a></div>
-                    <br/>
-                   
-                </Col>
+    render() {
+        return (
+            
+            <Container>
+                <Row>
+                    <Col style ={styles.well}>
+                    <img style ={styles.well} src={`http://image.tmdb.org/t/p/w1280${this.props.image}`} alt="Movie Poster" style={{width:"100%", height:"100%"}} />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <div  style={{fontSize: 35}}>{this.props.title}</div>
+                    </Col>                
+                </Row>
+                <Row>
+                    <Col>
+                    <   div style={{fontSize: 22}}> <a style={{color: bgColors.Shadow}} >Release Date : {this.props.releasedate} </a></div>
+                        <br/>
+                        <div style={{fontSize: 18}}> <a style={{color: bgColors.Autumn}}> Rating : {this.props.rating}/10 </a></div>
+                        <br/>
+                    
+                    </Col>
 
-                <Col >
-                 <div style ={styles.header} style={{fontSize: 18}}> <a style={{color: bgColors.Shadow}}> {props.overview} </a></div>
-                </Col>    
+                    <Col >
+                    <div style ={styles.header} style={{fontSize: 18}}> <a style={{color: bgColors.Shadow}}> {this.props.overview} </a></div>
+                    </Col>    
 
-            </Row>
-             <Row>
-                <Col style ={styles2.well} >
-                    <div style ={styles2.header}style={{fontSize: 35}}><a style={{color: bgColors.Shadow}}> Upcoming Showings </a></div>
-                </Col>                
-            </Row>
-            <Row>
-                <Col  sm={{ size: 7, order: 2, offset: 0 }}>
-                    <DateTabs data={dataReceived}/>
-                </Col>
-                
-            </Row>
-        </Container>
-    )   
+                </Row>
+                <Row>
+                    <Col style ={styles2.well} >
+                        <div style ={styles2.header}style={{fontSize: 35}}><a style={{color: bgColors.Shadow}}> Upcoming Showings </a></div>
+                    </Col>                
+                </Row>
+                <Row>
+                    <Col  sm={{ size: 7, order: 2, offset: 0 }}>
+                        {this.state.dateTabs}
+                    </Col>
+                    
+                </Row>
+            </Container>
+        )   
+    }
 }
 export default MovieDisplay;
 export var bgColors;

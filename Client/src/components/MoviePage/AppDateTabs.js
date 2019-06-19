@@ -15,11 +15,18 @@ export default class AppDateTabs extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      activeTab: '1',
-      screenId: [],
-      seatsIOKey: []
-       };
+        activeTab: '1',
+        seatsIOKey: this.props.data,
+        day1: [],
+        day2: [],
+        day3: [],
+        day4: [],
+        day5: []
+    };
+    console.log(this.state.seatsIOKey);
   }
+
+  
 
   toggle(tab) {
     if (this.state.activeTab !== tab) {
