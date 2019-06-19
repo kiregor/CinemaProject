@@ -1,40 +1,36 @@
-
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import bgColors from '../../Constants';
 
 class AppCreateAccount extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false
-    };
+ constructor(props) {
+   super(props);
+   this.state = {
+     backgroundColor: bgColors.Shadow}
 
-    this.toggle = this.toggle.bind(this);
-  }
+   this.logout = this.logout.bind(this);
+ }
 
-  toggle() {
-    this.setState(prevState => ({
-      modal: !prevState.modal
-    }));
-  }
+ logout(){
+   window.sessionStorage.removeItem("userId");
+   window.location.assign("/");
+ }
 
-  render() {
-    return (
-      <div>
-        <Button style={{backgroundColor:'#2A3132'}} onClick={this.toggle}>Create Account</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Create Account</ModalHeader>
-          <ModalBody>
-            Add Form to create account
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Create Account</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-          </ModalFooter>
-        </Modal>
-      </div>
-    );
-  }
+ onMouseOut = name => event => {
+   this.setState({ [name]: bgColors.Shadow });
+ }
+ onMouseOver = name => event => {
+   this.setState({ [name]: bgColors.Stone });
+ }
+
+
+ render() {
+   return (
+     <div>
+         <Button onClick={this.logout} onMouseOver={this.onMouseOver('backgroundColor')} onMouseOut={this.onMouseOut('backgroundColor')} style={{backgroundColor:this.state.backgroundColor, color:bgColors.Mist}}>Logout</Button>
+     </div>
+   );
+ }
 }
 
 export default AppCreateAccount;

@@ -1,5 +1,8 @@
 package com.qa.CinemaProject.Components;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -24,7 +27,7 @@ public class TestFindUs {
 	@BeforeClass
 	public static void setup() {
 		System.setProperty("webdriver.chrome.driver", 
-				"C:\\Users\\Admin\\Downloads\\chromedriver_win32\\chromedriver.exe");
+				"src\\test\\resources\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		
@@ -33,48 +36,41 @@ public class TestFindUs {
 	@Before
 	public void init() {
 		driver.get(url);
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/nav/div/div/ul[1]/li[4]/a"));
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/nav/div/div/ul[1]/li[4]/a"));
 	}
 	
 	@Test
+
 	public void fundUsLinkVisibleOnHomepage() {	
 		
 		assertEquals("Getting Here", we.getText());		
 	}
 	
 	@Test
+
 	public void findUsLinkWorking() {
 		
 		we.sendKeys(Keys.ENTER);
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div[2]/div/div/h1"));
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div[2]/div/div/h1"));
 		assertEquals("Find Us", we.getText());			
 	}
 	
 	@Test
-	public void findUsLinkPageLocation() {
+
+	public void findUsLinkPageContent() {
 		we.sendKeys(Keys.ENTER);
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div[1]/div/div/h1"));
-		assertEquals("Location", we.getText());		
-	}
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div[1]/div/div/h1"));
+		assertEquals("Location", we.getText());				
+	}	
 	
 	@Test
-	public void findUsLinkPageTransit() {
-		we.sendKeys(Keys.ENTER);
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div/div[1]/div/div/h2"));
-		assertEquals("Nearby transit", we.getText());		
-	}
 	
-	
-	
-	@Test
-	@Ignore
 	public void findUsLinkPageFunction() {
-		we.sendKeys(Keys.ENTER);
-		we = driver.findElement(By.xpath("//*[@id=\"mapDiv\"]/div/div/div[9]/div/div/div/div[2]/div[1]/a/div[2]"));
-		we.sendKeys(Keys.ENTER);
-		we = driver.findElement(By.xpath("//*[@id=\"sb_ifc51\"]/input"));
-		assertEquals("International House, 1 St Katharine's Way, St Katharine's & Wapping, London E1W 1YL, UK", we.getText());	
-			
+		we.click();
+		we = driver.findElement(By.id("map"));
+		we.click();
+		assertEquals("Map a route", we.getText());	
+		
 	}
 	
 	@After

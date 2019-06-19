@@ -26,7 +26,7 @@ public class TestFutureReleases {
 	@BeforeClass
 	public static void setup() {
 		System.setProperty("webdriver.chrome.driver", 
-				"C:\\Users\\Admin\\Downloads\\chromedriver_win32\\chromedriver.exe");
+				"src\\test\\resources\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		
@@ -35,7 +35,7 @@ public class TestFutureReleases {
 	@Before
 	public void init() throws InterruptedException {
 		driver.get(url);
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[1]/nav/div/div/ul[1]/li[2]/a"));
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/nav/div/div/ul[1]/li[2]/a"));
 		Thread.sleep(500);
 	}
 	
@@ -51,14 +51,6 @@ public class TestFutureReleases {
 		we = driver.findElement(By.xpath("//*[@id=\"bcrumb\"]/ol/span"));
 		assertEquals("Future-Listings", we.getText());		
 		
-	}
-	
-	@Test
-	public void futureListingLinkPageContent() {		;
-		we.sendKeys(Keys.ENTER);		
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/div/div"));
-		List<WebElement> imagelist= driver.findElements(By.tagName("img"));
-		assertTrue(imagelist.size()>4);		
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.qa.CinemaProject.entities;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 
 public class MovieEvent {
@@ -9,12 +11,15 @@ public class MovieEvent {
 	private long movieId;
 	private String screenId;
 	private String seatsIOKey;
+	private Date date;
 	
 	public MovieEvent() {}
 	
-	public MovieEvent(long movieId, String screenId) {
+	public MovieEvent(long movieId, String screenId, String seatsIOKey, Date date) {
 		this.movieId = movieId;
 		this.screenId = screenId;
+		this.seatsIOKey = seatsIOKey;
+		this.date = date;
 	}
 
 	public long getId() {
@@ -53,5 +58,7 @@ public class MovieEvent {
 	public String toString() {
 		return "Event [id=" + id + ", movieId=" + movieId + ", screenId=" + screenId + "]";
 	}
+	
+	 
 	
 }

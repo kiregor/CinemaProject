@@ -13,7 +13,8 @@ class ApiFetchPoster extends Component{
     constructor(props){
         super(props);
         this.state= {
-            movies: [],
+            moviesNow: [],
+            moviesFuture: [],
             isLoaded: false,
             ageRating: [],
             ageIcon: [],
@@ -28,7 +29,7 @@ class ApiFetchPoster extends Component{
         .then(data => {
             console.log(data);
             this.setState({ 
-                movies: [...data.results],
+                moviesNow: [...data.results],
                 isLoaded: true,
             })
         })
@@ -42,9 +43,16 @@ class ApiFetchPoster extends Component{
             })
         })
     
+        fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=3e9a89831a2e61d47f06983917822671&language=en-US&page=1&region=gb`)
+        .then(data => data.json())
+        .then(data => {
+            console.log(data);
+            this.setState({ 
+                moviesFuture: [...data.results],
+                isLoaded: true,
+            })
+        })
     }
-
-
 
     nextPage=(pageNumber)=> {
         fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${pageNumber}`)
@@ -63,14 +71,23 @@ class ApiFetchPoster extends Component{
         if (!isLoaded) {
             return <div ><Spinner/></div>
         }
-        else {
+        else if(window.location.pathname==='/Listings') {
             return(
                 <div className="ApiFetchPoster">
-                    <MoviePoster movies={this.state.movies} ageRating={this.state.ageRating}/>
+                    <MoviePoster movies={this.state.moviesNow} ageRating={this.state.ageRating}/>
                     <Pagination pages={3} nextPage={this.nextPage} currentPage={this.state.currentPage}/>
                 </div>
             );
         }
+        else if(window.location.pathname==='/Future-Listings') {
+            return(
+                <div className="ApiFetchPoster">
+                    <MoviePoster movies={this.state.moviesFuture} ageRating={this.state.ageRating}/>
+                    <Pagination pages={3} nextPage={this.nextPage} currentPage={this.state.currentPage}/>
+                </div>
+            );
+        }
+
     }
 }
 
