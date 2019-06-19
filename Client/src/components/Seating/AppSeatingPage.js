@@ -23,8 +23,8 @@ class AppSeatingPage extends Component {
         // Convert data from string to number
         for(let prop in this.data) this.data[prop] = +this.data[prop]
 
-        this.eventKey = '33cdea62-50da-4fa7-a835-c09009a9a99b';
-
+        this.eventKey = sessionStorage.getItem('seatsKey');
+        console.log(this.eventKey);
         SessionStorageService.clearObject();
         this.bookSeats = this.bookSeats.bind(this);
         this.clearTickets = this.clearTickets.bind(this);
@@ -83,7 +83,7 @@ class AppSeatingPage extends Component {
                         <div className='col-12'>
                             <SeatsioSeatingChart
                                 publicKey='d2967a3f-f10b-48e3-8b3c-424d2169759d'
-                                event='33cdea62-50da-4fa7-a835-c09009a9a99b'
+                                event={this.eventKey}
                                 id='seating-chart'
                                 onRenderStarted={createdChart => { this.chartAdded(createdChart) }}
                                 pricing={[{
