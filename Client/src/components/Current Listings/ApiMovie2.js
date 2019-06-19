@@ -17,9 +17,9 @@ const Movie = (props) => {
                         
                     </FlippingCardBack>
                     <FlippingCardFront>
-                        <img src={`http://image.tmdb.org/t/p/w500${props.image}`} style={{width:"100%", height: "100%"}}/>
+                        <img src={`http://image.tmdb.org/t/p/w500${props.image}`} alt='FlippingCardFront' style={{width:"100%", height: "100%"}}/>
                     </FlippingCardFront>
-                    <img src={`http://image.tmdb.org/t/p/w500${props.image}`} style={{width:"100%", height: "100%", opacity:0.2}}/>
+                    <img src={`http://image.tmdb.org/t/p/w500${props.image}`} alt='FlippingCardBack' style={{width:"100%", height: "100%", opacity:0.2}}/>
                 </FlippingCard>
                 <div>
                     <span>

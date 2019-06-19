@@ -9,7 +9,6 @@ import {
   NavLink,
   Container
 } from 'reactstrap';
-import AppCreateAccount from './AppLogout';
 import AppLogin from './AppLogin';
 import AppLogout from './AppLogout';
 import AppSearchBar from './AppSearchBar';
