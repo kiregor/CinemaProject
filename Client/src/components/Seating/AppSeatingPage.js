@@ -64,7 +64,7 @@ class AppSeatingPage extends Component {
             SessionStorageService.setObject('bookedSeats', {
                 "booking": {
                     "tickets": this.bookedSeats
-                }, "token": null, "holdToken": this.chart.holdToken, "eventToken": this.eventKey
+                }, "token": null, "holdToken": this.chart.holdToken, "eventToken": this.eventKey, "userId": sessionStorage.getItem('userId')
             });
             console.log(SessionStorageService.getObject('bookedSeats'));
             // Go to the payment page
