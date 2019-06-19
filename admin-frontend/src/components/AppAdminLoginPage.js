@@ -26,6 +26,7 @@ class AppAdminLoginPage extends Component {
                 console.log(response.data)
                 validCredentials = response.data
                 if (validCredentials) {
+                    
                     // Go to next page
                     window.alert("LOGGED IN!!")
                 } else {

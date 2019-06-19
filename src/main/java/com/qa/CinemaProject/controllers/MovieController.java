@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static com.qa.CinemaProject.constants.MappingConstants.CREATE_MOVIE;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_ALL_MOVIES;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_ALL_MOVIES_ADMIN;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_MOVIE_ID;
 import static com.qa.CinemaProject.constants.MappingConstants.UPDATE_MOVIE;
 import static com.qa.CinemaProject.constants.MappingConstants.DELETE_MOVIE;
@@ -34,6 +35,7 @@ import static com.qa.CinemaProject.constants.MappingConstants.GET_POPULAR;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_SUCCESS_STATUS;
 import static com.qa.CinemaProject.constants.MappingConstants.CHECK_MOVIES;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_SCREENS;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_SCREENS_ADMIN;
 import static com.qa.CinemaProject.constants.MappingConstants.CREATE_EVENT;
 import static com.qa.CinemaProject.constants.MappingConstants.ADMIN_LOGIN;
 import com.qa.CinemaProject.email.Email;
@@ -177,19 +179,34 @@ public class MovieController {
 		return this.screenService.getAllScreens();
 	}
 	
-	@PostMapping(CREATE_EVENT)
-	public void createEvent(@RequestBody MovieTemp movie) {
-		this.adminService.newEvent(movie);
-	}
-	
 	@GetMapping("/testMovieTemp")
 	public MovieTemp test() {
 		return new MovieTemp(1, "", "", new Date());
 	}
 	
+	@PostMapping("/getevents")
+	public List<MovieEvent> getEvents(@RequestBody Movie movie){
+		return eventService.getEventsByMovie(movie);
+	}
+	
+	@PostMapping("/savescreen")
+	public void saveScreen(@RequestBody Screen screen) {
+		this.screenService.saveScreen(screen);
+	}
+	
 	@PostMapping(ADMIN_LOGIN)
 	public boolean adminLogin(@RequestBody Login login) {
 		return this.adminService.login(login);
+	}
+
+	@GetMapping(GET_ALL_MOVIES_ADMIN)
+	public List<Movie> getAllMoviesAdmin() {
+		return this.movieService.getAllMovies();
+	}
+
+	@GetMapping(GET_SCREENS_ADMIN)
+	public List<Screen> getAllScreensAdmin(){
+		return this.screenService.getAllScreens();
 	}
 	
 	@GetMapping(GET_USER_BOOKINGS)
@@ -198,9 +215,9 @@ public class MovieController {
 		return this.bookingService.getUserBookings(id);
 	}
 	
-	@PostMapping("/getevents")
-	public List<MovieEvent> getEvents(@RequestBody Movie movie){
-		return eventService.getEventsByMovie(movie);
+	@PostMapping(CREATE_EVENT)
+	public void createEvent(@RequestBody MovieTemp movie) {
+		this.adminService.newEvent(movie);
 	}
 
 }

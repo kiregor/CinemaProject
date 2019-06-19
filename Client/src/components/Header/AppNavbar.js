@@ -42,7 +42,7 @@ class AppNavbar extends Component {
     return (
         <Navbar className="navbar-form navbar-fixed-top" sticky={'bottom'} style={{backgroundColor:bgColors.Shadow}} dark expand='lg'>
           <Container>
-            <NavbarBrand href='/' className='navbar-nav ml-auto'>QA CINEMA LOGO</NavbarBrand>
+            <NavbarBrand href='/' className='navbar-nav ml-auto'><img src='./Logo.png'></img></NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className='mr-auto' navbar>
