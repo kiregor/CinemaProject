@@ -17,7 +17,7 @@ const AppPlacesToGoPage = (props) => {
     return (
         
         <Container>
-
+            <br/><br/>
             <Row >     
                 <Col>
                 <center style ={styles.well}>                      

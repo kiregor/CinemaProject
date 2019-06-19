@@ -20,9 +20,10 @@ const AppScreensPage = (props) => {
         <div id='bg'>
 
         </div>
-        <Container style={{}}>
+        <Container>
+            <br/><br/>
             <Row>
-                <Col >
+                <Col>
                  <center style ={styles.well}>
                     <img class='image' src={window.location.origin + '/screens1.PNG'}   />
                     <br/><br/>
@@ -33,7 +34,7 @@ const AppScreensPage = (props) => {
                 </center>
                 </Col>
 
-                <Col >
+                <Col>
                  <center style ={styles.well}>
                     <img class='image' src={window.location.origin + '/screens1.PNG'}/>
                     <br/><br/>
@@ -45,7 +46,7 @@ const AppScreensPage = (props) => {
                 </center>
                 </Col>
 
-                <Col >
+                <Col>
                  <center style ={styles.well}>
                     <img class='image' src={window.location.origin + '/screens1.PNG'}  />
                     <br/><br/>
