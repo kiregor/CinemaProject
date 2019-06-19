@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
 import SessionStorageService from '../../services/SessionStorageService';
+import LoginService from '../../services/LoginService';
 
 class AppSeatingPage extends Component {
     chart;
@@ -28,6 +29,11 @@ class AppSeatingPage extends Component {
         SessionStorageService.clearObject();
         this.bookSeats = this.bookSeats.bind(this);
         this.clearTickets = this.clearTickets.bind(this);
+        if(LoginService.hasLoggedIn()){
+            this.userId = window.sessionStorage.getItem('userId');
+        } else {
+            this.userId = 'guest';
+        }
     }
 
     componentDidMount() {

@@ -11,21 +11,20 @@ import {
 } from 'reactstrap';
 import AppCreateAccount from './AppLogout';
 import AppLogin from './AppLogin';
+import AppLogout from './AppLogout';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AppSearchBar from './AppSearchBar';
-
-const BACKGROUNDCOLOR='#2A3132'
-const LIGHTCOLOR='#336B87'
+import bgColors from '../../Constants';
 
 class AppNavbar extends Component {
   state = {
     isOpen: false,
-    listings: BACKGROUNDCOLOR,
-    future: BACKGROUNDCOLOR,
-    screens: BACKGROUNDCOLOR,
-    gettinghere: BACKGROUNDCOLOR,
-    myaccount: BACKGROUNDCOLOR
+    listings: bgColors.Shadow,
+    future: bgColors.Shadow,
+    screens: bgColors.Shadow,
+    gettinghere: bgColors.Shadow,
+    myaccount: bgColors.Shadow
   };
 
   toggle = () => {
@@ -35,15 +34,15 @@ class AppNavbar extends Component {
   };
 
   onMouseOut = name => event => {
-    this.setState({ [name]: BACKGROUNDCOLOR });
+    this.setState({ [name]: bgColors.Shadow });
   }
   onMouseOver = name => event => {
-    this.setState({ [name]: LIGHTCOLOR });
+    this.setState({ [name]: bgColors.Stone });
   }
 
   render() {
     return (
-        <Navbar className="navbar-form navbar-fixed-top" sticky={'bottom'} style={{backgroundColor:BACKGROUNDCOLOR}} dark expand='lg'>
+        <Navbar className="navbar-form navbar-fixed-top" sticky={'bottom'} style={{backgroundColor:bgColors.Shadow}} dark expand='lg'>
           <Container>
             <NavbarBrand href='/' className='navbar-nav ml-auto'>QA CINEMA LOGO</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
@@ -62,13 +61,21 @@ class AppNavbar extends Component {
                   <NavLink href="/getting-here" color='primary'>Getting Here</NavLink>
                 </NavItem>
                 <NavItem onMouseOver={this.onMouseOver('myaccount')} onMouseOut={this.onMouseOut('myaccount')} style={{backgroundColor:this.state.myaccount}}>
-                  <NavLink href="/" color='primary'>My Account</NavLink>
+                  <NavLink href="/my-account" color='primary'>My Account</NavLink>
                 </NavItem>
               </Nav>
               <Nav className='ml-auto' navbar>
+                  <NavItem>
+                      <AppLogin/>
+                  </NavItem>
+                  <NavItem>
+                      <AppLogout/>
+                  </NavItem>
                 <NavItem>
-                    <AppSearchBar/>
                   <AppLogin/>
+                </NavItem>
+                <NavItem>
+                  <AppSearchBar/>
                 </NavItem>
 
               </Nav>
