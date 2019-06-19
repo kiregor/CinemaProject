@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import Detail from './Detail';
 import { Table } from 'reactstrap';
 
-class Summary extends Component {
 
+class SummaryPage extends Component {
     render() {
-        const details = this.props.details
+        const details = this.props.seatInfo;
         return (
             <div className='SummaryPage'>
                 <div className='container'>
                     <h1>Summary</h1><br/>
                     <h4>Tickets</h4>
-                    <Table dark>
+                    <Table bordered hover>
                         <thead>
                             <tr>
                                 <th>Location</th>
@@ -19,13 +19,14 @@ class Summary extends Component {
                                 <th>Price</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            {details.booking.tickets.map((detail,index) => <Detail key={index} detail={detail}/>)}
+                        </tbody>
                     </Table>
-                    {details.booking.tickets.map((detail,index) => <Detail key={index} detail={detail}/>)}
                 </div>
-
             </div>
         )
     }
 }
 
-export default Summary
+export default SummaryPage;

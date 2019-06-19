@@ -5,6 +5,7 @@ public class BookingPayment {
 		private String token;
 		private String holdToken;
 		private String eventToken;
+		private String userId;
 		
 		
 		public BookingPayment(){}
@@ -35,6 +36,24 @@ public class BookingPayment {
 		
 		public void setHoldToken(String holdToken) {
 			this.holdToken = holdToken;
+		}
+
+		public String getUserId() {
+			return userId;
+		}
+
+		public void setUserId(String userId) {
+			this.userId = userId;
+		}
+
+		public void setEventToken(String eventToken) {
+			this.eventToken = eventToken;
+		}
+
+		@Override
+		public String toString() {
+			return "BookingPayment [booking=" + booking + ", token=" + token + ", holdToken=" + holdToken
+					+ ", eventToken=" + eventToken + ", userId=" + userId + "]";
 		}
 		
 }

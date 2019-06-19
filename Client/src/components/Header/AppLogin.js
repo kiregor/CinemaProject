@@ -1,13 +1,14 @@
-
 import React ,{Component} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import GoogleLogin from 'react-google-login';
 import SessionStorageService from '../../services/SessionStorageService';
+import bgColors from '../../Constants';
 
 class AppLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      backgroundColor: bgColors.Shadow,
       modal: false
     };
 
@@ -19,10 +20,15 @@ class AppLogin extends Component {
       modal: !prevState.modal
     }));
   }
+  onMouseOut = name => event => {
+    this.setState({ [name]: bgColors.Shadow });
+  }
+  onMouseOver = name => event => {
+    this.setState({ [name]: bgColors.Stone });
+  }
 
 
   render() {
-
       const responseGoogle = (response) => {
           if(response.googleId === undefined){
               console.log("User did NOT login!!")
@@ -30,14 +36,14 @@ class AppLogin extends Component {
               console.log("User Authenticated Successfuly");
               console.log(response);
               console.log(response.googleId);
-              SessionStorageService.setObject("userId",response.googleId);
-              // window.location.assign("Redirect it to the account page");
+              sessionStorage.setItem("userId",response.googleId);
+              window.location.assign("/my-account");
           }
       }
 
     return (
       <div>
-        <Button style={{backgroundColor:'#2A3132'}} onClick={this.toggle}>Log In</Button>
+        <Button onClick={this.toggle} onMouseOver={this.onMouseOver('backgroundColor')} onMouseOut={this.onMouseOut('backgroundColor')} style={{backgroundColor:this.state.backgroundColor}}>Log In</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Log in options</ModalHeader>
           <ModalBody>
