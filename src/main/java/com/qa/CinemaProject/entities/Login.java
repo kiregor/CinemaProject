@@ -33,5 +33,10 @@ public class Login {
 	public String toString() {
 		return "Login [username=" + username + ", password=" + password + "]";
 	}
+	
+	
+	public boolean equals(Login login) {
+		return this.username.equals(login.getUsername()) && this.password.equals(login.getPassword());
+	}
 
 }

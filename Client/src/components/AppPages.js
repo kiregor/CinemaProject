@@ -8,17 +8,18 @@ import AppGettingHerePage from './FindUs/AppGettingHerePage';
 import AppSeatingPage from './Seating/AppSeatingPage';
 import AppBreadCrumbs from './Header/AppBreadcrumbs'
 import PaymentPage from './Payment/PaymentPage';
-import FutureReleases from './Future Listings/FutureReleases';
 import CurrentReleases from './Current Listings/CurrentReleases';
 import AppFooter from './Footer/AppFooter';
 import './AppPages.css';
 import MoviePage from './MoviePage/MoviePage'
 import BookingService from '../services/BookingService';
 import MovieService from '../services/MovieService';
-import SessionStorageService from '../services/SessionStorageService'
-import FutureMoviePage from './FutureMoviePage/FutureMoviePage'
-import BookingSuccessPage from './summary/BookingSuccessPage';
+import SessionStorageService from '../services/SessionStorageService';
+import BookingSuccessPage from './Summary1/BookingSuccessPage';
+import MyAccountPage from './Accounts1/MyAccountPage';
 import ErrorPage from './ErrorPage/ErrorPage';
+import AppPlacesToGoPage from './PlacesToGo/AppPlacesToGoPage';
+import AppScreensPage from './Screens/AppScreensPage';
 
 class AppPages extends Component {
     constructor(props) {
@@ -30,8 +31,8 @@ class AppPages extends Component {
     pricing = {}
     componentWillMount() {
         BookingService.getPricingInformation()
-        .then( response => { 
-            if(response && response.data){ 
+        .then( response => {
+            if(response && response.data){
                 SessionStorageService.setObject('pricing', response.data);
             }
         })
@@ -56,16 +57,14 @@ class AppPages extends Component {
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
       }
-      
+
       componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
       }
-      
+
       updateWindowDimensions() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
       }
-
-
 
     render() {
         return (
@@ -80,13 +79,15 @@ class AppPages extends Component {
                             <Route path='/about-us' component={AppAboutUsPage}/>
                             <Route path='/contact-us' component={AppContactUsPage}/>
                             <Route path='/getting-here' component={AppGettingHerePage}/>
+                            <Route path='/seatbooking/PaymentPage' component={PaymentPage}/>
                             <Route path='/seatbooking' component={AppSeatingPage}/>
-                            <Route path='/PaymentPage' component={PaymentPage}/>
-                            <Route path='/Future-Listings/:movietitle' component={FutureMoviePage}/>
-                            <Route path='/Future-Listings' component={FutureReleases}/>
+                            <Route path='/Future-Listings' component={CurrentReleases}/>
                             <Route path='/Listings/:movietitle' component={MoviePage}/>
                             <Route path='/Listings' component={CurrentReleases}/>
                             <Route path='/summary/bookingsuccesspage' component={BookingSuccessPage}/>
+                            <Route path='/places-to-go' component={AppPlacesToGoPage}/>
+                            <Route path='/screens' component={AppScreensPage}/>
+                            <Route path='/my-account' component={MyAccountPage}/>
                             <Route component={ErrorPage}/>
                         </Switch>
                     </div>

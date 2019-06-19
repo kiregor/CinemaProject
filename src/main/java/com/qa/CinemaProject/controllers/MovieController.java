@@ -16,22 +16,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import static com.qa.CinemaProject.constants.MappingConstants.CREATE_MOVIE;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_ALL_MOVIES;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_ALL_MOVIES_ADMIN;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_MOVIE_ID;
 import static com.qa.CinemaProject.constants.MappingConstants.UPDATE_MOVIE;
 import static com.qa.CinemaProject.constants.MappingConstants.DELETE_MOVIE;
 import static com.qa.CinemaProject.constants.MappingConstants.PRICE_LIST;
 import static com.qa.CinemaProject.constants.MappingConstants.SEND_EMAIL;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_ALL_BOOKINGS;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_USER_BOOKINGS;
 import static com.qa.CinemaProject.constants.MappingConstants.CREATE_SINGLE_BOOKING;
 import static com.qa.CinemaProject.constants.MappingConstants.BOOKING;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_POPULAR;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_SUCCESS_STATUS;
 import static com.qa.CinemaProject.constants.MappingConstants.CHECK_MOVIES;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_SCREENS;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_SCREENS_ADMIN;
 import static com.qa.CinemaProject.constants.MappingConstants.CREATE_EVENT;
 import static com.qa.CinemaProject.constants.MappingConstants.ADMIN_LOGIN;
 import com.qa.CinemaProject.email.Email;
@@ -40,6 +44,7 @@ import com.qa.CinemaProject.entities.Booking;
 import com.qa.CinemaProject.entities.BookingPayment;
 import com.qa.CinemaProject.entities.Login;
 import com.qa.CinemaProject.entities.Movie;
+import com.qa.CinemaProject.entities.MovieEvent;
 import com.qa.CinemaProject.entities.MovieTemp;
 import com.qa.CinemaProject.entities.Popular;
 import com.qa.CinemaProject.entities.PriceList;
@@ -47,6 +52,7 @@ import com.qa.CinemaProject.entities.Screen;
 import com.qa.CinemaProject.seatsio.SeatsIoApi;
 import com.qa.CinemaProject.service.AdminService;
 import com.qa.CinemaProject.service.BookingService;
+import com.qa.CinemaProject.service.MovieEventService;
 import com.qa.CinemaProject.service.MovieService;
 import com.qa.CinemaProject.service.PaymentService;
 import com.qa.CinemaProject.service.ScreenService;
@@ -62,6 +68,7 @@ public class MovieController {
 	private BookingService bookingService;
 	private ScreenService screenService;
 	private AdminService adminService;
+	private MovieEventService eventService;
 	private EmailApplication email;
 	private SeatsIoApi seatsIo;
   
@@ -79,12 +86,13 @@ public class MovieController {
 	@Value("${movie.three}")
 	private String movieThree;
 	
-	public MovieController(MovieService movieService, PaymentService paymentService, BookingService bookingService, EmailApplication email, SeatsIoApi seatsIo, ScreenService screenService, AdminService adminService) {
+	public MovieController(MovieService movieService, PaymentService paymentService, BookingService bookingService, EmailApplication email, SeatsIoApi seatsIo, ScreenService screenService, AdminService adminService, MovieEventService eventService) {
 		this.movieService = movieService;
 		this.paymentService = paymentService;
 		this.bookingService = bookingService;
 		this.screenService = screenService;
 		this.adminService = adminService;
+		this.eventService = eventService;
 		this.email = email;
 		this.seatsIo = seatsIo;
 	}
@@ -126,12 +134,13 @@ public class MovieController {
 	}
 	
 	@PostMapping(BOOKING)
-	public void booking(@RequestBody BookingPayment booking ) throws StripeException {
-		System.out.println(booking.getEventToken());
-		int cost = booking.getBooking().getTickets().stream().mapToInt(t -> t.getPrice()).sum();
-		this.paymentService.makePayment(booking.getToken(),cost);
+	public void booking(@RequestBody BookingPayment bookingPayment ) throws StripeException {
+		System.out.println(bookingPayment.getEventToken());
+		int cost = bookingPayment.getBooking().getTickets().stream().mapToInt(t -> t.getPrice()).sum();
+		this.paymentService.makePayment(bookingPayment.getToken(),cost);
 		if(paymentService.getStatus().equals("success")) {
-			this.bookingService.saveBooking(booking.getBooking(),booking.getHoldToken(), booking.getEventToken());
+			bookingPayment.getBooking().setUserId(bookingPayment.getUserId());
+			this.bookingService.saveBooking(bookingPayment.getBooking(),bookingPayment.getHoldToken(), bookingPayment.getEventToken());
 		}
 	}
 	
@@ -170,19 +179,45 @@ public class MovieController {
 		return this.screenService.getAllScreens();
 	}
 	
-	@PostMapping(CREATE_EVENT)
-	public void createEvent(@RequestBody MovieTemp movie) {
-		this.adminService.newEvent(movie);
-	}
-	
 	@GetMapping("/testMovieTemp")
 	public MovieTemp test() {
 		return new MovieTemp(1, "", "", new Date());
 	}
 	
+	@PostMapping("/getevents")
+	public List<MovieEvent> getEvents(@RequestBody Movie movie){
+		return eventService.getEventsByMovie(movie);
+	}
+	
+	@PostMapping("/savescreen")
+	public void saveScreen(@RequestBody Screen screen) {
+		this.screenService.saveScreen(screen);
+	}
+	
 	@PostMapping(ADMIN_LOGIN)
 	public boolean adminLogin(@RequestBody Login login) {
 		return this.adminService.login(login);
+	}
+
+	@GetMapping(GET_ALL_MOVIES_ADMIN)
+	public List<Movie> getAllMoviesAdmin() {
+		return this.movieService.getAllMovies();
+	}
+
+	@GetMapping(GET_SCREENS_ADMIN)
+	public List<Screen> getAllScreensAdmin(){
+		return this.screenService.getAllScreens();
+	}
+	
+	@GetMapping(GET_USER_BOOKINGS)
+	@ResponseBody
+	public List<Booking> getUserBookings(@PathVariable String id){
+		return this.bookingService.getUserBookings(id);
+	}
+	
+	@PostMapping(CREATE_EVENT)
+	public void createEvent(@RequestBody MovieTemp movie) {
+		this.adminService.newEvent(movie);
 	}
 
 }

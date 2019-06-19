@@ -59,4 +59,6 @@ public class MovieEvent {
 		return "Event [id=" + id + ", movieId=" + movieId + ", screenId=" + screenId + "]";
 	}
 	
+	 
+	
 }
