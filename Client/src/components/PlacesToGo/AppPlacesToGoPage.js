@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import {Container, Row, Col} from 'reactstrap';
+import bgColors from '../../Constants';
 
-
-var bgColors = { "Mist": "#90afc5",
-                    "Stone": "#336b87",
-                    "Shadow": "#2a3132",
-                    "Autumn": "#763626",
-};
 
 const styles = {
   header: {

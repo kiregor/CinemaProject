@@ -19,6 +19,7 @@ import BookingSuccessPage from './summary/BookingSuccessPage';
 import MyAccountPage from './accounts/MyAccountPage';
 import ErrorPage from './ErrorPage/ErrorPage';
 import AppPlacesToGoPage from './PlacesToGo/AppPlacesToGoPage';
+import AppScreensPage from './Screens/AppScreensPage';
 
 class AppPages extends Component {
     constructor(props) {
@@ -85,6 +86,7 @@ class AppPages extends Component {
                             <Route path='/Listings' component={CurrentReleases}/>
                             <Route path='/summary/bookingsuccesspage' component={BookingSuccessPage}/>
                             <Route path='/places-to-go' component={AppPlacesToGoPage}/>
+                            <Route path='/screens' component={AppScreensPage}/>
                             <Route path='/my-account' component={MyAccountPage}/>
                             <Route component={ErrorPage}/>
                         </Switch>

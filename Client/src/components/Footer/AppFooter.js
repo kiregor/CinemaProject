@@ -10,7 +10,7 @@ class AppFooter extends Component {
         return(
     <footer className="site-footer">
             <Row className="footerRow">
-                <Col sm="6" xs="12">
+                <Col md="6" xs="12">
                     <ul className="footer-links">
                         <h6>Quick Links</h6>
                         <li><a href="/about-us/">About Us </a></li>
@@ -20,7 +20,7 @@ class AppFooter extends Component {
                     </ul>
                 </Col>
 
-                <Col sm="6" xs="12" className="icons">
+                <Col md="6" xs="12" className="icons">
                     <ul className="social-icons"> 
                         <li><a className="facebook" href="#"><FontAwesomeIcon icon={['fab', 'facebook']} /></a></li>
                         <li><a className="twitter" href="https://twitter.com/cinema_fs"><FontAwesomeIcon icon={['fab', 'twitter']} /></a></li> 
