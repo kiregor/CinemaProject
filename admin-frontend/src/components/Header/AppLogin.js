@@ -1,15 +1,28 @@
 
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button } from 'reactstrap';
+import LoginService from '../../services/LoginService';
 
 class AppLogin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      adminLoggedIn: LoginService.isAdminLoggedIn()
     };
-
     this.toggle = this.toggle.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this)
+  }
+
+  login() {
+    // Back to login page
+    window.location.assign('/')
+  }
+
+  logout() {
+    LoginService.removeLoginSession()
+    window.location.assign('/')
   }
 
   toggle() {
@@ -21,17 +34,12 @@ class AppLogin extends React.Component {
   render() {
     return (
       <div>
-        <Button style={{backgroundColor:'#2A3132'}} onClick={this.toggle}>Log In</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Log in</ModalHeader>
-          <ModalBody>
-            Add Form to log in
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Log in</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-          </ModalFooter>
-        </Modal>
+        {(!this.state.adminLoggedIn) &&
+          <Button onClick={this.login} style={{ backgroundColor: '#2A3132' }}>Log In</Button>
+        }
+        {(this.state.adminLoggedIn) &&
+          <Button onClick={this.logout} style={{ backgroundColor: '#2A3132' }}>Log Out</Button>
+        }
       </div>
     );
   }
