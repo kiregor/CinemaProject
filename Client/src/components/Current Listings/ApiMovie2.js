@@ -12,19 +12,18 @@ const Movie = (props) => {
                     <FlippingCardBack>                       
                         <div style={{padding:20, textAlign:'center'}} >
                         <h3>{props.title}</h3>
-                        <p style={{fontSize:13}}>{props.overview}</p>   
+                        <p style={{fontSize:13, textShadow:'1px 0px 0px'}}>{props.overview}</p>   
                          </div>
                         
                     </FlippingCardBack>
                     <FlippingCardFront>
                         <img src={`http://image.tmdb.org/t/p/w500${props.image}`} style={{width:"100%", height: "100%"}}/>
                     </FlippingCardFront>
-
+                    <img src={`http://image.tmdb.org/t/p/w500${props.image}`} style={{width:"100%", height: "100%", opacity:0.2}}/>
                 </FlippingCard>
                 <div>
                     <span>
-                        <a href={`/listings/${props.title}`}><Button style={{backgroundColor: bgColors.Stone}} block>More Info</Button></a>{' '}
-                        <a href={`/listings/${props.title}`}><Button style={{backgroundColor: bgColors.Autumn}} block> Book Now</Button></a>{' '}
+                        <a href={`/Listings/${props.title}`}><Button style={{backgroundColor: bgColors.Stone}} block>Book Now</Button></a>{' '}
                     <br/>
                     <br/>
                     </span>

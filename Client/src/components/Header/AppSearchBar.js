@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, Input, InputGroup, InputGroupAddon, ListGroup, ListGroupItem } from 'reactstrap'
-import movieList from '../../services/MovieList'
 import MovieService from '../../services/MovieService';
 import bgColors from '../../Constants';
+
 
 class AppSearchBar extends Component {
 
@@ -77,12 +77,12 @@ class AppSearchBar extends Component {
   render() {
     return (
       <div className='searchBar bgColor'>
-        <Button onClick={this.toggle} onMouseOver={this.onMouseOver('backgroundColor')} onMouseOut={this.onMouseOut('backgroundColor')} style={{backgroundColor:this.state.backgroundColor}}>Search</Button>
+        <Button onClick={this.toggle} onMouseOver={this.onMouseOver('backgroundColor')} onMouseOut={this.onMouseOut('backgroundColor')} style={{backgroundColor:this.state.backgroundColor, color:bgColors.Mist}}>Search</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className='searchBarModal'>
           <ModalHeader toggle={this.toggle}>Search</ModalHeader>
           <ModalBody>
             <InputGroup>
-              <InputGroupAddon addonType="prepend"><Button>Search</Button></InputGroupAddon>
+              <InputGroupAddon addonType="prepend"><Button style={{backgroundColor:bgColors.Stone}}>Search</Button></InputGroupAddon>
               <Input onChange={this.onChange} value={this.state.searchInput}/>
             </InputGroup>
             {

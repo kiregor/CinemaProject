@@ -1,7 +1,6 @@
 import React ,{Component} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import GoogleLogin from 'react-google-login';
-import SessionStorageService from '../../services/SessionStorageService';
 import bgColors from '../../Constants';
 
 class AppLogin extends Component {
@@ -43,7 +42,7 @@ class AppLogin extends Component {
 
     return (
       <div>
-        <Button onClick={this.toggle} onMouseOver={this.onMouseOver('backgroundColor')} onMouseOut={this.onMouseOut('backgroundColor')} style={{backgroundColor:this.state.backgroundColor}}>Log In</Button>
+        <Button onClick={this.toggle} onMouseOver={this.onMouseOver('backgroundColor')} onMouseOut={this.onMouseOut('backgroundColor')} style={{backgroundColor:this.state.backgroundColor, color:bgColors.Mist}}>Log In</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Log in options</ModalHeader>
           <ModalBody>
@@ -56,7 +55,7 @@ class AppLogin extends Component {
             />
           </ModalBody>
           <ModalFooter>
-            <Button color="danger" onClick={this.toggle}>Close</Button>
+            <Button onClick={this.toggle} style={{backgroundColor:bgColors.Stone}}>Close</Button>
           </ModalFooter>
         </Modal>
       </div>
