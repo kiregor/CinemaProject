@@ -16,9 +16,9 @@ import BookingService from '../services/BookingService';
 import MovieService from '../services/MovieService';
 import SessionStorageService from '../services/SessionStorageService'
 import FutureMoviePage from './FutureMoviePage/FutureMoviePage'
-import BookingSuccessPage from './summary/BookingSuccessPage';
+import BookingSuccessPage from './Summary/BookingSuccessPage';
 import ErrorPage from './ErrorPage/ErrorPage';
-import GoogleSignInAPI from './accounts/GoogleSignInAPI';
+import GoogleSignInAPI from './Accounts/GoogleSignInAPI';
 
 class AppPages extends Component {
     constructor(props) {

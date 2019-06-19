@@ -2,7 +2,7 @@ import React from 'react';
 import '../../App.css';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './AppCheckoutForm';
-import SummaryPage from '../summary/SummaryPage';
+import SummaryPage from '../Summary/SummaryPage';
 import SessionStorageService from '../../services/SessionStorageService';
 
 function PaymentPage() {

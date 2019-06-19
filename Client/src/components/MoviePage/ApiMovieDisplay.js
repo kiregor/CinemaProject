@@ -3,6 +3,7 @@ import {Container, Row, Col} from 'reactstrap';
 import DateTabs from './AppDateTabs';
 import './poster.css'
 import axios from 'axios';
+import {API_KEY} from '../../Constants';
 
 // BASE URL FOR POSTER -->  http://image.tmdb.org/t/p/w500$
 // BASE URL FOR YOUTUBE VIDEO --> https://www.youtube.com/watch/?v=
@@ -41,9 +42,35 @@ class MovieDisplay extends React.Component {
             dataReceived: [],
             title: this.props.title,
             id: this.props.id,
-            dateTabs: null
+            dateTabs: null,
+            ageRating: []
         }
+    this.Api=API_KEY
     }
+
+    componentWillMount = (e) => {
+        console.log(this.state.id)
+        fetch(`https://api.themoviedb.org/3/movie/${this.state.id}/release_dates?api_key=${this.Api}`)
+        .then(data => data.json())
+        .then(data => {
+        console.log(data);
+        for (let i=0; i < data.results.length; i++){
+            if (data.results[i].iso_3166_1 == 'GB'){
+                this.setState({
+                    ageRating : data.results[i].release_dates[0].certification,
+                    isLoaded:true
+                }) 
+                if (this.state.ageRating == ''){
+                    this.setState({ageRating:'NA'})
+                }
+            }
+        this.setState({isLoaded:true})
+        }   
+        this.setState({isLoaded:true})  
+        console.log(this.state.ageRating);
+        })
+    }
+
 
     componentDidMount(){
         axios.post('http://localhost:8080/getevents' , {
@@ -53,7 +80,7 @@ class MovieDisplay extends React.Component {
         .then(response => {
             console.log(response);
             this.state.dataReceived = response.data;
-        this.setState({dateTabs:<DateTabs data={this.state.dataReceived}/>})
+        this.setState({dateTabs:<DateTabs data={this.state.dataReceived}/>} )
         })
         .catch(error => console.log(error))
     }    
@@ -78,7 +105,7 @@ class MovieDisplay extends React.Component {
                         <br/>
                         <div style={{fontSize: 18}}> <a style={{color: bgColors.Autumn}}> Rating : {this.props.rating}/10 </a></div>
                         <br/>
-                    
+                        {this.state.ageRating}
                     </Col>
 
                     <Col >
