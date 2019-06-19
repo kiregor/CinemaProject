@@ -183,7 +183,6 @@ public class MovieController {
 	
 	@PostMapping("/getevents")
 	public List<MovieEvent> getEvents(@RequestBody Movie movie){
-		System.out.println(movie.toString());
 		return eventService.getEventsByMovie(movie);
 	}
 	
