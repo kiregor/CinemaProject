@@ -13,7 +13,7 @@ const items = [
   {
     src: `http://image.tmdb.org/t/p/w1280/vVpEOvdxVBP2aV166j5Xlvb5Cdc.jpg`,
     altText: 'Movie',
-    caption: 'John Wick Chapter 3 - Parabellum'
+    caption: 'John Wick: Chapter 3 – Parabellum',    
   },
   {
     src: `http://image.tmdb.org/t/p/w1280/phxiKFDvPeQj4AbkvJLmuZEieDU.jpg`,
@@ -74,7 +74,9 @@ class Example extends Component {
           onExited={this.onExited}
           key={item.src}
         >
-          <img className='carouselImg' src={item.src} alt={item.altText}/>
+          <a href={`/listings/${item.caption}`}>
+            <img className='carouselImg' src={item.src} alt={item.altText}/>
+           </a>
           <CarouselCaption captionHeader={item.caption} />
         </CarouselItem>
       );

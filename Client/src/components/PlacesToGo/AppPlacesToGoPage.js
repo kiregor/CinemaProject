@@ -48,7 +48,7 @@ const AppPlacesToGoPage = (props) => {
                     <div  style={{fontSize: 15}}>Explore 1000 years of history at London’s <br></br>
                      iconic castle and World Heritage Site</div>                    
                      <br/><br/><br/>
-                    <div  style={{fontSize: 15}}>Tuesday to Saturday:  09:00 to 17:30   <br/>
+                    <div  style={{fontSize: 15}}>09:00 to 17:30 Tuesday to Saturday:  <br/>
                         10:00 to 17:30 Sunday to Monday.</div>
                      <br/>
                     <div  style={{fontSize: 15}}>Phone: 020 3302 2380</div> 
