@@ -96,17 +96,16 @@ class MovieDisplay extends React.Component {
                 </Row>
                 <Row>
                     <Col>
-                        <div  style={{fontSize: 35}}>{this.props.title}</div>
+                        <div  style={{fontSize: 35}}><img src={window.location.origin + `/BBFC ICONS/${this.state.ageRating}.png`} style={{height:35}}/> {this.props.title}</div>
                     </Col>                
                 </Row>
                 <Row>
                     <Col>
-                    <   div style={{fontSize: 22}}> <a style={{color: bgColors.Shadow}} >Release Date : {this.props.releasedate} </a></div>
-                        <br/>
-                        <div style={{fontSize: 18}}> <a style={{color: bgColors.Autumn}}> Rating : {this.props.rating}/10 </a></div>
-                        <br/>
-                        {this.state.ageRating}
-                    </Col>
+                        <div style={{fontSize: 20}}> <a style={{color: bgColors.Shadow}}> Release Date : {this.props.releasedate} </a></div>
+                        <br/>  <br/> 
+                        <div style={{fontSize: 20}}> <a style={{color: bgColors.Autumn}}> Rating : {this.props.rating}/10 </a></div>
+                        <br/>  <br/> 
+                       </Col>
 
                     <Col >
                     <div style ={styles.header} style={{fontSize: 18}}> <a style={{color: bgColors.Shadow}}> {this.props.overview} </a></div>
