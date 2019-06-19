@@ -13,7 +13,7 @@ class Detail extends Component {
                         <tr>
                             <td>{detail.location}</td>
                             <td>{detail.ticketType}</td>
-                            <td>{detail.price}</td>
+                            <td>{'£' + detail.price}</td>
                         </tr>      
                         </tbody>
                     </Table>

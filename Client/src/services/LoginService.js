@@ -3,6 +3,7 @@ import { LOCAL_BACKEND_SERVER, CHECK_TICKETS } from '../../src/Constants'
 
 class LoginService {
     hasLoggedIn(){
+        console.log("userID:"+window.sessionStorage.getItem('userId'));
         return (window.sessionStorage.getItem('userId')!==null);
     }
     getTickets() {

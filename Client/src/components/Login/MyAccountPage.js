@@ -30,6 +30,7 @@ class MyAccountPage extends Component {
                 <Container>
                     <Row>
                         <Col>
+                        hi
                         </Col>
                     </Row>
                 </Container>
