@@ -2,16 +2,19 @@ import React from 'react';
 import './poster.css'
 import {FlippingCard, FlippingCardBack, FlippingCardFront} from 'react-ui-cards';
 import {Button} from 'reactstrap';
-
+import bgColors from '../../Constants';
 
 const Movie = (props) => {
     return (
         <div className="col s6 m4 l3">
             <div>
                 <FlippingCard>
-                    <FlippingCardBack>
+                    <FlippingCardBack>                       
+                        <div style={{padding:20, textAlign:'center'}} >
                         <h3>{props.title}</h3>
-                        <p style={{fontSize:13}}>{props.overview}</p>
+                        <p style={{fontSize:13}}>{props.overview}</p>   
+                         </div>
+                        
                     </FlippingCardBack>
                     <FlippingCardFront>
                         <img src={`http://image.tmdb.org/t/p/w500${props.image}`} style={{width:"100%", height: "100%"}}/>
@@ -20,8 +23,8 @@ const Movie = (props) => {
                 </FlippingCard>
                 <div>
                     <span>
-                        <a href={`/Listings/${props.title}`}><Button color='secondary' block>More Info</Button></a>{' '}
-                        <a href={`/Listings/${props.title}`}><Button color='danger' block> Book Now</Button></a>{' '}
+                        <a href={`/listings/${props.title}`}><Button style={{backgroundColor: bgColors.Stone}} block>More Info</Button></a>{' '}
+                        <a href={`/listings/${props.title}`}><Button style={{backgroundColor: bgColors.Autumn}} block> Book Now</Button></a>{' '}
                     <br/>
                     <br/>
                     </span>

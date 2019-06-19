@@ -9,17 +9,14 @@ function PaymentPage() {
   let seatInfo = SessionStorageService.getObject('bookedSeats');
   return (
     <div className = "PaymentPage" >
-      <SummaryPage seatInfo={seatInfo}/><br/><br/>
-      <div className="container ml-16" >
+      <SummaryPage seatInfo={seatInfo}/><br/>
+      <div className="container" >
       <StripeProvider apiKey="pk_test_ApZj9rpgzM8kHv4LZLeWzY8c00CRakUyGN">
-        <div className="container ml-16" >
           <Elements>
             <CheckoutForm seatInfo={seatInfo}/>
           </Elements>
-        </div>
       </StripeProvider>
       </div>
-      <br/><br/><br/>
     </div>
   );
 }
