@@ -15,8 +15,8 @@ import MoviePage from './MoviePage/MoviePage'
 import BookingService from '../services/BookingService';
 import MovieService from '../services/MovieService';
 import SessionStorageService from '../services/SessionStorageService';
-import BookingSuccessPage from './Summary/BookingSuccessPage';
-import MyAccountPage from './Accounts/MyAccountPage';
+import BookingSuccessPage from './Summary1/BookingSuccessPage';
+import MyAccountPage from './Accounts1/MyAccountPage';
 import ErrorPage from './ErrorPage/ErrorPage';
 import AppPlacesToGoPage from './PlacesToGo/AppPlacesToGoPage';
 import AppScreensPage from './Screens/AppScreensPage';
