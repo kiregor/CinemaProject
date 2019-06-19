@@ -17,7 +17,7 @@ import MovieService from '../services/MovieService';
 import SessionStorageService from '../services/SessionStorageService';
 import FutureMoviePage from './FutureMoviePage/FutureMoviePage';
 import BookingSuccessPage from './summary/BookingSuccessPage';
-import MyAccountPage from './accounts/MyAccountPage';
+import MyAccountPage from './Accounts1/MyAccountPage';
 import ErrorPage from './ErrorPage/ErrorPage';
 
 class AppPages extends Component {
