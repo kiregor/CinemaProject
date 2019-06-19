@@ -214,7 +214,7 @@ public class MovieController {
 	public List<Booking> getUserBookings(@PathVariable String id){
 		return this.bookingService.getUserBookings(id);
 	}
-
+	
 	@PostMapping(CREATE_EVENT)
 	public void createEvent(@RequestBody MovieTemp movie) {
 		this.adminService.newEvent(movie);
