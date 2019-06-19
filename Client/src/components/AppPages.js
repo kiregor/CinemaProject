@@ -81,7 +81,6 @@ class AppPages extends Component {
                             <Route path='/getting-here' component={AppGettingHerePage}/>
                             <Route path='/seatbooking/PaymentPage' component={PaymentPage}/>
                             <Route path='/seatbooking' component={AppSeatingPage}/>
-                            <Route path='/Future-Listings/:movietitle' component={FutureMoviePage}/>
                             <Route path='/Future-Listings' component={CurrentReleases}/>
                             <Route path='/Listings/:movietitle' component={MoviePage}/>
                             <Route path='/Listings' component={CurrentReleases}/>
