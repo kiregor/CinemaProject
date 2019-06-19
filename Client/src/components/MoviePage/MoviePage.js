@@ -17,19 +17,6 @@ class ApiFetchPoster extends Component{
     this.Api=API_KEY
     console.log(this.Api)
     }
-    render() {
-        var { isLoaded} = this.state;
-        if (!isLoaded) {
-            return <div ><Spinner/></div>
-        }
-        else {
-            return(
-                <div className="ApiFetchPoster">
-                    <MovieFetch movies={this.state.movies}/>
-                </div>
-            );
-        }
-    }
 
     /* HIDE API KEY + RETREIVE SEARCH QUERY FROM URL*/
     componentDidMount = (e) => {
@@ -44,5 +31,20 @@ class ApiFetchPoster extends Component{
 
         })
     }
+
+    render() {
+        var { isLoaded} = this.state;
+        if (!isLoaded) {
+            return <div ><Spinner/></div>
+        }
+        else {
+            return(
+                <div className="ApiFetchPoster">
+                    <MovieFetch movies={this.state.movies}/>
+                </div>
+            );
+        }
+    }
+
 }
 export default ApiFetchPoster;

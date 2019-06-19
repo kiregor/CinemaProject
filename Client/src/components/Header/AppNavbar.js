@@ -45,7 +45,7 @@ class AppNavbar extends Component {
     return (
         <Navbar className="navbar-form navbar-fixed-top" sticky={'bottom'} style={{backgroundColor:BACKGROUNDCOLOR}} dark expand='lg'>
           <Container>
-            <NavbarBrand href='/' className='navbar-nav ml-auto'><img src='./Logo.png'></img></NavbarBrand>
+            <NavbarBrand href='/' className='navbar-nav ml-auto'><div style={{height:50, transform:"translate(0,-100%)"}}><img src={window.location.origin + '/Logo.png'} style={{height:150}}></img></div></NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className='mr-auto' navbar>
