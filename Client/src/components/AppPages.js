@@ -18,11 +18,8 @@ import SessionStorageService from '../services/SessionStorageService'
 import FutureMoviePage from './FutureMoviePage/FutureMoviePage'
 import BookingSuccessPage from './summary/BookingSuccessPage';
 import ErrorPage from './ErrorPage/ErrorPage';
-<<<<<<< HEAD
 import AppPlacesToGoPage from './PlacesToGo/AppPlacesToGoPage';
-=======
 import GoogleSignInAPI from './accounts/GoogleSignInAPI';
->>>>>>> development-branch
 
 class AppPages extends Component {
     constructor(props) {
