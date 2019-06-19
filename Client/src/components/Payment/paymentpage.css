@@ -1,0 +1,10 @@
+.PaymentPage .btn
+{
+    background-color: #336B87;
+    border-color: #336B87;
+}
+.PaymentPage .btn:hover
+{
+    background-color: #90AFC5;
+    border-color: #90AFC5;
+}
