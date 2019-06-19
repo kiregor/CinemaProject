@@ -26,11 +26,7 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-<<<<<<< HEAD
 		<java.version>9</java.version>
-=======
-		<java.version>11</java.version>
->>>>>>> development-branch
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 	</properties>
@@ -145,11 +141,8 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-<<<<<<< HEAD
 				<version>3.8.0</version>
 			</plugin>
-
-=======
 				<version>3.8.0</version><!--$NO-MVN-MAN-VER$-->
 				<configuration>
 					<release>11</release>
@@ -175,7 +168,6 @@
 					</argLine>
 				</configuration>
 			</plugin>
->>>>>>> development-branch
 		</plugins>
 	</build>
 </project>
