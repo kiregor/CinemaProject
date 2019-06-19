@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOCAL_BACKEND_SERVER, PRICE_LIST, GET_USER_BOOKINGS} from '../../src/Constants'
+import { LOCAL_BACKEND_SERVER, PRICE_LIST} from '../../src/Constants'
 
 class BookingService {
     url;

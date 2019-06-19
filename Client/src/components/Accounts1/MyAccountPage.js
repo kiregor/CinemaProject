@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container, Row, Col} from 'reactstrap';
+import {Container} from 'reactstrap';
 import LoginService from '../../services/LoginService';
 import AppLogin from '../Header/AppLogin';
 import { Table } from 'reactstrap';
