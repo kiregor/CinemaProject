@@ -91,7 +91,7 @@ class CheckoutForm extends Component {
                           </ToastBody>
                         </Toast>
                         <br/>
-                    <Button color="primary" size="lg" block onClick={this.submit}>Send</Button>
+                    <Button color="primary" size="lg" block onClick={this.submit}>Confirm and Pay</Button>
                 </Form>
 
                 <br/>
