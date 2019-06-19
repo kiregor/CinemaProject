@@ -21,6 +21,7 @@ class AppAdminLoginPage extends Component {
         let username = document.getElementById("username").value;
         let password = document.getElementById("password").value;
         let validCredentials = false
+        console.log(username, password)
         LoginService.sendLoginDetailsToBackend({ username, password })
             .then(response => {
                 console.log(response.data)
@@ -28,7 +29,8 @@ class AppAdminLoginPage extends Component {
                 if (validCredentials) {
                     
                     // Go to next page
-                    window.alert("LOGGED IN!!")
+                    LoginService.saveLoginSession();
+                    window.location.assign('/event-page');
                 } else {
                     this.showErrors();
                 }
@@ -92,5 +94,4 @@ class AppAdminLoginPage extends Component {
         )
     }
 }
-
 export default AppAdminLoginPage

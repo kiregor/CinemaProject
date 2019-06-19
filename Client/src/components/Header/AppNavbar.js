@@ -53,7 +53,7 @@ class AppNavbar extends Component {
                   <NavLink href="/Future-Listings" color='primary'>Future Releases</NavLink>
                 </NavItem>
                 <NavItem onMouseOver={this.onMouseOver('screens')} onMouseOut={this.onMouseOut('screens')} style={{backgroundColor:this.state.screens}}>
-                  <NavLink href="/" color='primary'>Screens</NavLink>
+                  <NavLink href="/screens" color='primary'>Screens</NavLink>
                 </NavItem>
                 <NavItem onMouseOver={this.onMouseOver('gettinghere')} onMouseOut={this.onMouseOut('gettinghere')} style={{backgroundColor:this.state.gettinghere}}>
                   <NavLink href="/getting-here" color='primary'>Getting Here</NavLink>

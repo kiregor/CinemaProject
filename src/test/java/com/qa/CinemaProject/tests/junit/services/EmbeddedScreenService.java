@@ -2,6 +2,7 @@ package com.qa.CinemaProject.tests.junit.services;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.qa.CinemaProject.entities.Screen;
@@ -9,6 +10,7 @@ import com.qa.CinemaProject.repo.SequenceRepo;
 import com.qa.CinemaProject.service.ScreenService;
 import com.qa.CinemaProject.tests.junit.repositories.EmbeddedScreenRepo;
 
+@Profile("test")
 @Service
 public class EmbeddedScreenService extends ScreenService implements EmbeddedService<Screen> {
 
