@@ -12,8 +12,6 @@ import {
 import AppCreateAccount from './AppLogout';
 import AppLogin from './AppLogin';
 import AppLogout from './AppLogout';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AppSearchBar from './AppSearchBar';
 import bgColors from '../../Constants';
 
@@ -65,12 +63,16 @@ class AppNavbar extends Component {
                 </NavItem>
               </Nav>
               <Nav className='ml-auto' navbar>
-                <NavItem>
-                  <AppLogin/>
-                </NavItem>
-                <NavItem>
-                  <AppSearchBar/>
-                </NavItem>
+                  <NavItem style={{marginRight:"90px"}}>
+                      <AppSearchBar/>
+                  </NavItem>
+
+                  <NavItem style={{marginRight:"5px"}}>
+                      <AppLogin />
+                  </NavItem>
+                  <NavItem >
+                      <AppLogout/>
+                  </NavItem>
 
               </Nav>
             </Collapse>
