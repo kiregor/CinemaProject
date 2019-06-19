@@ -77,7 +77,7 @@ class Example extends Component {
           <a href={`/listings/${item.caption}`}>
             <img className='carouselImg' src={item.src} alt={item.altText}/>
            </a>
-          <CarouselCaption captionHeader={item.caption} />
+          <CarouselCaption captionText={''} captionHeader={item.caption} />
         </CarouselItem>
       );
     });

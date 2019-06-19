@@ -7,7 +7,7 @@ import Pagination from './AppPagination';
 //PATH FOR MOVE POSTER: http://tmdb.org/t/p/<SIZE>/<POSTER_PATH>;
 //SIZE: W92, W154, W185, W342, W500, W700;
 
-const ageR = 'label.age-declaration.rating.age-adds';
+// const ageR = 'label.age-declaration.rating.age-adds';
 
 class ApiFetchPoster extends Component{
     constructor(props){
