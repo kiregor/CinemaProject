@@ -2,17 +2,12 @@ import React from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import DateTabs from './AppDateTabs';
 import './poster.css'
+import bgColors from '../../Constants';
 import axios from 'axios';
 
 // BASE URL FOR POSTER -->  http://image.tmdb.org/t/p/w500$
 // BASE URL FOR YOUTUBE VIDEO --> https://www.youtube.com/watch/?v=
 
-
-var bgColors = { "Mist": "#90afc5",
-                    "Stone": "#336b87",
-                    "Shadow": "#2a3132",
-                    "Autumn": "#763626",
-};
 
 const styles = {
   header: {
@@ -102,4 +97,3 @@ class MovieDisplay extends React.Component {
     }
 }
 export default MovieDisplay;
-export var bgColors;

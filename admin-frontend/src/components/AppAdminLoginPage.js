@@ -94,5 +94,4 @@ class AppAdminLoginPage extends Component {
         )
     }
 }
-
 export default AppAdminLoginPage

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import static com.qa.CinemaProject.constants.MappingConstants.CREATE_MOVIE;
@@ -27,6 +28,7 @@ import static com.qa.CinemaProject.constants.MappingConstants.DELETE_MOVIE;
 import static com.qa.CinemaProject.constants.MappingConstants.PRICE_LIST;
 import static com.qa.CinemaProject.constants.MappingConstants.SEND_EMAIL;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_ALL_BOOKINGS;
+import static com.qa.CinemaProject.constants.MappingConstants.GET_USER_BOOKINGS;
 import static com.qa.CinemaProject.constants.MappingConstants.CREATE_SINGLE_BOOKING;
 import static com.qa.CinemaProject.constants.MappingConstants.BOOKING;
 import static com.qa.CinemaProject.constants.MappingConstants.GET_POPULAR;
@@ -132,12 +134,13 @@ public class MovieController {
 	}
 	
 	@PostMapping(BOOKING)
-	public void booking(@RequestBody BookingPayment booking ) throws StripeException {
-		System.out.println(booking.getEventToken());
-		int cost = booking.getBooking().getTickets().stream().mapToInt(t -> t.getPrice()).sum();
-		this.paymentService.makePayment(booking.getToken(),cost);
+	public void booking(@RequestBody BookingPayment bookingPayment ) throws StripeException {
+		System.out.println(bookingPayment.getEventToken());
+		int cost = bookingPayment.getBooking().getTickets().stream().mapToInt(t -> t.getPrice()).sum();
+		this.paymentService.makePayment(bookingPayment.getToken(),cost);
 		if(paymentService.getStatus().equals("success")) {
-			this.bookingService.saveBooking(booking.getBooking(),booking.getHoldToken(), booking.getEventToken());
+			bookingPayment.getBooking().setUserId(bookingPayment.getUserId());
+			this.bookingService.saveBooking(bookingPayment.getBooking(),bookingPayment.getHoldToken(), bookingPayment.getEventToken());
 		}
 	}
 	
@@ -204,6 +207,12 @@ public class MovieController {
 	@GetMapping(GET_SCREENS_ADMIN)
 	public List<Screen> getAllScreensAdmin(){
 		return this.screenService.getAllScreens();
+	}
+	
+	@GetMapping(GET_USER_BOOKINGS)
+	@ResponseBody
+	public List<Booking> getUserBookings(@PathVariable String id){
+		return this.bookingService.getUserBookings(id);
 	}
 	
 	@PostMapping(CREATE_EVENT)

@@ -148,5 +148,4 @@ class AppAdminEventPage extends Component {
         )
     }
 }
-
 export default AppAdminEventPage
