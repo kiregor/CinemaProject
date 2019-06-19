@@ -5,6 +5,7 @@ export const CHECK_MOVIES = 'checkmovies';
 export const GET_USER_BOOKINGS = 'getUserBookings';
 export const API_KEY = '3e9a89831a2e61d47f06983917822671';
 export const API_KEY_AGE = '48396093FBEE2CD380257EE0007A7419';
+export const GET_ALL_MOVIES = 'getAllMovies';
 const bgColors = {
     Mist: "#90afc5",
     Stone: "#336b87",

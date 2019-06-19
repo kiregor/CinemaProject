@@ -8,7 +8,6 @@ import AppGettingHerePage from './FindUs/AppGettingHerePage';
 import AppSeatingPage from './Seating/AppSeatingPage';
 import AppBreadCrumbs from './Header/AppBreadcrumbs'
 import PaymentPage from './Payment/PaymentPage';
-import FutureReleases from './Future Listings/FutureReleases';
 import CurrentReleases from './Current Listings/CurrentReleases';
 import AppFooter from './Footer/AppFooter';
 import './AppPages.css';
@@ -66,8 +65,6 @@ class AppPages extends Component {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
       }
 
-
-
     render() {
         return (
             <div className='AppPages'>
@@ -84,7 +81,7 @@ class AppPages extends Component {
                             <Route path='/seatbooking' component={AppSeatingPage}/>
                             <Route path='/PaymentPage' component={PaymentPage}/>
                             <Route path='/Future-Listings/:movietitle' component={FutureMoviePage}/>
-                            <Route path='/Future-Listings' component={FutureReleases}/>
+                            <Route path='/Future-Listings' component={CurrentReleases}/>
                             <Route path='/Listings/:movietitle' component={MoviePage}/>
                             <Route path='/Listings' component={CurrentReleases}/>
                             <Route path='/summary/bookingsuccesspage' component={BookingSuccessPage}/>

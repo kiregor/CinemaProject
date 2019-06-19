@@ -42,6 +42,7 @@ import com.qa.CinemaProject.entities.Booking;
 import com.qa.CinemaProject.entities.BookingPayment;
 import com.qa.CinemaProject.entities.Login;
 import com.qa.CinemaProject.entities.Movie;
+import com.qa.CinemaProject.entities.MovieEvent;
 import com.qa.CinemaProject.entities.MovieTemp;
 import com.qa.CinemaProject.entities.Popular;
 import com.qa.CinemaProject.entities.PriceList;
@@ -49,6 +50,7 @@ import com.qa.CinemaProject.entities.Screen;
 import com.qa.CinemaProject.seatsio.SeatsIoApi;
 import com.qa.CinemaProject.service.AdminService;
 import com.qa.CinemaProject.service.BookingService;
+import com.qa.CinemaProject.service.MovieEventService;
 import com.qa.CinemaProject.service.MovieService;
 import com.qa.CinemaProject.service.PaymentService;
 import com.qa.CinemaProject.service.ScreenService;
@@ -64,6 +66,7 @@ public class MovieController {
 	private BookingService bookingService;
 	private ScreenService screenService;
 	private AdminService adminService;
+	private MovieEventService eventService;
 	private EmailApplication email;
 	private SeatsIoApi seatsIo;
   
@@ -81,12 +84,13 @@ public class MovieController {
 	@Value("${movie.three}")
 	private String movieThree;
 	
-	public MovieController(MovieService movieService, PaymentService paymentService, BookingService bookingService, EmailApplication email, SeatsIoApi seatsIo, ScreenService screenService, AdminService adminService) {
+	public MovieController(MovieService movieService, PaymentService paymentService, BookingService bookingService, EmailApplication email, SeatsIoApi seatsIo, ScreenService screenService, AdminService adminService, MovieEventService eventService) {
 		this.movieService = movieService;
 		this.paymentService = paymentService;
 		this.bookingService = bookingService;
 		this.screenService = screenService;
 		this.adminService = adminService;
+		this.eventService = eventService;
 		this.email = email;
 		this.seatsIo = seatsIo;
 	}
@@ -192,6 +196,11 @@ public class MovieController {
 	@ResponseBody
 	public List<Booking> getUserBookings(@PathVariable String id){
 		return this.bookingService.getUserBookings(id);
+	}
+	
+	@PostMapping("/getevents")
+	public List<MovieEvent> getEvents(@RequestBody Movie movie){
+		return eventService.getEventsByMovie(movie);
 	}
 
 }

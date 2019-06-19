@@ -31,7 +31,7 @@ public class TestClassifications {
 	@Before
 	public void init() {
 		driver.get(url);
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/footer/div/div/div[1]/ul/div/li[3]/a"));
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/footer/div/div[1]/ul/li[3]/a"));
 	}
 	
 	@Test
@@ -41,12 +41,11 @@ public class TestClassifications {
 	}
 	
 	@Test
-	@Ignore
 	public void classificationLinkWorking() {
 		
 		we.sendKeys(Keys.ENTER);
 		we = driver.findElement(By.xpath("//*[@id=\"block-menu-block-1\"]/nav/div/div/div/ul/li[2]/a"));
-		assertEquals("/what-classification", we.getText());
+		assertEquals("About classification", we.getText());
 	}
 	
 		
