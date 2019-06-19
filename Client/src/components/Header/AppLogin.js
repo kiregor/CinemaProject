@@ -1,7 +1,6 @@
 import React ,{Component} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import GoogleLogin from 'react-google-login';
-import SessionStorageService from '../../services/SessionStorageService';
 import bgColors from '../../Constants';
 
 class AppLogin extends Component {
@@ -56,7 +55,7 @@ class AppLogin extends Component {
             />
           </ModalBody>
           <ModalFooter>
-            <Button color="danger" onClick={this.toggle}>Close</Button>
+            <Button onClick={this.toggle} style={{backgroundColor:bgColors.Stone}}>Close</Button>
           </ModalFooter>
         </Modal>
       </div>
