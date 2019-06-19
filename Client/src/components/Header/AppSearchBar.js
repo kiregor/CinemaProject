@@ -77,7 +77,7 @@ class AppSearchBar extends Component {
   render() {
     return (
       <div className='searchBar bgColor'>
-        <Button onClick={this.toggle} onMouseOver={this.onMouseOver('backgroundColor')} onMouseOut={this.onMouseOut('backgroundColor')} style={{backgroundColor:this.state.backgroundColor}}>Search</Button>
+        <Button onClick={this.toggle} onMouseOver={this.onMouseOver('backgroundColor')} onMouseOut={this.onMouseOut('backgroundColor')} style={{backgroundColor:this.state.backgroundColor, color:bgColors.Mist}}>Search</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className='searchBarModal'>
           <ModalHeader toggle={this.toggle}>Search</ModalHeader>
           <ModalBody>

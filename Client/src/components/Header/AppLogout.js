@@ -27,7 +27,7 @@ class AppCreateAccount extends React.Component {
  render() {
    return (
      <div>
-         <Button onClick={this.logout} onMouseOver={this.onMouseOver('backgroundColor')} onMouseOut={this.onMouseOut('backgroundColor')} style={{backgroundColor:this.state.backgroundColor}}>Logout</Button>
+         <Button onClick={this.logout} onMouseOver={this.onMouseOver('backgroundColor')} onMouseOut={this.onMouseOut('backgroundColor')} style={{backgroundColor:this.state.backgroundColor, color:bgColors.Mist}}>Logout</Button>
      </div>
    );
  }
