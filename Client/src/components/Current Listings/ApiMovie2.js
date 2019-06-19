@@ -23,8 +23,7 @@ const Movie = (props) => {
                 </FlippingCard>
                 <div>
                     <span>
-                        <a href={`/listings/${props.title}`}><Button style={{backgroundColor: bgColors.Stone}} block>More Info</Button></a>{' '}
-                        <a href={`/listings/${props.title}`}><Button style={{backgroundColor: bgColors.Autumn}} block> Book Now</Button></a>{' '}
+                        <a href={`/Listings/${props.title}`}><Button style={{backgroundColor: bgColors.Stone}} block>Book Now</Button></a>{' '}
                     <br/>
                     <br/>
                     </span>
