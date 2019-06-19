@@ -8,7 +8,8 @@ const styles = {
   },
   well: {
     boxShadow: `10px 10px 10px ${bgColors.Mist}`,
-    padding:10
+    padding:10,
+    color: 'black'
   },
 };
 
@@ -16,7 +17,7 @@ const AppPlacesToGoPage = (props) => {
     return (
         
         <Container>
-
+            <br/><br/>
             <Row >     
                 <Col>
                 <center style ={styles.well}>                      
