@@ -16,7 +16,7 @@ import BookingService from '../services/BookingService';
 import MovieService from '../services/MovieService';
 import SessionStorageService from '../services/SessionStorageService';
 import FutureMoviePage from './FutureMoviePage/FutureMoviePage';
-import BookingSuccessPage from './Summary1/BookingSuccessPage';
+import BookingSuccessPage from './Summary/BookingSuccessPage';
 import MyAccountPage from './Accounts/MyAccountPage';
 import ErrorPage from './ErrorPage/ErrorPage';
 
