@@ -3,6 +3,7 @@ package com.qa.CinemaProject.constants;
 public interface MappingConstants {
 	public static final String CREATE_MOVIE="/createMovie",
 			GET_ALL_MOVIES="/getAllMovies",
+			GET_ALL_MOVIES_ADMIN="/getAllMoviesAdmin",
 			GET_MOVIE_ID="/getMovie/{id}",
 			UPDATE_MOVIE="updateMovie",
 			DELETE_MOVIE="/deleteMovie/{id}",
@@ -16,6 +17,7 @@ public interface MappingConstants {
 			GET_SUCCESS_STATUS="/status",
 			CHECK_MOVIES = "/checkmovies",
 			GET_SCREENS = "/getscreens",
+			GET_SCREENS_ADMIN = "/getscreensadmin",
 			CREATE_EVENT = "/newevent",
 			ADMIN_LOGIN="/adminlogin",
 			EMBEDDED_MONGODB_HOST= "localhost",
