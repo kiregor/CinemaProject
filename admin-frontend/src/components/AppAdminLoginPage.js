@@ -21,13 +21,14 @@ class AppAdminLoginPage extends Component {
         let username = document.getElementById("username").value;
         let password = document.getElementById("password").value;
         let validCredentials = false
+        console.log(username, password)
         LoginService.sendLoginDetailsToBackend({ username, password })
             .then(response => {
                 console.log(response.data)
                 validCredentials = response.data
                 if (validCredentials) {
                     // Go to next page
-                    window.alert("LOGGED IN!!")
+                    window.location.assign('/event-page');
                 } else {
                     this.showErrors();
                 }
