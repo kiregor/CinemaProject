@@ -3,6 +3,7 @@ import { Button } from 'reactstrap';
 import { SeatsioSeatingChart } from '@seatsio/seatsio-react';
 import SessionStorageService from '../../services/SessionStorageService';
 import LoginService from '../../services/LoginService';
+import bgColors from '../../Constants';
 
 class AppSeatingPage extends Component {
     chart;
@@ -67,7 +68,7 @@ class AppSeatingPage extends Component {
             });
             console.log(SessionStorageService.getObject('bookedSeats'));
             // Go to the payment page
-            window.location.assign("/paymentpage");
+            window.location.assign("/seatbooking/paymentpage");
         });
     }
     clearTickets(e) {
@@ -119,7 +120,7 @@ class AppSeatingPage extends Component {
                     </div>
                     <div className='row'>
                         <div id='book-now' className='col-12'>
-                            <Button onClick={this.bookSeats} color='success' size='lg' block>Book Now</Button>
+                            <Button onClick={this.bookSeats} size='lg' style={{backgroundColor:bgColors.Stone}} block>Book Now</Button>
                         </div>
                     </div>
                     <div id='seats-info' className='row'>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import DateTabs from './AppDateTabs';
-import './poster.css'
+import './poster.css';
 import bgColors from '../../Constants';
 import axios from 'axios';
 
