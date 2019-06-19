@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SummaryPage from './SummaryPage';
 import SessionStorageService from '../../services/SessionStorageService';
 import { Alert } from 'reactstrap';
+import bgColors from '../../Constants';
 
 let seatInfo = SessionStorageService.getObject('bookedSeats');
 
@@ -11,7 +12,7 @@ class BookingSuccessPage extends Component {
         return (
             <div className='BookingSuccessPage'>
                  <div className='container'>
-                     <Alert color="success">
+                     <Alert style={{backgroundColor:bgColors.Mist, color:'black', borderColor:bgColors.Mist}}>
                         <h1>Transaction Successful</h1>
                         Your account has been charged successfully!
                             Enjoy your movie!

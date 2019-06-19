@@ -215,11 +215,6 @@ public class MovieController {
 		return this.bookingService.getUserBookings(id);
 	}
 	
-	@PostMapping("/getevents")
-	public List<MovieEvent> getEvents(@RequestBody Movie movie){
-		return eventService.getEventsByMovie(movie);
-	}
-	
 	@PostMapping(CREATE_EVENT)
 	public void createEvent(@RequestBody MovieTemp movie) {
 		this.adminService.newEvent(movie);
