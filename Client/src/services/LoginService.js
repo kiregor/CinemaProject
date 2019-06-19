@@ -1,14 +1,18 @@
 import axios from 'axios';
-import { LOCAL_BACKEND_SERVER, CHECK_TICKETS } from '../../src/Constants'
+import { LOCAL_BACKEND_SERVER, GET_USER_BOOKINGS } from '../../src/Constants'
 
 class LoginService {
     hasLoggedIn(){
-        console.log("userID:"+window.sessionStorage.getItem('userId'));
+        
         return (window.sessionStorage.getItem('userId')!==null);
     }
     getTickets() {
-        let user_id=window.sessionStorage.getItem('tokenid');
-        return axios.post(`${LOCAL_BACKEND_SERVER}/${CHECK_TICKETS}`,{user_id});
+        let user_id=window.sessionStorage.getItem('userId');
+        console.log(user_id);
+        axios.post(`${LOCAL_BACKEND_SERVER}/${GET_USER_BOOKINGS}`,{user_id})
+            .then(response => {
+                console.log(response);
+            } )
     }
 }
 

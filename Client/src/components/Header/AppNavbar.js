@@ -11,6 +11,7 @@ import {
 } from 'reactstrap';
 import AppCreateAccount from './AppLogout';
 import AppLogin from './AppLogin';
+import AppLogout from './AppLogout';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AppSearchBar from './AppSearchBar';
@@ -60,10 +61,16 @@ class AppNavbar extends Component {
                   <NavLink href="/getting-here" color='primary'>Getting Here</NavLink>
                 </NavItem>
                 <NavItem onMouseOver={this.onMouseOver('myaccount')} onMouseOut={this.onMouseOut('myaccount')} style={{backgroundColor:this.state.myaccount}}>
-                  <NavLink href="/my-account" color='primary'>My Account</NavLink>    
-                </NavItem> 
+                  <NavLink href="/my-account" color='primary'>My Account</NavLink>
+                </NavItem>
               </Nav>
               <Nav className='ml-auto' navbar>
+                  <NavItem>
+                      <AppLogin/>
+                  </NavItem>
+                  <NavItem>
+                      <AppLogout/>
+                  </NavItem>
                 <NavItem>
                   <AppLogin/>
                 </NavItem>
