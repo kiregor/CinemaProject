@@ -24,7 +24,7 @@ const AppScreensPage = (props) => {
             <Row>
                 <Col >
                  <center style ={styles.well}>
-                    <img src={window.location.origin + '/screens1.PNG'} style={{width:320, height:"auto"}}  />
+                    <img class='image' src={window.location.origin + '/screens1.PNG'}   />
                     <br/><br/>
                     <div > 2D standard Screen</div><br/><br/>
                     <div> 100 seats</div><br/><br/>
@@ -35,7 +35,7 @@ const AppScreensPage = (props) => {
 
                 <Col >
                  <center style ={styles.well}>
-                    <img src={window.location.origin + '/screens1.PNG'} style={{width:320, height:"auto"}}  />
+                    <img class='image' src={window.location.origin + '/screens1.PNG'}/>
                     <br/><br/>
                     <div > 3D Screen </div><br/><br/>
                     <div> 250 seats</div><br/><br/>
@@ -47,7 +47,7 @@ const AppScreensPage = (props) => {
 
                 <Col >
                  <center style ={styles.well}>
-                    <img src={window.location.origin + '/screens1.PNG'} style={{width:320, height:"auto"}}  />
+                    <img class='image' src={window.location.origin + '/screens1.PNG'}  />
                     <br/><br/>
                     <div > IMAX Screen</div><br/><br/>
                     <div> 500 seats</div><br/><br/>
