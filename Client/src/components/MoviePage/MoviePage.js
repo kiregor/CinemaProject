@@ -30,6 +30,9 @@ class ApiFetchPoster extends Component{
             })
 
         })
+        
+        fetch()
+    
     }
 
     render() {
