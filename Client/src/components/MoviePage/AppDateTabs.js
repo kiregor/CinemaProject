@@ -72,7 +72,7 @@ export default class AppDateTabs extends React.Component {
                         <Col xs="6" sm="4" l="12">
                         <h4>IMAX</h4>
                         </Col>
-                        <Col l12>
+                        <Col>
 
                         <a id="timing" href="/seatbooking">19:00</a>
                         </Col>
