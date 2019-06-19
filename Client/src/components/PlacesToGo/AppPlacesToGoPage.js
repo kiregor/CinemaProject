@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import bgColors from '../../Constants';
 
@@ -13,7 +13,7 @@ const styles = {
   },
 };
 
-const AppPlacesToGoPage = (props) => {
+const AppPlacesToGoPage = () => {
     return (
         
         <Container>

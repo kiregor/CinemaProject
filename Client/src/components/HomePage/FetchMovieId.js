@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Spinner } from 'reactstrap';
-import FetchPosterPath from './FetchPosterPath';
 import Carousel from './AppCarousel';
 import Carousel2 from './AppCarousel2';
 import Carousel3 from './AppCarousel3';

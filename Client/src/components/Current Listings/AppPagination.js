@@ -7,7 +7,7 @@ const AppPagination = (props) => {
     for(let i=1; i <= props.pages + 1; i++){
         let active = props.currentPage === i ? 'active' : ''
 
-        pageLinks.push(<a href="#"><PaginationLink><li className={`${active}`} key={i} onClick={() => props.nextPage(i)}>{i}</li></PaginationLink></a>)
+        pageLinks.push(<PaginationLink><li className={`${active}`} key={i} onClick={() => props.nextPage(i)}>{i}</li></PaginationLink>)
     }
 
     return (

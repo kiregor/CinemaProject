@@ -1,5 +1,4 @@
 import React from 'react';
-import Carousel from 'nuka-carousel';
 
 const AppCarousel21 = (props) => {
     return (
