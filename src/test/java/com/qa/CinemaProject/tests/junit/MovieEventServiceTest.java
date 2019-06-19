@@ -34,11 +34,7 @@
 //	
 //	@Test
 //	public void testRepositoryStartsEmpty() {
-<<<<<<< HEAD
-//		assertThat(emes.getAllEvents()).isEmpty();;
-=======
 //		assertThat(emes.getAllEvents()).isEmpty();
->>>>>>> 6eeb2133a2093180e95f5973cc5a52c3c83d9968
 //	}
 //
 //	@Test

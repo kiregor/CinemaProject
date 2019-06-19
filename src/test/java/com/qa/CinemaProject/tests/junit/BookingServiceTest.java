@@ -49,12 +49,7 @@
 //		// Then the repository is empty.
 //		assertThat(ebs.getAllBookings()).isEmpty();
 //	}
-<<<<<<< HEAD
-//	
-//	
-=======
 //
->>>>>>> 6eeb2133a2093180e95f5973cc5a52c3c83d9968
 //	@Test
 //	public void testRepositorySavesBookingEntity() throws StripeException {
 //		String location = "A-2";
