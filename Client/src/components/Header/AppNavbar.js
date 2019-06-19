@@ -65,12 +65,6 @@ class AppNavbar extends Component {
                 </NavItem>
               </Nav>
               <Nav className='ml-auto' navbar>
-                  <NavItem>
-                      <AppLogin/>
-                  </NavItem>
-                  <NavItem>
-                      <AppLogout/>
-                  </NavItem>
                 <NavItem>
                   <AppLogin/>
                 </NavItem>

@@ -15,12 +15,10 @@ import MoviePage from './MoviePage/MoviePage'
 import BookingService from '../services/BookingService';
 import MovieService from '../services/MovieService';
 import SessionStorageService from '../services/SessionStorageService';
-import FutureMoviePage from './FutureMoviePage/FutureMosviePage';
 import BookingSuccessPage from './summary/BookingSuccessPage';
 import MyAccountPage from './accounts/MyAccountPage';
 import ErrorPage from './ErrorPage/ErrorPage';
 import AppPlacesToGoPage from './PlacesToGo/AppPlacesToGoPage';
-import GoogleSignInAPI from './accounts/GoogleSignInAPI';
 
 class AppPages extends Component {
     constructor(props) {
@@ -82,16 +80,12 @@ class AppPages extends Component {
                             <Route path='/getting-here' component={AppGettingHerePage}/>
                             <Route path='/seatbooking' component={AppSeatingPage}/>
                             <Route path='/PaymentPage' component={PaymentPage}/>
-                            <Route path='/Future-Listings/:movietitle' component={FutureMoviePage}/>
                             <Route path='/Future-Listings' component={CurrentReleases}/>
                             <Route path='/Listings/:movietitle' component={MoviePage}/>
                             <Route path='/Listings' component={CurrentReleases}/>
                             <Route path='/summary/bookingsuccesspage' component={BookingSuccessPage}/>
-<<<<<<< HEAD
                             <Route path='/places-to-go' component={AppPlacesToGoPage}/>
-=======
                             <Route path='/my-account' component={MyAccountPage}/>
->>>>>>> login-page
                             <Route component={ErrorPage}/>
                         </Switch>
                     </div>
