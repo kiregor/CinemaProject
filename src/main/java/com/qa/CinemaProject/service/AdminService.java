@@ -14,7 +14,7 @@ public class AdminService {
 	private SeatsIoApi seatsApi;
 	private Login login;
 	
-	public AdminService(MovieEventService eventService, SeatsIoApi seatsApi, @Value("${user.name}") String username, @Value("${pass.word}") String password) {
+	public AdminService(MovieEventService eventService, SeatsIoApi seatsApi, @Value("${qacinema.username}") String username, @Value("${pass.word}") String password) {
 		this.eventService = eventService;
 		this.seatsApi = seatsApi;
 		this.login = new Login(username, password);
