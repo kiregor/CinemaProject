@@ -4,6 +4,7 @@ import LoginService from '../../services/LoginService';
 import AppLogin from '../Header/AppLogin';
 import { Table } from 'reactstrap';
 import UserBooking from './UserBooking';
+import { Alert } from 'reactstrap';
 
 class MyAccountPage extends Component {
     constructor(props) {
@@ -32,8 +33,11 @@ class MyAccountPage extends Component {
             return (
                 <div className='NotLoggedIn'>
                 <Container>
-                    <h4>You are not logged in. Please press this button to login.</h4>
-                    <AppLogin/>
+                    <Alert color="dark" isOpen={this.state.visible}>
+                        You are not logged in. Please Log in.
+                        <br/><br/><AppLogin/>
+                    </Alert>
+                    
                 </Container>
             </div>
             )

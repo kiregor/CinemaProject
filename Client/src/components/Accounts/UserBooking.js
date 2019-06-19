@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import UserTickets from './UserTickets';
 
 class UserBooking extends Component {
     constructor(props) {
@@ -18,9 +17,6 @@ class UserBooking extends Component {
     }
 
     render() {
-        // const booking = this.props.bookingOj;
-        // console.log("this is user booking")
-        // console.log(booking.tickets[0].location)
         return ( 
             <>   
            {this.state.data}
