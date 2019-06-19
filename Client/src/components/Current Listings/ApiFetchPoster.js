@@ -50,7 +50,6 @@ class ApiFetchPoster extends Component{
         fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${pageNumber}`)
         .then(data => data.json())
         .then(data => {
-            console.log(data);
             this.setState({ 
                 movies: [...data.results],
                 isLoaded: true,
