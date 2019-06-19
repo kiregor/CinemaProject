@@ -9,11 +9,11 @@ import {API_KEY} from '../../Constants';
 
 class ApiFetchPoster extends Component{
     constructor(props){
-        super(props);
-        this.state= {
-            movies: [],
-            isLoaded: false,
-        }
+    super(props);
+    this.state= {
+        movies: [],
+        isLoaded: false,
+    }
     this.Api=API_KEY
     console.log(this.Api)
     }

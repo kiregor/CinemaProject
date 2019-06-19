@@ -27,6 +27,7 @@ class AppAdminLoginPage extends Component {
                 console.log(response.data)
                 validCredentials = response.data
                 if (validCredentials) {
+                    
                     // Go to next page
                     LoginService.saveLoginSession();
                     window.location.assign('/event-page');
