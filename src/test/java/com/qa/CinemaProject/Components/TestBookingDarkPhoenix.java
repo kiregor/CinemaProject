@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 
 public class TestBookingDarkPhoenix {
@@ -49,15 +50,20 @@ public class TestBookingDarkPhoenix {
 		we = driver.findElement(By.id("timing"));
 		we.click();	
 		Thread.sleep(5000);
-		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div[1]/div/h3"));
-		assertEquals("Specify the number of seats:", we.getText());
-		we = driver.findElement(By.xpath("//*[@id=\"chartContainer\"]/canvas"));
+		Actions findseat = new Actions(driver);
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div"));
+		findseat.moveToElement(we, 600, 300).click().perform();		
+		Thread.sleep(5000);
+		findseat.moveToElement(we, 600, 300).click().perform();	
+		Thread.sleep(5000);
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div[3]"));
+		we.click();
+		Thread.sleep(5000);
+		we = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div[1]/div/div/div/h1"));
+		assertEquals("Summary", we.getText());
+		Thread.sleep(5000);
 	}
-	
-	//*[@id="chartContainer"]/canvas
-	
-	
-	
+		
 	
 	@After
 	public void finalise() {
