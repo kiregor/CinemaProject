@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOCAL_BACKEND_SERVER, PRICE_LIST, API_KEY, CHECK_MOVIES, GET_ALL_MOVIES } from '../../src/Constants'
+import { LOCAL_BACKEND_SERVER, API_KEY, CHECK_MOVIES, GET_ALL_MOVIES } from '../../src/Constants'
 
 class Movie {
     movieName
