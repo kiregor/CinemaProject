@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Button, Jumbotron, Alert } from 'reactstrap'
+import { Container, Row, Col, Button, Jumbotron, Alert, Modal, ModalBody, ModalHeader } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import MovieService from '../services/MovieService';
 import ScreenService from '../services/ScreenService';
@@ -163,7 +163,7 @@ class AppAdminEventPage extends Component {
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <Alert isOpen={this.state.showSuccessMessage} toggle={this.hideSuccess} fade={false}>
+                                        {/* <Alert isOpen={this.state.showSuccessMessage} toggle={this.hideSuccess} fade={false}>
                                             <p>
                                                 Event Created:
                                            </p>
@@ -180,7 +180,21 @@ class AppAdminEventPage extends Component {
                                                 }
                                             </ul>
                                             }
-                                        </Alert>
+                                        </Alert> */}
+                                        <Modal color='success' isOpen={this.state.showSuccessMessage} toggle={this.hideSuccess}>
+                                            <ModalHeader toggle={this.hideSuccess}>Event Successfully Created</ModalHeader>
+                                            <ModalBody>
+                                            {(this.state.successMessageDetails) &&
+                                            <ul>
+                                                <li>Movie Name : {this.state.successMessageDetails.movieName}</li>
+                                                <li>Screen : {this.state.successMessageDetails.screenName}</li>
+                                                <li>Movie Id : {this.state.successMessageDetails.movieId}</li>
+                                                <li>Screen Id : {this.state.successMessageDetails.screenId}</li>
+                                                <li>Event Key : {this.state.successMessageDetails.eventKey}</li>
+                                                <li>Screen Time : {moment(this.state.successMessageDetails.date).format('DD-MM-YYYY hh:mm')}</li>
+                                            </ul>}
+                                            </ModalBody>
+                                        </Modal>
                                         <Alert color="danger" isOpen={this.state.showErrorMessage} toggle={this.hideError} fade={false}>
                                             <p>Error: {this.state.errorMessage.message}</p>
                                         </Alert>
