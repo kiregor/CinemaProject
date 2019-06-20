@@ -71,7 +71,6 @@ class AppNavbar extends Component {
                   <NavItem >
                       <AppLogout/>
                   </NavItem>
-
               </Nav>
             </Collapse>
           </Container>

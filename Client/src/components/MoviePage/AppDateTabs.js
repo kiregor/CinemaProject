@@ -1,7 +1,6 @@
 import React from 'react';
 import {TabContent, TabPane, Nav, NavItem, NavLink, Row,Col} from 'reactstrap';
 import classnames from 'classnames';
-import bgColors from '../../Constants';
                 
 export default class AppDateTabs extends React.Component {
   constructor(props) {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Button} from 'reactstrap';
 import bgColors from '../../Constants';
 
-class AppCreateAccount extends React.Component {
+class AppLogout extends React.Component {
  constructor(props) {
    super(props);
    this.state = {
@@ -33,4 +33,4 @@ class AppCreateAccount extends React.Component {
  }
 }
 
-export default AppCreateAccount;
+export default AppLogout;

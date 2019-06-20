@@ -22,7 +22,7 @@ const AppPlacesToGoPage = () => {
                 <Col>
                 <center style ={styles.well}>                      
                 
-                    <div> <img style ={styles.well} alt="" style={{width:300, height:200}} src="https://media-cdn.tripadvisor.com/media/photo-s/0d/89/d3/bf/starbucks-tower-hill.jpg"/></div>
+                    <div> <img style ={styles.well} alt="Place" style={{width:300, height:200}} src="https://media-cdn.tripadvisor.com/media/photo-s/0d/89/d3/bf/starbucks-tower-hill.jpg"/></div>
                     <div   style={ {fontSize: 35}}> <p style={{color:bgColors.Autumn}}> Starbucks Coffee</p></div>
                     <div  style={{fontSize: 15}}>Seattle-based coffeehouse chain known for its <br></br>
                      signature roasts and light bites.</div>
