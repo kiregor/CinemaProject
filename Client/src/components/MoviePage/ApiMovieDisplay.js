@@ -44,11 +44,10 @@ class MovieDisplay extends React.Component {
     }
 
     componentWillMount = (e) => {
-        console.log(this.state.id)
         fetch(`https://api.themoviedb.org/3/movie/${this.state.id}/release_dates?api_key=${this.Api}`)
         .then(data => data.json())
         .then(data => {
-        console.log(data);
+
         for (let i=0; i < data.results.length; i++){
             if (data.results[i].iso_3166_1 == 'GB'){
                 this.setState({
@@ -62,7 +61,7 @@ class MovieDisplay extends React.Component {
         this.setState({isLoaded:true})
         }   
         this.setState({isLoaded:true})  
-        console.log(this.state.ageRating);
+
         })
     }
 
@@ -73,7 +72,7 @@ class MovieDisplay extends React.Component {
             imdbId:this.state.id
         }) 
         .then(response => {
-            console.log(response);
+
             this.state.dataReceived = response.data;
         this.setState({dateTabs:<DateTabs data={this.state.dataReceived}/>} )
         })
