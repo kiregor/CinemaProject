@@ -29,7 +29,6 @@ class MovieService {
      * Get the first two pages of movies from tmdb. These are the movies shown by QACinemas
      */
     getMoviesFromTmdb(onComplete) {
-        let data = { results: [] }
         axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`)
             .then(responseOne => {
                 let pageOneResults = responseOne.data.results
