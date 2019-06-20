@@ -48,7 +48,8 @@ class ContactUsEmailForm extends Component {
             })
             .catch(error => {
                 this.showErrorMessage(true);
-                let status = '000', message = 'No information available';
+                let status = '000';
+                message = 'No information available';
                 if(error.response && error.response.data){
                     status = error.response.data.status;
                     message = error.response.data.message;

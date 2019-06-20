@@ -55,7 +55,7 @@ button.selected:hover {
 
 .adminEventPage .btn {
     width: 90%;
-    margin: .5em auto 0;
+    margin: .25em auto;
 }
 .react-datetime-picker {
     margin: .75em auto 0;
@@ -67,4 +67,12 @@ button.selected:hover {
 
 .adminEventPage h1,h2 {
     margin-bottom: 1em;
+}
+
+.adminEventPage h3 { 
+    text-align: center;
+}
+
+.alert li {
+    list-style: none;
 }

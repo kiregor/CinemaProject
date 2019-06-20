@@ -54,12 +54,12 @@ class AppSearchBar extends Component {
   populateResults(searchTerm, movieList) {
     let results = [];
     let movieLowerCase;
-    movieList = movieList.sort((movieA, movieB) => movieA.movieName.localeCompare(movieB.movieName));
-    for(let i = 0; i < movieList.length; ++i) {
-      movieLowerCase = movieList[i].movieName;
+    let movieListSearch = movieList.sort((movieA, movieB) => movieA.movieName.localeCompare(movieB.movieName));
+    for(let i = 0; i < movieListSearch.length; ++i) {
+      movieLowerCase = movieListSearch[i].movieName;
       movieLowerCase = Array.prototype.map.call(movieLowerCase, str => str.toLowerCase()).join("")
       if(movieLowerCase.indexOf(searchTerm) !== -1){
-        results.push(<ListGroupItem key={i} tag='a' href={`/listings/${movieLowerCase}`}>{movieList[i].movieName}</ListGroupItem>);
+        results.push(<ListGroupItem key={i} tag='a' href={`/listings/${movieLowerCase}`}>{movieListSearch[i].movieName}</ListGroupItem>);
       }
     }
     if(results.length > 0) { 

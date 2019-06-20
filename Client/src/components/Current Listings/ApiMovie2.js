@@ -4,7 +4,7 @@ import {FlippingCard, FlippingCardBack, FlippingCardFront} from 'react-ui-cards'
 import {Button} from 'reactstrap';
 import bgColors from '../../Constants';
 
-const Movie = (props) => {
+const ApiMovie2 = (props) => {
     return (
         <div className="col s6 m4 l3">
             <div>
@@ -32,4 +32,4 @@ const Movie = (props) => {
         </div>
     )   
 }
-export default Movie;
+export default ApiMovie2;
