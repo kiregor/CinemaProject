@@ -4,6 +4,7 @@ import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './AppCheckoutForm';
 import SummaryPage from '../Summary1/SummaryPage';
 import SessionStorageService from '../../services/SessionStorageService';
+import './paymentpage.css'
 
 function PaymentPage() {
   let seatInfo = SessionStorageService.getObject('bookedSeats');

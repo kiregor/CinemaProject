@@ -41,12 +41,8 @@ class AppPages extends Component {
         });
         // Get two pages of tmdb movies and send to back-end
         MovieService.getMoviesFromTmdb(data => {
-            console.log(data)
             // Send data to the back-end
             MovieService.sendMoviesToBackend(data)
-            .then(response => {
-                console.log(response)
-            })
             .catch(error => {
                 console.log(error)
             })
