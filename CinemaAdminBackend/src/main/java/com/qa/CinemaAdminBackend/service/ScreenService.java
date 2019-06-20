@@ -23,10 +23,6 @@ public class ScreenService {
 		screen.setId(sequenceRepo.getNextSequenceId("screen"));
 		screenRepo.save(screen);
 	}
-	
-	public void saveScreen(Screen screen) {
-		screenRepo.save(screen);
-	}
 
 	public Screen retrieveScreen(long id) {
 		if (this.screenRepo.existsById(id)) {

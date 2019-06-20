@@ -58,7 +58,7 @@ public class AdminController {
 	
 	@PostMapping(SAVE_SCREEN)
 	public void saveScreen(@RequestBody Screen screen) {
-		this.screenService.saveScreen(screen);
+		this.screenService.createScreen(screen);
 	}
 	
 	@PostMapping(CREATE_EVENT)

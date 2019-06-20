@@ -103,6 +103,12 @@ class AppAdminEventPage extends Component {
         console.log(movie)
     }
 
+    newScreen() {
+        axios.post("http://localhost:8090/savescreen",  {
+            screenType: "2D"
+        })
+    }
+
     render() {
         const date = '1990-06-05',
             format = 'YYYY-MM-DD',
@@ -128,6 +134,11 @@ class AppAdminEventPage extends Component {
                             <Col>
                                 <h3>Done</h3>
                                 <Button onClick={this.submit}>Submit</Button>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <h3>New Screen</h3>
+                                <Button onClick={this.newScreen}>New Screen</Button>
                             </Col>
                         </Row>
                     </Container>
