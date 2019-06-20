@@ -45,18 +45,8 @@ class AppNavbar extends Component {
     return (
         <Navbar className="navbar-form navbar-fixed-top" sticky={'bottom'} style={{backgroundColor:BACKGROUNDCOLOR}} dark expand='lg'>
           <Container>
-            <NavbarBrand href='/' className='navbar-nav ml-auto'>QA CINEMA LOGO</NavbarBrand>
+            <NavbarBrand href='/' className='navbar-nav ml-auto'><img src={window.location.origin + '/favIcon2.png'} style={{height:50}}/></NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className='ml-auto' navbar>
-                <NavItem>
-                  <AppSearchBar/>
-                </NavItem>
-                <NavItem>
-                  <AppLogin/>    
-                </NavItem>
-              </Nav>
-            </Collapse>
           </Container>
         </Navbar>
     );
