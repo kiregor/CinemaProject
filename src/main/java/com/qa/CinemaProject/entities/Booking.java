@@ -53,6 +53,6 @@ public class Booking {
 	}
 
 	public String toString() {
-		return String.format("Booking[id=%s, totalPrice='%s', numTickets=%s]", id, totalPrice, tickets.size());
+		return String.format("Booking[id=%s, totalPrice='%s', numTickets=%s, userId='%s']", id, totalPrice, tickets.size(), userId);
 	}
 }

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Spinner } from 'reactstrap';
-import FetchPosterPath from './FetchPosterPath';
 import Carousel from './AppCarousel';
 import Carousel2 from './AppCarousel2';
 import Carousel3 from './AppCarousel3';
@@ -19,7 +18,6 @@ class FetchMovieId extends Component{
         fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=3e9a89831a2e61d47f06983917822671&language=en-US&page=1&region=gb`)
         .then(data => data.json())
         .then(data => {
-            console.log(data)
             this.setState({ 
                 movie: [...data.results],
                 isLoaded: true,
@@ -29,7 +27,6 @@ class FetchMovieId extends Component{
         fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=3e9a89831a2e61d47f06983917822671&language=en-US&page=1&region=gb`)
         .then(data => data.json())
         .then(data => {
-            console.log(data)
             this.setState({ 
                 movieFuture: [...data.results],
                 isLoaded: true,

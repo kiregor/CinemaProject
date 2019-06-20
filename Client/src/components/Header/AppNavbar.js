@@ -9,7 +9,6 @@ import {
   NavLink,
   Container
 } from 'reactstrap';
-import AppCreateAccount from './AppLogout';
 import AppLogin from './AppLogin';
 import AppLogout from './AppLogout';
 import AppSearchBar from './AppSearchBar';
@@ -72,7 +71,6 @@ class AppNavbar extends Component {
                   <NavItem >
                       <AppLogout/>
                   </NavItem>
-
               </Nav>
             </Collapse>
           </Container>

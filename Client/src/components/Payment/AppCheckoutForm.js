@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {CardElement, injectStripe, AddressSection} from 'react-stripe-elements';
+import {CardElement, injectStripe} from 'react-stripe-elements';
 import stripeService from '../../services/stripeService';
 import { Button } from 'reactstrap';
 import { Toast, ToastBody, ToastHeader, Alert, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap';

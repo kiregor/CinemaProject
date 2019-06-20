@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Spinner } from 'reactstrap';
-import ApiAgeRating from './ApiAgeRatingFetch';
 import {API_KEY} from '../../Constants';
 import MovieFetch from './ApiMovieFetch'
 

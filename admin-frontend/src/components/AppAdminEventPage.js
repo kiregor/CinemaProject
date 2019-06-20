@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Button, Jumbotron } from 'reactstrap'
+import { Container, Row, Col, Button, Jumbotron, Alert, Modal, ModalBody, ModalHeader } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import MovieService from '../services/MovieService';
 import ScreenService from '../services/ScreenService';
@@ -20,14 +20,23 @@ class AppAdminEventPage extends Component {
             movieSelectedButton: null,
             screenSelectedButton: null,
             adminLoggedIn: LoginService.isAdminLoggedIn(),
-            date: new Date()
+            date: new Date(),
+            showSuccessMessage: false,
+            successMessageDetails: null,
+            showErrorMessage: false,
+            errorMessage: ''
         }
 
         this.generateList = this.generateList.bind(this)
         this.toggleButton = this.toggleButton.bind(this)
+        this.newScreen = this.newScreen.bind(this)
         this.switchOffOtherButtons = this.switchOffOtherButtons.bind(this)
         this.onChange = this.onChange.bind(this)
         this.submit = this.submit.bind(this)
+        this.showAlert = this.showAlert.bind(this)
+        this.hideSuccess = this.hideSuccess.bind(this)
+        this.showError = this.showError.bind(this)
+        this.hideError = this.hideError.bind(this)
     }
 
     componentDidMount() {
@@ -80,34 +89,70 @@ class AppAdminEventPage extends Component {
         this.setState({ date })
     }
 
+    showAlert(obj) {
+        this.setState({ showSuccessMessage: true, successMessageDetails: obj });
+        this.hideError()
+    }
+
+    showError(error) {
+        this.setState({ showErrorMessage: true, errorMessage: error });
+        this.hideSuccess();
+    }
+
+    hideSuccess() {
+        this.setState({ showSuccessMessage: false });
+    }
+
+    hideError() {
+        this.setState({ showErrorMessage: false });
+    }
+
     submit() {
         let movie = this.state.movieSelectedButton
         let screen = this.state.screenSelectedButton
         let date = this.state.date
         if (!movie || !screen || !date) {
-            window.alert("empty fields..")
+            this.showError({ message: "Some fields are empty" })
         } else {
+            let movieName = movie.innerText
+            let screenName = screen.innerText
             let len = this.state.movieSelectedButton.id.length
             let movieId = +this.state.movieSelectedButton.id[len - 1]
             len = this.state.screenSelectedButton.id.length
             let screenId = +this.state.screenSelectedButton.id[len - 1]
-            axios.post("http://localhost:8080/newevent", {
+            axios.post("http://localhost:8090/newevent", {
                 movieId: movieId + 1,
                 screenId: screenId,
                 eventKey: moment(this.state.date).format('YYYY-MM-DD-hh-mm') + "-2D",
                 date: this.state.date
             }).then(response => {
-                console.log(response)
-            }).catch(error => console.log(error))
+                this.setState({ successMessageDetails: null })
+                this.showAlert({
+                    movieName,
+                    screenName,
+                    movieId: movieId + 1,
+                    screenId: screenId,
+                    eventKey: moment(this.state.date).format('YYYY-MM-DD-hh-mm') + "-2D",
+                    date: this.state.date
+                })
+            }).catch(error => this.showError(error))
         }
-        console.log(movie)
+    }
+
+    newScreen() {
+        axios.post("http://localhost:8090/savescreen", {
+            screenType: "2D"
+        })
+        .then(response => {
+            ScreenService.getAllScreens()
+            .then(response => {
+                this.setState({ screenList: response.data })
+                this.generateList("screen", "screenType");
+            }).catch(error => console.log(error))
+        }).catch(error => console.log(error))
     }
 
     render() {
-        const date = '1990-06-05',
-            format = 'YYYY-MM-DD',
-            inputFormat = 'DD/MM/YYYY',
-            mode = 'date';
         return (
             <div className="adminEventPage">
                 {(this.state.adminLoggedIn) &&
@@ -127,7 +172,37 @@ class AppAdminEventPage extends Component {
                             </Col>
                             <Col>
                                 <h3>Done</h3>
-                                <Button onClick={this.submit}>Submit</Button>
+                                <Row>
+                                    <Button onClick={this.submit}>Submit</Button>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <Modal color='success' isOpen={this.state.showSuccessMessage} toggle={this.hideSuccess}>
+                                            <ModalHeader toggle={this.hideSuccess}>Event Successfully Created</ModalHeader>
+                                            <ModalBody>
+                                                {(this.state.successMessageDetails) &&
+                                                    <ul>
+                                                        <li>Movie Name : {this.state.successMessageDetails.movieName}</li>
+                                                        <li>Screen : {this.state.successMessageDetails.screenName}</li>
+                                                        <li>Movie Id : {this.state.successMessageDetails.movieId}</li>
+                                                        <li>Screen Id : {this.state.successMessageDetails.screenId}</li>
+                                                        <li>Event Key : {this.state.successMessageDetails.eventKey}</li>
+                                                        <li>Screen Time : {moment(this.state.successMessageDetails.date).format('DD-MM-YYYY hh:mm')}</li>
+                                                    </ul>}
+                                            </ModalBody>
+                                        </Modal>
+                                        <Alert color="danger" isOpen={this.state.showErrorMessage} toggle={this.hideError} fade={false}>
+                                            <p>Error: {this.state.errorMessage.message}</p>
+                                        </Alert>
+                                    </Col>
+                                </Row>
+                                <br />
+                                <br />
+                                <br />
+                                <h3>New Screen</h3>
+                                <Row>
+                                    <Button onClick={this.newScreen}>New Screen</Button>
+                                </Row>
                             </Col>
                         </Row>
                     </Container>
@@ -138,7 +213,7 @@ class AppAdminEventPage extends Component {
                             <Jumbotron>
                                 <h1 className='display-3'>You do not have the credentials to view this page.</h1>
                                 <p className='lead'>This page is for admin use only.</p>
-                                <hr className='my-2'/>
+                                <hr className='my-2' />
                                 <p>Please <Link to='/'>login</Link> or return to the main site.</p>
                             </Jumbotron>
                         </Row>

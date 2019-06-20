@@ -1,7 +1,7 @@
 import React from 'react';
 import Movie from './ApiMovie2';
 
-const MoviePoster = (props) => {
+const ApiMoviePoster = (props) => {
     return(
         <div className="container">
             <div className="row">
@@ -19,4 +19,4 @@ const MoviePoster = (props) => {
     )
 }
 
-export default MoviePoster;
+export default ApiMoviePoster;
