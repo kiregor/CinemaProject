@@ -1,4 +1,4 @@
-export const LOCAL_BACKEND_SERVER = 'http://localhost:8080'
+export const LOCAL_BACKEND_SERVER = 'http://localhost:8090'
 export const PRICE_LIST = 'priceList';
 export const SEND_MAIL  =  `sendemail`;
 export const CHECK_MOVIES = 'checkmovies';

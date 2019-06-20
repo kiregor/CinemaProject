@@ -91,7 +91,7 @@ class AppAdminEventPage extends Component {
             let movieId = +this.state.movieSelectedButton.id[len - 1]
             len = this.state.screenSelectedButton.id.length
             let screenId = +this.state.screenSelectedButton.id[len - 1]
-            axios.post("http://localhost:8080/newevent", {
+            axios.post("http://localhost:8090/newevent", {
                 movieId: movieId + 1,
                 screenId: screenId,
                 eventKey: moment(this.state.date).format('YYYY-MM-DD-hh-mm') + "-2D",
