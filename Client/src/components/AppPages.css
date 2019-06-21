@@ -1,0 +1,47 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow:hidden
+}
+.AppPages {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    min-height: 100vh;
+    max-height: 100vh;
+    min-width: 100vw;
+    max-width: 100vh;
+}
+.AppContent {
+    flex: 1;
+    padding: var(--space) var(--space) 0;
+    overflow: auto;
+    max-height: 70%;
+}
+
+.bgColor button {
+    background-color: #2A3132;
+}
+
+.bgColor button:hover {
+    background-color: #2A3132;
+}
+
+.lightColor button {
+    /* background-color: #336B87; */
+}
+
+.searchBar button {
+    /* border-style: none; */
+}
+.AppContent::-webkit-scrollbar{
+    width: 0em;
+}
+
+ul.searchResults {
+    margin-top: .7em;
+    margin-left: 3em;
+}
+
+

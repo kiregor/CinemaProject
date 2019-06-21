@@ -3,7 +3,7 @@ package com.qa.CinemaProject.entities;
 import org.springframework.data.annotation.Id;
 
 public class Movie {
-
+	
 	@Id
 	private long id;
 	private String movieName;
@@ -25,12 +25,24 @@ public class Movie {
 		return id;
 	}
 	
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public String getMovieName() {
 		return movieName;
 	}
 	
+	public void setMovieName(String name) {
+		this.movieName = name;
+	}
+	
 	public String getimdbId() {
 		return imdbId;
+	}
+	
+	public void setimdbId(String str) {
+		this.imdbId = str;
 	}
 	
 }

@@ -1,0 +1,85 @@
+.site-footer
+{
+  flex-shrink: 0;
+  flex: 0 1 auto;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #2A3132;
+  padding-top:10px;
+  font-size:15px;
+  color:#737373;
+  padding-bottom:0px;
+}
+
+.site-footer .footerRow{
+  margin-bottom: 0;
+}
+
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+.site-footer a
+{
+  display:inline-block;
+  color:#737373;
+}
+.site-footer a:hover,.site-footer a:active,.site-footer a:focus,.site-footer a:hover
+{
+  color:#336b87;
+  text-decoration:none;
+}
+.site-footer li
+{
+  display:inline-block;
+  margin-right:10px;
+}
+.site-footer .footer-links
+{
+  padding-inline-start: 10px;
+  text-align:left;
+}
+.site-footer .social-icons
+{
+  padding-inline-start: 0;
+  text-align:right;
+}
+.site-footer .social-icons a
+{
+  background-color:white;
+  color: #2A3132;
+  font-size:16px;
+  line-height:44px;
+  width:44px;
+  height:44px;
+  text-align:center;
+  border-radius:100%;
+  -webkit-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear
+}
+.social-icons a:active,.social-icons a:focus,.social-icons a:hover
+{
+  color:white;
+  background-color:#336B87
+}
+.social-icons a.facebook:hover
+{
+  background-color:#3b5998
+}
+.social-icons a.instagram:hover
+{
+  background-color:#E1306C
+}
+.social-icons a.twitter:hover
+{
+  background-color:#00aced
+}
+.social-icons a.phone:hover
+{
+  background-color:#763626
+}

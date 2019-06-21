@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ApiFetchPoster from './ApiFetchPoster';
 
 
-class FutureReleases extends Component {
+class CurrentReleases extends Component {
   render() {
       return (
         <div>
@@ -12,4 +12,4 @@ class FutureReleases extends Component {
     }
 }
 
-export default FutureReleases;
+export default CurrentReleases;

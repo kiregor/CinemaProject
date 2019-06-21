@@ -1,0 +1,78 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow:hidden
+}
+.AppPages {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    min-height: 100vh;
+    max-height: 100vh;
+    min-width: 100vw;
+    max-width: 100vh;
+}
+.AppContent {
+    flex: 1;
+    padding: var(--space) var(--space) 0;
+    overflow: auto;
+    max-height: 70%;
+}
+
+.bgColor button {
+    background-color: #2A3132;
+}
+
+.bgColor button:hover {
+    background-color: #2A3132;
+}
+
+.AppContent::-webkit-scrollbar{
+    width: 0em;
+}
+
+.adminLoginBox {
+    margin: 6em auto 0;
+    width: 50%;
+    /* height: 400px; */
+    padding: 4em 2em;
+    border: solid 1px #CCC;
+    border-radius: 15px
+}
+
+.adminLoginBox .row {
+    margin-bottom: 1.5em;
+}
+
+button.selected {
+    background-color: green;
+}
+
+button.selected:hover {
+    background-color: darkgreen;
+}
+
+.adminEventPage .btn {
+    width: 90%;
+    margin: .25em auto;
+}
+.react-datetime-picker {
+    margin: .75em auto 0;
+}
+
+.adminEventPage {
+    margin-top: 2em;
+}
+
+.adminEventPage h1,h2 {
+    margin-bottom: 1em;
+}
+
+.adminEventPage h3 { 
+    text-align: center;
+}
+
+.alert li {
+    list-style: none;
+}

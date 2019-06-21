@@ -1,15 +1,15 @@
 import React from 'react';
-import Movie from './ApiMovie';
+import Movie from './ApiMovie2';
 
-const MoviePoster = (props) => {
+const ApiMoviePoster = (props) => {
     return(
         <div className="container">
             <div className="row">
                 <div className="col s12">
                     {
-                        props.movies.map((movie, i) => {
+                        props.movies.map((movie, i, ageRating) => {
                             return (
-                                <Movie key={i} image={movie.poster_path} title={movie.title} overview={movie.overview} id={movie.id}/>
+                                <Movie key={i} image={movie.poster_path} title={movie.title} overview={movie.overview} id={movie.id} ageRating={ageRating} />
                             )
                         })
                     }
@@ -19,4 +19,4 @@ const MoviePoster = (props) => {
     )
 }
 
-export default MoviePoster;
+export default ApiMoviePoster;
